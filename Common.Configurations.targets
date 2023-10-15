@@ -3,6 +3,8 @@
 <Project>
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>HerzenHelper.$(MSBuildProjectName)</AssemblyName>
     <RootNamespace>HerzenHelper.$(MSBuildProjectName)</RootNamespace>
   </PropertyGroup>
