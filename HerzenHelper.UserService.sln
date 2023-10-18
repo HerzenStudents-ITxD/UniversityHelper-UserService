@@ -17,23 +17,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "src\UserService\UserService.csproj", "{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "src\UserService\UserService.csproj", "{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Business", "src\UserService.Business\UserService.Business.csproj", "{91C7F301-C4B7-4249-9315-B10631DECCEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Business", "src\UserService.Business\UserService.Business.csproj", "{91C7F301-C4B7-4249-9315-B10631DECCEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Data", "src\UserService.Data\UserService.Data.csproj", "{7A616F4C-06DA-42BD-8835-2F556EB0D770}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Data", "src\UserService.Data\UserService.Data.csproj", "{7A616F4C-06DA-42BD-8835-2F556EB0D770}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Data.Provider.MsSql.Ef", "src\UserService.Data.Provider.MsSql.Ef\UserService.Data.Provider.MsSql.Ef.csproj", "{D2621F17-9630-4B63-A768-47BC5ADA8F62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Data.Provider.MsSql.Ef", "src\UserService.Data.Provider.MsSql.Ef\UserService.Data.Provider.MsSql.Ef.csproj", "{D2621F17-9630-4B63-A768-47BC5ADA8F62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Mappers", "src\UserService.Mappers\UserService.Mappers.csproj", "{05AE0ECD-16EE-4674-9385-22732CBAACB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Mappers", "src\UserService.Mappers\UserService.Mappers.csproj", "{05AE0ECD-16EE-4674-9385-22732CBAACB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Data.Provider", "src\UserService.Data.Provider\UserService.Data.Provider.csproj", "{F916C82B-0E5A-4AFA-A2FE-15C6A3D38DE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Data.Provider", "src\UserService.Data.Provider\UserService.Data.Provider.csproj", "{F916C82B-0E5A-4AFA-A2FE-15C6A3D38DE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Models.Db", "src\UserService.Models.Db\UserService.Models.Db.csproj", "{B9F148F3-0D09-460A-A108-2ED130102ABF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Models.Db", "src\UserService.Models.Db\UserService.Models.Db.csproj", "{B9F148F3-0D09-460A-A108-2ED130102ABF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Models.Dto", "src\UserService.Models.Dto\UserService.Models.Dto.csproj", "{35DEF6DA-501E-4EA8-BECE-231275CC77EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Models.Dto", "src\UserService.Models.Dto\UserService.Models.Dto.csproj", "{35DEF6DA-501E-4EA8-BECE-231275CC77EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Validation", "src\UserService.Validation\UserService.Validation.csproj", "{FCA78A96-1053-49E8-B5ED-9EE218385933}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Validation", "src\UserService.Validation\UserService.Validation.csproj", "{FCA78A96-1053-49E8-B5ED-9EE218385933}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService.Broker", "src\UserService.Broker\UserService.Broker.csproj", "{8C959F0C-16F0-480D-81C3-0C82F6B84A1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{91C7F301-C4B7-4249-9315-B10631DECCEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{91C7F301-C4B7-4249-9315-B10631DECCEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C7F301-C4B7-4249-9315-B10631DECCEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -73,15 +79,16 @@ Global
 		{FCA78A96-1053-49E8-B5ED-9EE218385933}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCA78A96-1053-49E8-B5ED-9EE218385933}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCA78A96-1053-49E8-B5ED-9EE218385933}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C959F0C-16F0-480D-81C3-0C82F6B84A1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C959F0C-16F0-480D-81C3-0C82F6B84A1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C959F0C-16F0-480D-81C3-0C82F6B84A1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C959F0C-16F0-480D-81C3-0C82F6B84A1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA} = {35F27495-FE60-4018-8AD7-CB5A10FC0E8A}
 		{91C7F301-C4B7-4249-9315-B10631DECCEB} = {35F27495-FE60-4018-8AD7-CB5A10FC0E8A}
 		{7A616F4C-06DA-42BD-8835-2F556EB0D770} = {35F27495-FE60-4018-8AD7-CB5A10FC0E8A}
 		{D2621F17-9630-4B63-A768-47BC5ADA8F62} = {35F27495-FE60-4018-8AD7-CB5A10FC0E8A}
@@ -90,7 +97,7 @@ Global
 		{B9F148F3-0D09-460A-A108-2ED130102ABF} = {35F27495-FE60-4018-8AD7-CB5A10FC0E8A}
 		{35DEF6DA-501E-4EA8-BECE-231275CC77EF} = {35F27495-FE60-4018-8AD7-CB5A10FC0E8A}
 		{FCA78A96-1053-49E8-B5ED-9EE218385933} = {35F27495-FE60-4018-8AD7-CB5A10FC0E8A}
-		{01BE7B3A-1DBC-4862-ACCE-F0B540ADC1DA} = {35F27495-FE60-4018-8AD7-CB5A10FC0E8A}
+		{8C959F0C-16F0-480D-81C3-0C82F6B84A1B} = {35F27495-FE60-4018-8AD7-CB5A10FC0E8A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0CF4DA18-9A07-4C3E-B8AA-E8362870E7C0}

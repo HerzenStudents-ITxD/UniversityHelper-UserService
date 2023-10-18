@@ -2,4 +2,6 @@
 
   <Import Project="$(ProjectDir)..\..\Common.Configurations.targets" />
 
+  <Import Project="$(ProjectDir)..\..\Common.Configurations.targets" />
+
 </Project>
