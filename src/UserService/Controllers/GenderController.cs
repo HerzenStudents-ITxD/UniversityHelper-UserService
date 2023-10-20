@@ -7,11 +7,12 @@ using HerzenHelper.UserService.Models.Dto.Requests.Gender.Filters;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace HerzenHelper.UserService.Controllers
 {
-  [Route("[controller]")]
   [ApiController]
+  [Route("[controller]")]
   public class GenderController : ControllerBase
   {
     [HttpPost("create")]

@@ -33,7 +33,7 @@ namespace HerzenHelper.UserService.Business.Commands.User
     private readonly IUserAvatarRepository _userAvatarRepository;
     private readonly IPendingUserRepository _pendingRepository;
     private readonly IGeneratePasswordCommand _generatePassword;
-    private readonly IAccessValidator _accessValidator;
+    //private readonly IAccessValidator _accessValidator;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IResponseCreator _responseCreator;
     private readonly ITextTemplateService _textTemplateService;
@@ -73,7 +73,7 @@ namespace HerzenHelper.UserService.Business.Commands.User
       IUserAvatarRepository userAvatarRepository,
       IPendingUserRepository pendingRepository,
       IGeneratePasswordCommand generatePassword,
-      IAccessValidator accessValidator,
+      //IAccessValidator accessValidator,
       IHttpContextAccessor httpContextAccessor,
       IResponseCreator responseCreator,
       ITextTemplateService textTemplateService,
@@ -88,7 +88,7 @@ namespace HerzenHelper.UserService.Business.Commands.User
       _userAvatarRepository = userAvatarRepository;
       _pendingRepository = pendingRepository;
       _generatePassword = generatePassword;
-      _accessValidator = accessValidator;
+      //_accessValidator = accessValidator;
       _httpContextAccessor = httpContextAccessor;
       _responseCreator = responseCreator;
       _textTemplateService = textTemplateService;
@@ -104,13 +104,13 @@ namespace HerzenHelper.UserService.Business.Commands.User
 
       DbUser dbRequestSender = await _userRepository.GetAsync(_httpContextAccessor.HttpContext.GetUserId());
 
-      if (dbRequestSender.Id == request.UserId
-        || (dbUser.IsAdmin && !dbRequestSender.IsAdmin)
-        || (!dbRequestSender.IsAdmin
-          && !await _accessValidator.HasRightsAsync(userId: dbRequestSender.Id, includeIsAdminCheck: false, Rights.AddEditRemoveUsers)))
-      {
-        return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
-      }
+      //if (dbRequestSender.Id == request.UserId
+      //  || (dbUser.IsAdmin && !dbRequestSender.IsAdmin)
+      //  || (!dbRequestSender.IsAdmin
+      //    && !await _accessValidator.HasRightsAsync(userId: dbRequestSender.Id, includeIsAdminCheck: false, Rights.AddEditRemoveUsers)))
+      //{
+      //  return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
+      //}
 
       ValidationResult validationResult = await _validator
         .ValidateAsync((dbUser, request));

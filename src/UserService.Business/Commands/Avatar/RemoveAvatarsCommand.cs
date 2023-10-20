@@ -21,7 +21,7 @@ namespace HerzenHelper.UserService.Business.Commands.Avatar
     private readonly IUserAvatarRepository _repository;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IRemoveAvatarsRequestValidator _validator;
-    private readonly IAccessValidator _accessValidator;
+    //private readonly IAccessValidator _accessValidator;
     private readonly IResponseCreator _responseCreator;
     private readonly IGlobalCacheRepository _globalCache;
 
@@ -29,25 +29,25 @@ namespace HerzenHelper.UserService.Business.Commands.Avatar
       IUserAvatarRepository repository,
       IHttpContextAccessor httpContextAccessor,
       IRemoveAvatarsRequestValidator validator,
-      IAccessValidator accessValidator,
+      //IAccessValidator accessValidator,
       IResponseCreator responseCreator,
       IGlobalCacheRepository globalCache)
     {
       _repository = repository;
       _httpContextAccessor = httpContextAccessor;
       _validator = validator;
-      _accessValidator = accessValidator;
+      //_accessValidator = accessValidator;
       _responseCreator = responseCreator;
       _globalCache = globalCache;
     }
 
     public async Task<OperationResultResponse<bool>> ExecuteAsync(RemoveAvatarsRequest request)
     {
-      if (request.UserId != _httpContextAccessor.HttpContext.GetUserId()
-        && !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
-      {
-        _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
-      }
+      //if (request.UserId != _httpContextAccessor.HttpContext.GetUserId()
+      //  && !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
+      //{
+      //  _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
+      //}
 
       ValidationResult validationResult = await _validator.ValidateAsync(request);
 

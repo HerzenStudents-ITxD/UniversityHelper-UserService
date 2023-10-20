@@ -24,7 +24,7 @@ namespace HerzenHelper.UserService.Business.Commands.User
   {
     private readonly IUserRepository _userRepository;
     private readonly IPatchDbUserMapper _mapperUser;
-    private readonly IAccessValidator _accessValidator;
+    //private readonly IAccessValidator _accessValidator;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IResponseCreator _responseCreator;
     private readonly IGlobalCacheRepository _globalCache;
@@ -32,14 +32,14 @@ namespace HerzenHelper.UserService.Business.Commands.User
     public EditUserCommand(
       IUserRepository userRepository,
       IPatchDbUserMapper mapperUser,
-      IAccessValidator accessValidator,
+      //IAccessValidator accessValidator,
       IHttpContextAccessor httpContextAccessor,
       IResponseCreator responseCreator,
       IGlobalCacheRepository globalCache)
     {
       _userRepository = userRepository;
       _mapperUser = mapperUser;
-      _accessValidator = accessValidator;
+      //_accessValidator = accessValidator;
       _httpContextAccessor = httpContextAccessor;
       _responseCreator = responseCreator;
       _globalCache = globalCache;
@@ -49,8 +49,8 @@ namespace HerzenHelper.UserService.Business.Commands.User
     {
       Guid requestSenderId = _httpContextAccessor.HttpContext.GetUserId();
 
-      bool isAdmin = await _accessValidator.IsAdminAsync(requestSenderId);
-      bool isAddEditRemoveUsers = await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers);
+      //bool isAdmin = await _accessValidator.IsAdminAsync(requestSenderId);
+      //bool isAddEditRemoveUsers = await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers);
 
       Operation<EditUserRequest> isAdminOperation = patch.Operations.FirstOrDefault(
         o => o.path.EndsWith(nameof(EditUserRequest.IsAdmin), StringComparison.OrdinalIgnoreCase));
@@ -58,12 +58,12 @@ namespace HerzenHelper.UserService.Business.Commands.User
       Operation<EditUserRequest> isGenderOperation = patch.Operations.FirstOrDefault(
         o => o.path.EndsWith(nameof(EditUserRequest.GenderId), StringComparison.OrdinalIgnoreCase));
 
-      if ((userId != requestSenderId && !isAddEditRemoveUsers && !isAdmin) ||
-        (isAdminOperation is not null && !isAdmin) ||
-        (isGenderOperation is not null && userId != requestSenderId))
-      {
-        return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
-      }
+      //if ((userId != requestSenderId && !isAddEditRemoveUsers && !isAdmin) ||
+      //  (isAdminOperation is not null && !isAdmin) ||
+      //  (isGenderOperation is not null && userId != requestSenderId))
+      //{
+      //  return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
+      //}
 
       OperationResultResponse<bool> response = new();
 

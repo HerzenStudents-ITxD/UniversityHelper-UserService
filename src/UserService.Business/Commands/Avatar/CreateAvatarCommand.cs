@@ -22,7 +22,7 @@ namespace HerzenHelper.UserService.Business.Commands.Avatar
   public class CreateAvatarCommand : ICreateAvatarCommand
   {
     private readonly IUserAvatarRepository _avatarRepository;
-    private readonly IAccessValidator _accessValidator;
+    //private readonly IAccessValidator _accessValidator;
     private readonly ICreateAvatarRequestValidator _requestValidator;
     private readonly IDbUserAvatarMapper _dbUserAvatarMapper;
     private readonly IHttpContextAccessor _httpContextAccessor;
@@ -32,7 +32,7 @@ namespace HerzenHelper.UserService.Business.Commands.Avatar
 
     public CreateAvatarCommand(
       IUserAvatarRepository avatarRepository,
-      IAccessValidator accessValidator,
+      //IAccessValidator accessValidator,
       ICreateAvatarRequestValidator requestValidator,
       IDbUserAvatarMapper dbEntityImageMapper,
       IHttpContextAccessor httpContextAccessor,
@@ -41,7 +41,7 @@ namespace HerzenHelper.UserService.Business.Commands.Avatar
       IGlobalCacheRepository globalCache)
     {
       _avatarRepository = avatarRepository;
-      _accessValidator = accessValidator;
+      //_accessValidator = accessValidator;
       _requestValidator = requestValidator;
       _dbUserAvatarMapper = dbEntityImageMapper;
       _httpContextAccessor = httpContextAccessor;
@@ -52,11 +52,11 @@ namespace HerzenHelper.UserService.Business.Commands.Avatar
 
     public async Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateAvatarRequest request)
     {
-      if (_httpContextAccessor.HttpContext.GetUserId() != request.UserId
-        && !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
-      {
-        return _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.Forbidden);
-      }
+      //if (_httpContextAccessor.HttpContext.GetUserId() != request.UserId
+      //  && !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
+      //{
+      //  return _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.Forbidden);
+      //}
 
       ValidationResult validationResult = await _requestValidator.ValidateAsync(request);
 

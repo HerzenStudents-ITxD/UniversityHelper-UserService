@@ -39,7 +39,7 @@ namespace HerzenHelper.UserService.Validation.Communication.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LT.DigitalOffice.UserService.Validation.Communication.Resources.CreateCommunicati" +
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HerzenHelper.UserService.Validation.Communication.Resources.CreateCommunicati" +
                             "onRequestValidatorResource", typeof(CreateCommunicationRequestValidatorResource).Assembly);
                     resourceMan = temp;
                 }

@@ -33,7 +33,7 @@ namespace HerzenHelper.UserService.Business.Commands.Communication
     private readonly IDbUserCommunicationMapper _mapper;
     private readonly IUserCommunicationRepository _communicationRepository;
     private readonly IUserRepository _userRepository;
-    private readonly IAccessValidator _accessValidator;
+    //private readonly IAccessValidator _accessValidator;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IResponseCreator _responseCreator;
     private readonly IMemoryCache _cache;
@@ -73,7 +73,7 @@ namespace HerzenHelper.UserService.Business.Commands.Communication
       IDbUserCommunicationMapper mapper,
       IUserCommunicationRepository communicationRepository,
       IUserRepository userRepository,
-    IAccessValidator accessValidator,
+    //IAccessValidator accessValidator,
       IHttpContextAccessor httpContextAccessor,
       IResponseCreator responseCreator,
       IMemoryCache cache,
@@ -86,7 +86,7 @@ namespace HerzenHelper.UserService.Business.Commands.Communication
       _mapper = mapper;
       _communicationRepository = communicationRepository;
       _userRepository = userRepository;
-      _accessValidator = accessValidator;
+      //_accessValidator = accessValidator;
       _httpContextAccessor = httpContextAccessor;
       _responseCreator = responseCreator;
       _cache = cache;
@@ -98,11 +98,11 @@ namespace HerzenHelper.UserService.Business.Commands.Communication
 
     public async Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateCommunicationRequest request)
     {
-      if ((request.UserId != _httpContextAccessor.HttpContext.GetUserId()) &&
-        !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
-      {
-        return _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.Forbidden);
-      }
+      //if ((request.UserId != _httpContextAccessor.HttpContext.GetUserId()) &&
+      //  !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
+      //{
+      //  return _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.Forbidden);
+      //}
 
       ValidationResult validationResult = await _validator.ValidateAsync(request);
 

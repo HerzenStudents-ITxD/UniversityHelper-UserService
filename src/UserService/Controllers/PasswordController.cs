@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace HerzenHelper.UserService.Controllers
 {
-  [Route("[controller]")]
   [ApiController]
+  [Route("[controller]")]
   public class PasswordController : ControllerBase
   {
     [HttpGet("forgot")]

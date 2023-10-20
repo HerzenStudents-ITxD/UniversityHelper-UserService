@@ -16,8 +16,8 @@ using System.Threading.Tasks;
 
 namespace HerzenHelper.UserService.Controllers
 {
-  [Route("[controller]")]
   [ApiController]
+  [Route("[controller]")]
   public class UserController : ControllerBase
   {
     [HttpPost("create")]

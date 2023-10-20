@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace HerzenHelper.UserService.Controllers
 {
-  [Route("[controller]")]
   [ApiController]
+  [Route("[controller]")]
   public class AvatarController : ControllerBase
   {
     [HttpPost("create")]

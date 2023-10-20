@@ -13,18 +13,18 @@ namespace HerzenHelper.UserService.Business.Commands.Pending
 {
   public class RemovePendingUserCommand : IRemovePendingUserCommand
   {
-    private readonly IAccessValidator _accessValidator;
+    //private readonly IAccessValidator _accessValidator;
     private readonly IResponseCreator _responseCreator;
     private readonly IPendingUserRepository _repository;
     private readonly IGlobalCacheRepository _globalCache;
 
     public RemovePendingUserCommand(
-      IAccessValidator accessValidator,
+      //IAccessValidator accessValidator,
       IResponseCreator responseCreator,
       IPendingUserRepository repository,
       IGlobalCacheRepository globalCache)
     {
-      _accessValidator = accessValidator;
+      //_accessValidator = accessValidator;
       _responseCreator = responseCreator;
       _repository = repository;
       _globalCache = globalCache;
@@ -32,10 +32,10 @@ namespace HerzenHelper.UserService.Business.Commands.Pending
 
     public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid userId)
     {
-      if (!await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
-      {
-        return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
-      }
+      //if (!await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
+      //{
+      //  return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
+      //}
 
       OperationResultResponse<bool> response = new();
       response.Body = (await _repository.RemoveAsync(userId)) is not null;

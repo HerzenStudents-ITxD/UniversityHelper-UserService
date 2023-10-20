@@ -20,7 +20,7 @@ namespace HerzenHelper.UserService.Business.Commands.Pending
 {
   public class ResendInvitationCommand : IResendInvitationCommand
   {
-    private readonly IAccessValidator _accessValidator;
+    //private readonly IAccessValidator _accessValidator;
     private readonly IPendingUserRepository _repository;
     private readonly IUserCredentialsRepository _credentialsRepository;
     private readonly IGeneratePasswordCommand _generatePassword;
@@ -57,7 +57,7 @@ namespace HerzenHelper.UserService.Business.Commands.Pending
     }
 
     public ResendInvitationCommand(
-      IAccessValidator accessValidator,
+      //IAccessValidator accessValidator,
       IPendingUserRepository repository,
       IUserCredentialsRepository credentialsRepository,
       IGeneratePasswordCommand generatePassword,
@@ -66,7 +66,7 @@ namespace HerzenHelper.UserService.Business.Commands.Pending
       ITextTemplateService textTemplateService,
       IEmailService emailService)
     {
-      _accessValidator = accessValidator;
+      //_accessValidator = accessValidator;
       _repository = repository;
       _credentialsRepository = credentialsRepository;
       _generatePassword = generatePassword;
@@ -78,10 +78,10 @@ namespace HerzenHelper.UserService.Business.Commands.Pending
 
     public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid userId, Guid communicationId)
     {
-      if (!await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
-      {
-        return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
-      }
+      //if (!await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
+      //{
+      //  return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
+      //}
 
       DbPendingUser dbPendingUser = await _repository.GetAsync(userId: userId, includeUser: true);
 

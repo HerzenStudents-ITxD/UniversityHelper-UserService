@@ -39,7 +39,7 @@ namespace HerzenHelper.UserService.Validation.Gender.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LT.DigitalOffice.UserService.Validation.Gender.Resources.CreateGenderRequestValid" +
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HerzenHelper.UserService.Validation.Gender.Resources.CreateGenderRequestValid" +
                             "ationResource", typeof(CreateGenderRequestValidationResource).Assembly);
                     resourceMan = temp;
                 }

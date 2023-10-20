@@ -39,7 +39,7 @@ namespace HerzenHelper.UserService.Validation.Credentials.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LT.DigitalOffice.UserService.Validation.Credentials.Resources.CreateCredentialsRe" +
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HerzenHelper.UserService.Validation.Credentials.Resources.CreateCredentialsRe" +
                             "questValidationResource", typeof(CreateCredentialsRequestValidationResource).Assembly);
                     resourceMan = temp;
                 }

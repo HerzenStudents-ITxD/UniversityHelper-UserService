@@ -1,36 +1,59 @@
-﻿
-namespace UserService
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Serilog;
+using System;
+
+namespace LT.DigitalOffice.UserService
 {
   public class Program
   {
     public static void Main(string[] args)
     {
-      var builder = WebApplication.CreateBuilder(args);
+      var configuration = new ConfigurationBuilder()
+        .AddJsonFile("appsettings.json")
+        .Build();
 
-      // Add services to the container.
-
-      builder.Services.AddControllers();
-      // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-      builder.Services.AddEndpointsApiExplorer();
-      builder.Services.AddSwaggerGen();
-
-      var app = builder.Build();
-
-      // Configure the HTTP request pipeline.
-      if (app.Environment.IsDevelopment())
+      string seqServerUrl = Environment.GetEnvironmentVariable("seqServerUrl");
+      if (string.IsNullOrEmpty(seqServerUrl))
       {
-        app.UseSwagger();
-        app.UseSwaggerUI();
+        seqServerUrl = configuration["Serilog:WriteTo:1:Args:serverUrl"];
       }
 
-      app.UseHttpsRedirection();
+      string seqApiKey = Environment.GetEnvironmentVariable("seqApiKey");
+      if (string.IsNullOrEmpty(seqApiKey))
+      {
+        seqApiKey = configuration["Serilog:WriteTo:1:Args:apiKey"];
+      }
 
-      app.UseAuthorization();
+      Log.Logger = new LoggerConfiguration().ReadFrom
+        .Configuration(configuration)
+        .Enrich.WithProperty("Service", "UserService")
+        .WriteTo.Seq(
+          serverUrl: seqServerUrl,
+          apiKey: seqApiKey)
+        .CreateLogger();
 
-
-      app.MapControllers();
-
-      app.Run();
+      try
+      {
+        CreateHostBuilder(args).Build().Run();
+      }
+      catch (Exception exc)
+      {
+        Log.Fatal(exc, "Can not properly start UserService.");
+      }
+      finally
+      {
+        Log.CloseAndFlush();
+      }
     }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+      Host.CreateDefaultBuilder(args)
+        .UseSerilog()
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+          webBuilder.UseStartup<Startup>();
+        });
   }
 }

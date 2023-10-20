@@ -35,7 +35,7 @@ namespace HerzenHelper.UserService.Business.Commands.User
     private readonly IUserAvatarRepository _avatarRepository;
     private readonly IDbUserMapper _dbUserMapper;
     private readonly IDbUserAvatarMapper _dbUserAvatarMapper;
-    private readonly IAccessValidator _accessValidator;
+    //private readonly IAccessValidator _accessValidator;
     private readonly IGeneratePasswordCommand _generatePassword;
     private readonly IResponseCreator _responseCreator;
     private readonly IHttpContextAccessor _httpContextAccessor;
@@ -76,7 +76,7 @@ namespace HerzenHelper.UserService.Business.Commands.User
       IHttpContextAccessor httpContextAccessor,
       IDbUserMapper dbUserMapper,
       IDbUserAvatarMapper dbUserAvatarMapper,
-      IAccessValidator accessValidator,
+      //IAccessValidator accessValidator,
       IGeneratePasswordCommand generatePassword,
       IResponseCreator responseCreator,
       ITextTemplateParser parser,
@@ -90,7 +90,7 @@ namespace HerzenHelper.UserService.Business.Commands.User
       _avatarRepository = avatarRepository;
       _dbUserMapper = dbUserMapper;
       _dbUserAvatarMapper = dbUserAvatarMapper;
-      _accessValidator = accessValidator;
+      //_accessValidator = accessValidator;
       _generatePassword = generatePassword;
       _httpContextAccessor = httpContextAccessor;
       _responseCreator = responseCreator;
@@ -102,10 +102,10 @@ namespace HerzenHelper.UserService.Business.Commands.User
 
     public async Task<OperationResultResponse<Guid>> ExecuteAsync(CreateUserRequest request)
     {
-      if (!await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
-      {
-        return _responseCreator.CreateFailureResponse<Guid>(HttpStatusCode.Forbidden);
-      }
+      //if (!await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
+      //{
+      //  return _responseCreator.CreateFailureResponse<Guid>(HttpStatusCode.Forbidden);
+      //}
 
       ValidationResult validationResult = await _validator.ValidateAsync(request);
 

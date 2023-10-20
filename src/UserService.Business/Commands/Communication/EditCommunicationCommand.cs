@@ -29,7 +29,7 @@ namespace HerzenHelper.UserService.Business.Commands.Communication
   public class EditCommunicationCommand : IEditCommunicationCommand
   {
     private readonly IUserCommunicationRepository _repository;
-    private readonly IAccessValidator _accessValidator;
+    //private readonly IAccessValidator _accessValidator;
     private readonly IEditCommunicationRequestValidator _validator;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IResponseCreator _responseCreator;
@@ -62,7 +62,7 @@ namespace HerzenHelper.UserService.Business.Commands.Communication
 
     public EditCommunicationCommand(
       IUserCommunicationRepository repository,
-      IAccessValidator accessValidator,
+      //IAccessValidator accessValidator,
       IEditCommunicationRequestValidator validator,
       IHttpContextAccessor httpContextAccessor,
       IResponseCreator responseCreator,
@@ -73,7 +73,7 @@ namespace HerzenHelper.UserService.Business.Commands.Communication
       IOptions<MemoryCacheConfig> cacheOptions)
     {
       _repository = repository;
-      _accessValidator = accessValidator;
+      //_accessValidator = accessValidator;
       _validator = validator;
       _httpContextAccessor = httpContextAccessor;
       _responseCreator = responseCreator;
@@ -95,11 +95,11 @@ namespace HerzenHelper.UserService.Business.Commands.Communication
         return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
       }
 
-      if (_httpContextAccessor.HttpContext.GetUserId() != dbUserCommunication.UserId &&
-        !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
-      {
-        return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
-      }
+      //if (_httpContextAccessor.HttpContext.GetUserId() != dbUserCommunication.UserId &&
+      //  !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
+      //{
+      //  return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
+      //}
 
       ValidationResult validationResult = await _validator
         .ValidateAsync((dbUserCommunication, request));

@@ -18,18 +18,18 @@ namespace HerzenHelper.UserService.Business.Commands.Communication
 {
   public class RemoveCommunicationCommand : IRemoveCommunicationCommand
   {
-    private readonly IAccessValidator _accessValidator;
+    //private readonly IAccessValidator _accessValidator;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IUserCommunicationRepository _repository;
     private readonly IResponseCreator _responseCreator;
 
     public RemoveCommunicationCommand(
-      IAccessValidator accessValidator,
+      //IAccessValidator accessValidator,
       IHttpContextAccessor httpContextAccessor,
       IUserCommunicationRepository communicationRepository,
       IResponseCreator responseCreator)
     {
-      _accessValidator = accessValidator;
+      //_accessValidator = accessValidator;
       _httpContextAccessor = httpContextAccessor;
       _repository = communicationRepository;
       _responseCreator = responseCreator;
@@ -39,11 +39,11 @@ namespace HerzenHelper.UserService.Business.Commands.Communication
     {
       DbUserCommunication dbUserCommunication = await _repository.GetAsync(communicationId);
 
-      if ((_httpContextAccessor.HttpContext.GetUserId() != dbUserCommunication.UserId) &&
-        !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
-      {
-        return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
-      }
+      //if ((_httpContextAccessor.HttpContext.GetUserId() != dbUserCommunication.UserId) &&
+      //  !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
+      //{
+      //  return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
+      //}
 
       if (dbUserCommunication.Type == (int)CommunicationType.BaseEmail)
       {

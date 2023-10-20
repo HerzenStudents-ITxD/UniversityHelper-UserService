@@ -7,8 +7,8 @@ using HerzenHelper.Core.Responses;
 
 namespace HerzenHelper.UserService.Controllers
 {
-  [Route("[controller]")]
   [ApiController]
+  [Route("[controller]")]
   public class CredentialsController : ControllerBase
   {
     [HttpPost("create")]
