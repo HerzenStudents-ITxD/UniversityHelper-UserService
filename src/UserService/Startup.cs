@@ -87,6 +87,7 @@ namespace HerzenHelper.UserService
         .GetSection(BaseRabbitMqConfig.SectionName)
         .Get<RabbitMqConfig>();
 
+      //[ProjectIteration].[Realese].[BreakChange].[Version]
       Version = "2.0.0.0";
       Description = "UserService is an API that intended to work with users.";
       StartTime = DateTime.UtcNow;
