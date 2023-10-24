@@ -26,7 +26,7 @@ namespace HerzenHelper.UserService.Business.Commands.User
 {
   public class EditUserActiveCommand : IEditUserActiveCommand
   {
-    private readonly IEditUserActiveRequestValidator _validator;
+    //private readonly IEditUserActiveRequestValidator _validator;
     private readonly IUserRepository _userRepository;
     private readonly IUserCredentialsRepository _userCredentialsRepository;
     private readonly IUserCommunicationRepository _userCommunicationRepository;
@@ -66,7 +66,7 @@ namespace HerzenHelper.UserService.Business.Commands.User
     }
 
     public EditUserActiveCommand(
-      IEditUserActiveRequestValidator validator,
+      //IEditUserActiveRequestValidator validator,
       IUserRepository userRepository,
       IUserCredentialsRepository userCredentialsRepository,
       IUserCommunicationRepository userCommunicationRepository,
@@ -81,7 +81,7 @@ namespace HerzenHelper.UserService.Business.Commands.User
       ITextTemplateParser parser,
       IGlobalCacheRepository globalCache)
     {
-      _validator = validator;
+      //_validator = validator;
       _userRepository = userRepository;
       _userCredentialsRepository = userCredentialsRepository;
       _userCommunicationRepository = userCommunicationRepository;
@@ -112,14 +112,14 @@ namespace HerzenHelper.UserService.Business.Commands.User
       //  return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
       //}
 
-      ValidationResult validationResult = await _validator
-        .ValidateAsync((dbUser, request));
+      //ValidationResult validationResult = await _validator
+      //  .ValidateAsync((dbUser, request));
 
-      if (!validationResult.IsValid)
-      {
-        return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.BadRequest,
-          validationResult.Errors.Select(vf => vf.ErrorMessage).ToList());
-      }
+      //if (!validationResult.IsValid)
+      //{
+      //  return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.BadRequest,
+      //    validationResult.Errors.Select(vf => vf.ErrorMessage).ToList());
+      //}
 
       OperationResultResponse<bool> response = new();
 

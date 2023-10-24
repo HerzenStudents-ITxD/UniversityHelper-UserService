@@ -39,7 +39,7 @@ namespace HerzenHelper.UserService.Broker.Requests
       object request = IGetPositionsRequest.CreateObj(usersIds: new() { userId });
 
       List<PositionData> positions = await _globalCache
-        .GetAsync<List<PositionData>>(Cache.Positions, userId.GetRedisCacheKey(nameof(IGetPositionsRequest), request.GetBasicProperties()));
+        .GetAsync<List<PositionData>>(Cache.Events, userId.GetRedisCacheKey(nameof(IGetPositionsRequest), request.GetBasicProperties()));
 
       if (positions is not null)
       {

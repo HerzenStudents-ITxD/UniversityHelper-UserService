@@ -1,24 +1,24 @@
-using DigitalOffice.Kernel.RedisSupport.Extensions;
+﻿using HerzenHelper.Core.RedisSupport.Extensions;
 using FluentValidation;
 using HealthChecks.UI.Client;
-using LT.DigitalOffice.Kernel.BrokerSupport.Broker.Consumer;
-using LT.DigitalOffice.Kernel.BrokerSupport.Configurations;
-using LT.DigitalOffice.Kernel.BrokerSupport.Extensions;
-using LT.DigitalOffice.Kernel.BrokerSupport.Helpers;
-using LT.DigitalOffice.Kernel.BrokerSupport.Middlewares.Token;
-using LT.DigitalOffice.Kernel.Configurations;
-using LT.DigitalOffice.Kernel.EFSupport.Extensions;
-using LT.DigitalOffice.Kernel.EFSupport.Helpers;
-using LT.DigitalOffice.Kernel.Extensions;
-using LT.DigitalOffice.Kernel.Middlewares.ApiInformation;
-using LT.DigitalOffice.Kernel.RedisSupport.Configurations;
-using LT.DigitalOffice.Kernel.RedisSupport.Constants;
-using LT.DigitalOffice.Kernel.RedisSupport.Helpers;
-using LT.DigitalOffice.UserService.Broker.Consumers;
-using LT.DigitalOffice.UserService.Data.Provider.MsSql.Ef;
-using LT.DigitalOffice.UserService.Models.Dto.Configurations;
-using LT.DigitalOffice.UserService.Models.Dto.Requests.User;
-using LT.DigitalOffice.UserService.Validation.User;
+using HerzenHelper.Core.BrokerSupport.Broker.Consumer;
+using HerzenHelper.Core.BrokerSupport.Configurations;
+using HerzenHelper.Core.BrokerSupport.Extensions;
+using HerzenHelper.Core.BrokerSupport.Helpers;
+using HerzenHelper.Core.BrokerSupport.Middlewares.Token;
+using HerzenHelper.Core.Configurations;
+using HerzenHelper.Core.EFSupport.Extensions;
+using HerzenHelper.Core.EFSupport.Helpers;
+using HerzenHelper.Core.Extensions;
+using HerzenHelper.Core.Middlewares.ApiInformation;
+using HerzenHelper.Core.RedisSupport.Configurations;
+using HerzenHelper.Core.RedisSupport.Constants;
+using HerzenHelper.Core.RedisSupport.Helpers;
+using HerzenHelper.UserService.Broker.Consumers;
+using HerzenHelper.UserService.Data.Provider.MsSql.Ef;
+using HerzenHelper.UserService.Models.Dto.Configurations;
+using HerzenHelper.UserService.Models.Dto.Requests.User;
+using HerzenHelper.UserService.Validation.User;
 using MassTransit;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
 using MassTransit.RabbitMqTransport;
@@ -39,8 +39,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
+using HerzenHelper.UserService.Validation.User.Interfaces;
 
-namespace LT.DigitalOffice.UserService
+namespace HerzenHelper.UserService
 {
   public class Startup : BaseApiInfo
   {
@@ -70,95 +71,6 @@ namespace LT.DigitalOffice.UserService
         .First();
     }
 
-    #region configure masstransit
-
-    private void ConfigureMassTransit(IServiceCollection services)
-    {
-      (string username, string password) = RabbitMqCredentialsHelper
-        .Get(_rabbitMqConfig, _serviceInfoConfig);
-
-      services.AddMassTransit(busConfigurator =>
-      {
-        busConfigurator.UsingRabbitMq((context, cfg) =>
-          {
-            cfg.Host(_rabbitMqConfig.Host, "/", host =>
-              {
-                host.Username(username);
-                host.Password(password);
-              });
-
-            ConfigureEndpoints(context, cfg, _rabbitMqConfig);
-          });
-
-        ConfigureConsumers(busConfigurator);
-
-        busConfigurator.AddRequestClients(_rabbitMqConfig);
-      });
-
-      services.AddMassTransitHostedService();
-    }
-
-    private void ConfigureConsumers(IServiceCollectionBusConfigurator x)
-    {
-      x.AddConsumer<UserLoginConsumer>();
-      x.AddConsumer<GetUsersDataConsumer>();
-      x.AddConsumer<AccessValidatorConsumer>();
-      x.AddConsumer<SearchUsersConsumer>();
-      x.AddConsumer<CreateAdminConsumer>();
-      x.AddConsumer<FindParseEntitiesConsumer>();
-      x.AddConsumer<CheckUsersExistenceConsumer>();
-      x.AddConsumer<FilterUsersDataConsumer>();
-    }
-
-    private void ConfigureEndpoints(
-        IBusRegistrationContext context,
-        IRabbitMqBusFactoryConfigurator cfg,
-        RabbitMqConfig rabbitMqConfig)
-    {
-      cfg.ReceiveEndpoint(rabbitMqConfig.CheckUserIsAdminEndpoint, ep =>
-      {
-        // TODO Rename
-        ep.ConfigureConsumer<AccessValidatorConsumer>(context);
-      });
-
-      cfg.ReceiveEndpoint(rabbitMqConfig.GetUsersDataEndpoint, ep =>
-      {
-        ep.ConfigureConsumer<GetUsersDataConsumer>(context);
-      });
-
-      cfg.ReceiveEndpoint(rabbitMqConfig.GetUserCredentialsEndpoint, ep =>
-      {
-        ep.ConfigureConsumer<UserLoginConsumer>(context);
-      });
-
-      cfg.ReceiveEndpoint(rabbitMqConfig.SearchUsersEndpoint, ep =>
-      {
-        ep.ConfigureConsumer<SearchUsersConsumer>(context);
-      });
-
-      cfg.ReceiveEndpoint(rabbitMqConfig.CreateAdminEndpoint, ep =>
-      {
-        ep.ConfigureConsumer<CreateAdminConsumer>(context);
-      });
-
-      cfg.ReceiveEndpoint(rabbitMqConfig.FindParseEntitiesEndpoint, ep =>
-      {
-        ep.ConfigureConsumer<FindParseEntitiesConsumer>(context);
-      });
-
-      cfg.ReceiveEndpoint(rabbitMqConfig.CheckUsersExistenceEndpoint, ep =>
-      {
-        ep.ConfigureConsumer<CheckUsersExistenceConsumer>(context);
-      });
-
-      cfg.ReceiveEndpoint(rabbitMqConfig.FilterUsersDataEndpoint, ep =>
-      {
-        ep.ConfigureConsumer<FilterUsersDataConsumer>(context);
-      });
-    }
-
-    #endregion
-
     #endregion
 
     #region public methods
@@ -175,10 +87,10 @@ namespace LT.DigitalOffice.UserService
         .GetSection(BaseRabbitMqConfig.SectionName)
         .Get<RabbitMqConfig>();
 
-      Version = "1.4.5.7";
+      Version = "2.0.0.0";
       Description = "UserService is an API that intended to work with users.";
       StartTime = DateTime.UtcNow;
-      ApiName = $"LT Digital Office - {_serviceInfoConfig.Name}";
+      ApiName = $"HerzenHelper - {_serviceInfoConfig.Name}";
     }
 
     public void ConfigureServices(IServiceCollection services)
@@ -190,13 +102,6 @@ namespace LT.DigitalOffice.UserService
           builder =>
           {
             builder
-              //.WithOrigins(
-              //    "https://*.ltdo.xyz",
-              //    "http://*.ltdo.xyz",
-              //    "http://ltdo.xyz",
-              //    "http://ltdo.xyz:9802",
-              //    "http://localhost:4200",
-              //    "http://localhost:4500")
               .AllowAnyOrigin()
               .AllowAnyHeader()
               .AllowAnyMethod();
@@ -249,16 +154,19 @@ namespace LT.DigitalOffice.UserService
           ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
       });
 
-      services.AddMemoryCache();
       services.AddBusinessObjects();
 
-      ConfigureMassTransit(services);
+      services.AddControllers();
+
+      services.ConfigureMassTransit(_rabbitMqConfig);
+
+      services.AddMemoryCache();
 
       //TODO this will be used when all validation takes place on the pipeline
       //string path = Path.Combine(
       //    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
       //    "LT.DigitalOffice.UserService.Validation.dll");
-      services.AddScoped<IValidator<JsonPatchDocument<EditUserRequest>>, EditUserRequestValidator>();
+      //services.AddScoped<IValidator<JsonPatchDocument<EditUserRequest>>, IEditUserRequestValidator>();
 
       redisConnStr = services.AddRedisSingleton(Configuration);
 

@@ -1,10 +1,10 @@
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
 
-namespace LT.DigitalOffice.UserService
+namespace HerzenHelper.UserService
 {
   public class Program
   {

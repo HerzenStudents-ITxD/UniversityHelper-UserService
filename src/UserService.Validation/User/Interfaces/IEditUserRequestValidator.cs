@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.JsonPatch;
 
 namespace HerzenHelper.UserService.Validation.User.Interfaces
 {
-  [AutoInject]
-  public interface IEditUserRequestValidator : IValidator<JsonPatchDocument<EditUserRequest>>
-  {
-  }
+  //[AutoInject]
+  //public interface IEditUserRequestValidator : IValidator<JsonPatchDocument<EditUserRequest>>
+  //{
+  //}
 }

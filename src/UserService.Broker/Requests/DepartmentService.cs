@@ -42,7 +42,7 @@ namespace HerzenHelper.UserService.Broker.Requests
         );
 
       List<DepartmentData> departments = await _globalCache
-        .GetAsync<List<DepartmentData>>(Cache.Departments, userId.GetRedisCacheKey(nameof(IGetDepartmentsRequest), request.GetBasicProperties()));
+        .GetAsync<List<DepartmentData>>(Cache.Communities, userId.GetRedisCacheKey(nameof(IGetDepartmentsRequest), request.GetBasicProperties()));
 
       if (departments is not null)
       {
