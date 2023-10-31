@@ -1,5 +1,6 @@
 ﻿using HerzenHelper.Core.Responses;
 using HerzenHelper.Models.Broker.Models;
+using HerzenHelper.Models.Broker.Models.User;
 using HerzenHelper.UserService.Business.Commands.User.Interfaces;
 using HerzenHelper.UserService.Business.Interfaces;
 using HerzenHelper.UserService.Models.Dto;

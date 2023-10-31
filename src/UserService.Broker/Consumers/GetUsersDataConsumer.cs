@@ -4,6 +4,7 @@ using HerzenHelper.Core.RedisSupport.Constants;
 using HerzenHelper.Core.RedisSupport.Extensions;
 using HerzenHelper.Core.RedisSupport.Helpers.Interfaces;
 using HerzenHelper.Models.Broker.Models;
+using HerzenHelper.Models.Broker.Models.User;
 using HerzenHelper.Models.Broker.Requests.User;
 using HerzenHelper.Models.Broker.Responses.User;
 using HerzenHelper.UserService.Data.Interfaces;
@@ -44,10 +45,9 @@ namespace HerzenHelper.UserService.Broker.Consumers
           middleName: u.MiddleName,
           lastName: u.LastName,
           isActive: u.IsActive,
-          status: null
-          //email: request.IncludeBaseEmail
-          //  ? u.Communications.FirstOrDefault(c => c.Type == (int)CommunicationType.BaseEmail)?.Value
-          //  : null
+          email: request.IncludeBaseEmail
+            ? u.Communications.FirstOrDefault(c => c.Type == (int)CommunicationType.BaseEmail)?.Value
+            : null
             ))
         .ToList();
     }

@@ -1,6 +1,7 @@
 ﻿using HerzenHelper.Core.Extensions;
 using HerzenHelper.Core.Responses;
 using HerzenHelper.Models.Broker.Models;
+using HerzenHelper.Models.Broker.Models.User;
 using HerzenHelper.UserService.Business.Commands.User.Interfaces;
 using HerzenHelper.UserService.Data.Interfaces;
 using HerzenHelper.UserService.Models.Db;
@@ -31,8 +32,7 @@ namespace HerzenHelper.UserService.Business.Commands.User
           firstName: dbUser.FirstName,
           middleName: dbUser.MiddleName,
           lastName: dbUser.LastName,
-          isActive: dbUser.IsActive,
-          status: null));
+          isActive: dbUser.IsActive));
     }
   }
 }

@@ -28,13 +28,13 @@
   </PropertyGroup>
 
   <ItemGroup Condition="$(AssemblyName.Contains('.UnitTests')) != 'true'">
-    <PackageReference Include="HerzenHelper.Core" Version="2.0.0" />
-    <PackageReference Include="HerzenHelper.Core.BrokerSupport" Version="2.0.0" />
-    <PackageReference Include="HerzenHelper.Core.EFSupport" Version="2.0.0" />
-    <PackageReference Include="HerzenHelper.Core.EndpointSupport" Version="2.0.0" />
-    <PackageReference Include="HerzenHelper.Core.ImageSupport" Version="2.0.0" />
-    <PackageReference Include="HerzenHelper.Core.RedisSupport" Version="2.0.0" />
-    <PackageReference Include="HerzenHelper.Models" Version="1.0.66" />
+    <PackageReference Include="HerzenHelper.Core" Version="2.0.1" />
+    <PackageReference Include="HerzenHelper.Core.BrokerSupport" Version="2.0.1" />
+    <PackageReference Include="HerzenHelper.Core.EFSupport" Version="2.0.1" />
+    <PackageReference Include="HerzenHelper.Core.EndpointSupport" Version="2.0.1" />
+    <PackageReference Include="HerzenHelper.Core.ImageSupport" Version="2.0.1" />
+    <PackageReference Include="HerzenHelper.Core.RedisSupport" Version="2.0.1" />
+    <PackageReference Include="HerzenHelper.Models" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup Condition="$(AssemblyName.Contains('.UnitTests'))">

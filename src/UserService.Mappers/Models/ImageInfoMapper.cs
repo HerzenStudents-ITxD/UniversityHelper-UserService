@@ -1,4 +1,5 @@
 ﻿using HerzenHelper.Models.Broker.Models;
+using HerzenHelper.Models.Broker.Models.Image;
 using HerzenHelper.UserService.Mappers.Models.Interfaces;
 using HerzenHelper.UserService.Models.Dto.Models;
 

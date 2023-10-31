@@ -1,5 +1,6 @@
 ﻿using HerzenHelper.Core.BrokerSupport.Broker;
 using HerzenHelper.Models.Broker.Models;
+using HerzenHelper.Models.Broker.Models.User;
 using HerzenHelper.Models.Broker.Requests.User;
 using HerzenHelper.Models.Broker.Responses.Search;
 using HerzenHelper.UserService.Data.Interfaces;
@@ -20,9 +21,10 @@ namespace HerzenHelper.UserService.Broker.Consumers
     {
       List<DbUser> users = await _userRepository.SearchAsync(searchText).ToListAsync();
 
-      return ISearchResponse.CreateObj(
-        users.Select(
-          u => new SearchInfo(u.Id, string.Join(" ", u.LastName, u.FirstName))).ToList());
+      return new();
+      //return ISearchResponse.CreateObj(
+      //  users.Select(
+      //    u => new UserSearchData(u.Id, u.FirstName, u.LastName, u.MiddleName)).ToList());
     }
 
     public SearchUsersConsumer(
@@ -33,9 +35,10 @@ namespace HerzenHelper.UserService.Broker.Consumers
 
     public async Task Consume(ConsumeContext<ISearchUsersRequest> context)
     {
-      var response = OperationResultWrapper.CreateResponse(SearchUsersAsync, context.Message.Value);
+      //TODO
+      //var response = OperationResultWrapper.CreateResponse(SearchUsersAsync, context.Message.Value);
 
-      await context.RespondAsync<IOperationResult<ISearchResponse>>(response);
+      //await context.RespondAsync<IOperationResult<ISearchResponse>>(response);
     }
   }
 }

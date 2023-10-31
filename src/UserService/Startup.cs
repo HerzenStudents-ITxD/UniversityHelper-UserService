@@ -53,7 +53,23 @@ namespace HerzenHelper.UserService
 
     public IConfiguration Configuration { get; }
 
-    #region private methods
+    public Startup(IConfiguration configuration)
+    {
+      Configuration = configuration;
+
+      _serviceInfoConfig = Configuration
+        .GetSection(BaseServiceInfoConfig.SectionName)
+        .Get<BaseServiceInfoConfig>();
+
+      _rabbitMqConfig = Configuration
+        .GetSection(BaseRabbitMqConfig.SectionName)
+        .Get<RabbitMqConfig>();
+
+      Version = "2.0.1.0";
+      Description = "UserService is an API that intended to work with users.";
+      StartTime = DateTime.UtcNow;
+      ApiName = $"HerzenHelper - {_serviceInfoConfig.Name}";
+    }
 
     private static NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter()
     {
@@ -69,29 +85,6 @@ namespace HerzenHelper.UserService
         .InputFormatters
         .OfType<NewtonsoftJsonPatchInputFormatter>()
         .First();
-    }
-
-    #endregion
-
-    #region public methods
-
-    public Startup(IConfiguration configuration)
-    {
-      Configuration = configuration;
-
-      _serviceInfoConfig = Configuration
-        .GetSection(BaseServiceInfoConfig.SectionName)
-        .Get<BaseServiceInfoConfig>();
-
-      _rabbitMqConfig = Configuration
-        .GetSection(BaseRabbitMqConfig.SectionName)
-        .Get<RabbitMqConfig>();
-
-      //[ProjectIteration].[Realese].[BreakChange].[Version]
-      Version = "2.0.0.0";
-      Description = "UserService is an API that intended to work with users.";
-      StartTime = DateTime.UtcNow;
-      ApiName = $"HerzenHelper - {_serviceInfoConfig.Name}";
     }
 
     public void ConfigureServices(IServiceCollection services)
@@ -220,7 +213,5 @@ namespace HerzenHelper.UserService
         });
       });
     }
-
-    #endregion
   }
 }

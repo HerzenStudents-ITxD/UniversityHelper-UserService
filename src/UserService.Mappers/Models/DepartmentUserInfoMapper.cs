@@ -10,7 +10,7 @@ namespace HerzenHelper.UserService.Mappers.Models
   {
     public DepartmentUserInfo Map(Guid userId, DepartmentData department)
     {
-      var user = department?.UsersIds?.FirstOrDefault(user => user == userId);
+      var user = department?.Users?.FirstOrDefault(user => user.UserId == userId);
 
       return department is null || user is null
         ? default

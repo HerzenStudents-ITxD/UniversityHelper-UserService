@@ -1,6 +1,7 @@
 ﻿using HerzenHelper.Core.Attributes;
 using HerzenHelper.Core.Responses;
 using HerzenHelper.Models.Broker.Models;
+using HerzenHelper.Models.Broker.Models.User;
 using HerzenHelper.UserService.Models.Dto.Models;
 using System.Threading.Tasks;
 
