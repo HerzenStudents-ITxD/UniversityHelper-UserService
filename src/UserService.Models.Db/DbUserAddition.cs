@@ -15,6 +15,7 @@ namespace HerzenHelper.UserService.Models.Db
     public DateTime? DateOfBirth { get; set; }
     public DateTime? BusinessHoursFromUtc { get; set; }
     public DateTime? BusinessHoursToUtc { get; set; }
+    // TODO remove
     public double? Latitude { get; set; }
     public double? Longitude { get; set; }
     public Guid ModifiedBy { get; set; }

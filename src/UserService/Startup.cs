@@ -40,6 +40,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
 using HerzenHelper.UserService.Validation.User.Interfaces;
+using Microsoft.OpenApi.Models;
+using HerzenHelper.Models.Broker.Responses.Search;
+using System.Reflection;
 
 namespace HerzenHelper.UserService
 {
@@ -177,6 +180,18 @@ namespace HerzenHelper.UserService
           options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         })
         .AddNewtonsoftJson();
+
+      services.AddSwaggerGen(options =>
+      {
+        options.SwaggerDoc($"{Version}", new OpenApiInfo
+        {
+          Version = Version,
+          Title = _serviceInfoConfig.Name,
+          Description = Description
+        });
+
+        options.EnableAnnotations();
+      });
     }
 
     public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
@@ -212,6 +227,12 @@ namespace HerzenHelper.UserService
           ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
         });
       });
+
+      app.UseSwagger()
+        .UseSwaggerUI(options =>
+        {
+          options.SwaggerEndpoint($"/swagger/{Version}/swagger.json", $"{Version}");
+        });
     }
   }
 }
