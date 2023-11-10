@@ -1,20 +1,20 @@
-﻿using HerzenHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using HerzenHelper.Core.Constants;
-using HerzenHelper.Core.Enums;
-using HerzenHelper.Core.Extensions;
-using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Business.Commands.Communication.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Enums;
+﻿using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
+using UniversityHelper.Core.Constants;
+using UniversityHelper.Core.Enums;
+using UniversityHelper.Core.Extensions;
+using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Business.Commands.Communication.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Enums;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Communication
+namespace UniversityHelper.UserService.Business.Commands.Communication
 {
   public class RemoveCommunicationCommand : IRemoveCommunicationCommand
   {

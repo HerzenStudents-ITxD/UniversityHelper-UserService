@@ -1,10 +1,10 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.Models.Broker.Responses.Auth;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.Models.Broker.Responses.Auth;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Requests.Interfaces
+namespace UniversityHelper.UserService.Broker.Requests.Interfaces
 {
   [AutoInject]
   public interface IAuthService

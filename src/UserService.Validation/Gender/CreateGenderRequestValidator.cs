@@ -1,12 +1,12 @@
 ﻿using FluentValidation;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Dto.Requests.Gender;
-using HerzenHelper.UserService.Validation.Gender.Interfaces;
-using HerzenHelper.UserService.Validation.Gender.Resources;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Dto.Requests.Gender;
+using UniversityHelper.UserService.Validation.Gender.Interfaces;
+using UniversityHelper.UserService.Validation.Gender.Resources;
 using System.Globalization;
 using System.Threading;
 
-namespace HerzenHelper.UserService.Validation.Gender
+namespace UniversityHelper.UserService.Validation.Gender
 {
   public class CreateGenderRequestValidator : AbstractValidator<CreateGenderRequest>, ICreateGenderRequestValidator
   {

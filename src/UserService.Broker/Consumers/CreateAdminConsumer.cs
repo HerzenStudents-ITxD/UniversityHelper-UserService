@@ -1,12 +1,12 @@
-﻿using HerzenHelper.Core.BrokerSupport.Broker;
-using HerzenHelper.Models.Broker.Requests.User;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Mappers.Db.Interfaces;
-using HerzenHelper.UserService.Models.Db;
+﻿using UniversityHelper.Core.BrokerSupport.Broker;
+using UniversityHelper.Models.Broker.Requests.User;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Mappers.Db.Interfaces;
+using UniversityHelper.UserService.Models.Db;
 using MassTransit;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Consumers
+namespace UniversityHelper.UserService.Broker.Consumers
 {
   public class CreateAdminConsumer : IConsumer<ICreateAdminRequest>
   {

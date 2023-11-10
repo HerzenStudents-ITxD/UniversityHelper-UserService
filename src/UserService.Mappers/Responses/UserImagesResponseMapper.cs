@@ -1,10 +1,10 @@
-﻿using HerzenHelper.UserService.Mappers.Responses.Interfaces;
-using HerzenHelper.UserService.Models.Dto.Models;
-using HerzenHelper.UserService.Models.Dto.Responses.Image;
+﻿using UniversityHelper.UserService.Mappers.Responses.Interfaces;
+using UniversityHelper.UserService.Models.Dto.Models;
+using UniversityHelper.UserService.Models.Dto.Responses.Image;
 using System;
 using System.Collections.Generic;
 
-namespace HerzenHelper.UserService.Mappers.Responses
+namespace UniversityHelper.UserService.Mappers.Responses
 {
   public class UserImagesResponseMapper : IUserImagesResponseMapper
   {

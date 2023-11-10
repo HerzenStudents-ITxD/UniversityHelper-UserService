@@ -1,9 +1,9 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.Models.Broker.Models.Department;
-using HerzenHelper.UserService.Models.Dto.Models;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.Models.Broker.Models.Department;
+using UniversityHelper.UserService.Models.Dto.Models;
 using System;
 
-namespace HerzenHelper.UserService.Mappers.Models.Interfaces
+namespace UniversityHelper.UserService.Mappers.Models.Interfaces
 {
   [AutoInject]
   public interface IDepartmentInfoMapper

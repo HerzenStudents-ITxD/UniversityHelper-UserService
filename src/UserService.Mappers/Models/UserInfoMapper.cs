@@ -1,10 +1,10 @@
-﻿using HerzenHelper.UserService.Mappers.Models.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Enums;
-using HerzenHelper.UserService.Models.Dto.Models;
+﻿using UniversityHelper.UserService.Mappers.Models.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Enums;
+using UniversityHelper.UserService.Models.Dto.Models;
 using System.Linq;
 
-namespace HerzenHelper.UserService.Mappers.Models
+namespace UniversityHelper.UserService.Mappers.Models
 {
   public class UserInfoMapper : IUserInfoMapper
   {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HerzenHelper.UserService.Validation.Communication.Resources {
+namespace UniversityHelper.UserService.Validation.Communication.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace HerzenHelper.UserService.Validation.Communication.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HerzenHelper.UserService.Validation.Communication.Resources.EditCommunication" +
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UniversityHelper.UserService.Validation.Communication.Resources.EditCommunication" +
                             "RequestValidatorResource", typeof(EditCommunicationRequestValidatorResource).Assembly);
                     resourceMan = temp;
                 }

@@ -1,9 +1,9 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.User;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.User;
 using Microsoft.AspNetCore.JsonPatch;
 
-namespace HerzenHelper.UserService.Mappers.Patch.Interfaces
+namespace UniversityHelper.UserService.Mappers.Patch.Interfaces
 {
   [AutoInject]
   public interface IPatchDbUserMapper

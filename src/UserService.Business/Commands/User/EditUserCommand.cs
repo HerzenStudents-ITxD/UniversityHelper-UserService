@@ -1,14 +1,14 @@
-﻿using HerzenHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using HerzenHelper.Core.Constants;
-using HerzenHelper.Core.Extensions;
-using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.RedisSupport.Helpers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Business.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Mappers.Patch.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.User;
+﻿using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
+using UniversityHelper.Core.Constants;
+using UniversityHelper.Core.Extensions;
+using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Business.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Mappers.Patch.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Operations;
@@ -17,7 +17,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.User
+namespace UniversityHelper.UserService.Business.Commands.User
 {
   /// <inheritdoc/>
   public class EditUserCommand : IEditUserCommand

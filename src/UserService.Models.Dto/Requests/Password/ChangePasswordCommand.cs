@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.Password
+namespace UniversityHelper.UserService.Models.Dto.Requests.Password
 {
   public record ChangePasswordRequest
   {

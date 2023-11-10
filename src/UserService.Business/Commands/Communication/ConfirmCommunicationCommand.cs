@@ -1,13 +1,13 @@
-﻿using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Business.Commands.Communication.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
+﻿using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Business.Commands.Communication.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Communication
+namespace UniversityHelper.UserService.Business.Commands.Communication
 {
   public class ConfirmCommunicationCommand : IConfirmCommunicationCommand
   {

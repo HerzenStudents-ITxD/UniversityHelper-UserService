@@ -1,13 +1,13 @@
-﻿using HerzenHelper.CompanyService.Data.Provider;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.Gender.Filters;
+﻿using UniversityHelper.CompanyService.Data.Provider;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.Gender.Filters;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Data
+namespace UniversityHelper.UserService.Data
 {
   public class GenderRepository : IGenderRepository
   {

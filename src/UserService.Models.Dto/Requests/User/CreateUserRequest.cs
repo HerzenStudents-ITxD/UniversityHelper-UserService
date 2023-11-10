@@ -1,10 +1,10 @@
-﻿using HerzenHelper.UserService.Models.Dto.Requests.Avatar;
-using HerzenHelper.UserService.Models.Dto.Requests.Communication;
-using HerzenHelper.UserService.Models.Dto.Requests.UserCompany;
+﻿using UniversityHelper.UserService.Models.Dto.Requests.Avatar;
+using UniversityHelper.UserService.Models.Dto.Requests.Communication;
+using UniversityHelper.UserService.Models.Dto.Requests.UserCompany;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace HerzenHelper.UserService.Models.Dto
+namespace UniversityHelper.UserService.Models.Dto
 {
   public record CreateUserRequest
   {

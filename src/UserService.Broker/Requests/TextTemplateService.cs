@@ -1,15 +1,15 @@
-﻿using HerzenHelper.Core.BrokerSupport.Helpers;
-using HerzenHelper.Models.Broker.Enums;
-using HerzenHelper.Models.Broker.Requests.TextTemplate;
-using HerzenHelper.Models.Broker.Responses.TextTemplate;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
+﻿using UniversityHelper.Core.BrokerSupport.Helpers;
+using UniversityHelper.Models.Broker.Enums;
+using UniversityHelper.Models.Broker.Requests.TextTemplate;
+using UniversityHelper.Models.Broker.Responses.TextTemplate;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests
 {
   public class TextTemplateService : ITextTemplateService
   {

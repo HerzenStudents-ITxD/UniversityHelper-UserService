@@ -1,7 +1,7 @@
-﻿using HerzenHelper.Core.Requests;
+﻿using UniversityHelper.Core.Requests;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.PendingUser.Filters
+namespace UniversityHelper.UserService.Models.Dto.Requests.PendingUser.Filters
 {
   public record FindPendingUserFilter : BaseFindFilter
   {

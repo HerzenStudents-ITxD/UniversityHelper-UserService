@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HerzenHelper.UserService.Models.Dto.Models
+namespace UniversityHelper.UserService.Models.Dto.Models
 {
   public record DepartmentInfo
   {

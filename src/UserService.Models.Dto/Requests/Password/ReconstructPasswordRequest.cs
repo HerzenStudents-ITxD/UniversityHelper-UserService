@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace HerzenHelper.UserService.Models.Dto
+namespace UniversityHelper.UserService.Models.Dto
 {
   public record ReconstructPasswordRequest
   //password and secred must be receiven from body! receiving from query is not secure

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace HerzenHelper.UserService.Models.Dto.Enums
+namespace UniversityHelper.UserService.Models.Dto.Enums
 {
   [JsonConverter(typeof(StringEnumConverter))]
   public enum UserStatus

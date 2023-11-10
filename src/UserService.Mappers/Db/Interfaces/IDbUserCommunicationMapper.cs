@@ -1,9 +1,9 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.Communication;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.Communication;
 using System;
 
-namespace HerzenHelper.UserService.Mappers.Db.Interfaces
+namespace UniversityHelper.UserService.Mappers.Db.Interfaces
 {
   [AutoInject]
   public interface IDbUserCommunicationMapper

@@ -2,15 +2,15 @@
 using System.Security.Cryptography;
 using System.Text;
 
-[assembly: InternalsVisibleTo("HerzenHelper.UserService.Business")]
-[assembly: InternalsVisibleTo("HerzenHelper.UserService.Business.UnitTests")]
-[assembly: InternalsVisibleTo("HerzenHelper.UserService.Mappers.UnitTests")]
+[assembly: InternalsVisibleTo("UniversityHelper.UserService.Business")]
+[assembly: InternalsVisibleTo("UniversityHelper.UserService.Business.UnitTests")]
+[assembly: InternalsVisibleTo("UniversityHelper.UserService.Mappers.UnitTests")]
 
-namespace HerzenHelper.UserService.Mappers.Helpers.Password
+namespace UniversityHelper.UserService.Mappers.Helpers.Password
 {
   internal static class UserPasswordHash
   {
-    private const string INTERNAL_SALT = "HerzenHelper.SALT3";
+    private const string INTERNAL_SALT = "UniversityHelper.SALT3";
 
     internal static string GetPasswordHash(string userLogin, string salt, string userPassword)
     {

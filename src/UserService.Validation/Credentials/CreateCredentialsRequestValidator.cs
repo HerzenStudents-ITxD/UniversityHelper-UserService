@@ -1,13 +1,13 @@
 ﻿using FluentValidation;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Dto.Requests.Credentials;
-using HerzenHelper.UserService.Validation.Credentials.Interfaces;
-using HerzenHelper.UserService.Validation.Credentials.Resources;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Dto.Requests.Credentials;
+using UniversityHelper.UserService.Validation.Credentials.Interfaces;
+using UniversityHelper.UserService.Validation.Credentials.Resources;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-namespace HerzenHelper.UserService.Validation.Credentials
+namespace UniversityHelper.UserService.Validation.Credentials
 {
   public class CreateCredentialsRequestValidator : AbstractValidator<CreateCredentialsRequest>, ICreateCredentialsRequestValidator
   {

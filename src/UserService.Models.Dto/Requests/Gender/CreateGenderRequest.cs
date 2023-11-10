@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.Gender
+namespace UniversityHelper.UserService.Models.Dto.Requests.Gender
 {
   public class CreateGenderRequest
   {

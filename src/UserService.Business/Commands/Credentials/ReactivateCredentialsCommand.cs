@@ -1,19 +1,19 @@
-﻿using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.RedisSupport.Helpers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.Models.Broker.Responses.Auth;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
-using HerzenHelper.UserService.Business.Commands.Credentials.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Mappers.Helpers.Password;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.Credentials;
-using HerzenHelper.UserService.Models.Dto.Requests.Credentials.Filters;
-using HerzenHelper.UserService.Models.Dto.Responses.Credentials;
+﻿using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.Models.Broker.Responses.Auth;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
+using UniversityHelper.UserService.Business.Commands.Credentials.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Mappers.Helpers.Password;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.Credentials;
+using UniversityHelper.UserService.Models.Dto.Requests.Credentials.Filters;
+using UniversityHelper.UserService.Models.Dto.Responses.Credentials;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Credentials
+namespace UniversityHelper.UserService.Business.Commands.Credentials
 {
   public class ReactivateCredentialsCommand : IReactivateCredentialsCommand
   {

@@ -1,15 +1,15 @@
-﻿using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Business.Commands.Gender.Interfaces;
-using HerzenHelper.UserService.Business.Commands.User.Interfaces;
-using HerzenHelper.UserService.Models.Dto.Models;
-using HerzenHelper.UserService.Models.Dto.Requests.Gender;
-using HerzenHelper.UserService.Models.Dto.Requests.Gender.Filters;
+﻿using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Business.Commands.Gender.Interfaces;
+using UniversityHelper.UserService.Business.Commands.User.Interfaces;
+using UniversityHelper.UserService.Models.Dto.Models;
+using UniversityHelper.UserService.Models.Dto.Requests.Gender;
+using UniversityHelper.UserService.Models.Dto.Requests.Gender.Filters;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace HerzenHelper.UserService.Controllers
+namespace UniversityHelper.UserService.Controllers
 {
   [ApiController]
   [Route("[controller]")]

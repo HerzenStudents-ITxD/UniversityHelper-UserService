@@ -1,28 +1,28 @@
 ﻿using FluentValidation.Results;
-using HerzenHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using HerzenHelper.Core.Constants;
-using HerzenHelper.Core.Extensions;
-using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.Helpers.TextHandlers.Interfaces;
-using HerzenHelper.Core.RedisSupport.Helpers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.Models.Broker.Enums;
-using HerzenHelper.Models.Broker.Responses.TextTemplate;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
-using HerzenHelper.UserService.Business.Commands.Password.Interfaces;
-using HerzenHelper.UserService.Business.Commands.User.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.User;
-using HerzenHelper.UserService.Models.Dto.Requests.User.Filters;
-using HerzenHelper.UserService.Validation.User.Interfaces;
+using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
+using UniversityHelper.Core.Constants;
+using UniversityHelper.Core.Extensions;
+using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.Helpers.TextHandlers.Interfaces;
+using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.Models.Broker.Enums;
+using UniversityHelper.Models.Broker.Responses.TextTemplate;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
+using UniversityHelper.UserService.Business.Commands.Password.Interfaces;
+using UniversityHelper.UserService.Business.Commands.User.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.User;
+using UniversityHelper.UserService.Models.Dto.Requests.User.Filters;
+using UniversityHelper.UserService.Validation.User.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.User
+namespace UniversityHelper.UserService.Business.Commands.User
 {
   public class EditUserActiveCommand : IEditUserActiveCommand
   {

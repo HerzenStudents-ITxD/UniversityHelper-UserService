@@ -1,8 +1,8 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.UserService.Models.Db;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.UserService.Models.Db;
 using System;
 
-namespace HerzenHelper.UserService.Mappers.Db.Interfaces
+namespace UniversityHelper.UserService.Mappers.Db.Interfaces
 {
   [AutoInject]
   public interface IDbUserAvatarMapper

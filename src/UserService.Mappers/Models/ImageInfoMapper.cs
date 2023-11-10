@@ -1,9 +1,9 @@
-﻿using HerzenHelper.Models.Broker.Models;
-using HerzenHelper.Models.Broker.Models.Image;
-using HerzenHelper.UserService.Mappers.Models.Interfaces;
-using HerzenHelper.UserService.Models.Dto.Models;
+﻿using UniversityHelper.Models.Broker.Models;
+using UniversityHelper.Models.Broker.Models.Image;
+using UniversityHelper.UserService.Mappers.Models.Interfaces;
+using UniversityHelper.UserService.Models.Dto.Models;
 
-namespace HerzenHelper.UserService.Mappers.Models
+namespace UniversityHelper.UserService.Mappers.Models
 {
   public class ImageInfoMapper : IImageInfoMapper
   {

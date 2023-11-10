@@ -1,12 +1,12 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.Models.Broker.Models;
-using HerzenHelper.Models.Broker.Models.Right;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.Models.Broker.Models;
+using UniversityHelper.Models.Broker.Models.Right;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Requests.Interfaces
+namespace UniversityHelper.UserService.Broker.Requests.Interfaces
 {
   [AutoInject]
   public interface IRightService

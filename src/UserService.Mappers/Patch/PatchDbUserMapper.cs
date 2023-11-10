@@ -1,12 +1,12 @@
-﻿using HerzenHelper.UserService.Mappers.Patch.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Enums;
-using HerzenHelper.UserService.Models.Dto.Requests.User;
+﻿using UniversityHelper.UserService.Mappers.Patch.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Enums;
+using UniversityHelper.UserService.Models.Dto.Requests.User;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Operations;
 using System;
 
-namespace HerzenHelper.UserService.Mappers.Patch
+namespace UniversityHelper.UserService.Mappers.Patch
 {
   public class PatchDbUserMapper : IPatchDbUserMapper
   {

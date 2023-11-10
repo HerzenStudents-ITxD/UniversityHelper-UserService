@@ -1,10 +1,10 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Models.Dto.Requests.Communication;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Models.Dto.Requests.Communication;
 using System;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Communication.Interfaces
+namespace UniversityHelper.UserService.Business.Commands.Communication.Interfaces
 {
   [AutoInject]
   public interface IEditCommunicationCommand

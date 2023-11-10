@@ -1,9 +1,9 @@
-﻿using HerzenHelper.Core.BrokerSupport.Helpers;
-using HerzenHelper.Models.Broker.Models;
-using HerzenHelper.Models.Broker.Models.Right;
-using HerzenHelper.Models.Broker.Requests.Rights;
-using HerzenHelper.Models.Broker.Responses.Rights;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
+﻿using UniversityHelper.Core.BrokerSupport.Helpers;
+using UniversityHelper.Models.Broker.Models;
+using UniversityHelper.Models.Broker.Models.Right;
+using UniversityHelper.Models.Broker.Requests.Rights;
+using UniversityHelper.Models.Broker.Responses.Rights;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests
 {
   public class RightService : IRightService
   {

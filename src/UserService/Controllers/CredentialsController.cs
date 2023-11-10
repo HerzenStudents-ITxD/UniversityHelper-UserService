@@ -1,11 +1,11 @@
-﻿using HerzenHelper.UserService.Business.Commands.Credentials.Interfaces;
-using HerzenHelper.UserService.Models.Dto.Requests.Credentials;
-using HerzenHelper.UserService.Models.Dto.Responses.Credentials;
+﻿using UniversityHelper.UserService.Business.Commands.Credentials.Interfaces;
+using UniversityHelper.UserService.Models.Dto.Requests.Credentials;
+using UniversityHelper.UserService.Models.Dto.Responses.Credentials;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using HerzenHelper.Core.Responses;
+using UniversityHelper.Core.Responses;
 
-namespace HerzenHelper.UserService.Controllers
+namespace UniversityHelper.UserService.Controllers
 {
   [ApiController]
   [Route("[controller]")]

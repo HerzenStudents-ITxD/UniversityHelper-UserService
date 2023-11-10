@@ -1,17 +1,17 @@
-﻿using HerzenHelper.Core.BrokerSupport.Attributes;
-using HerzenHelper.Core.BrokerSupport.Configurations;
-using HerzenHelper.Models.Broker.Requests.Auth;
-using HerzenHelper.Models.Broker.Requests.Company;
-using HerzenHelper.Models.Broker.Requests.Department;
-using HerzenHelper.Models.Broker.Requests.Email;
-using HerzenHelper.Models.Broker.Requests.Image;
-using HerzenHelper.Models.Broker.Requests.Office;
-using HerzenHelper.Models.Broker.Requests.Position;
-using HerzenHelper.Models.Broker.Requests.Rights;
-using HerzenHelper.Models.Broker.Requests.TextTemplate;
-using HerzenHelper.Models.Broker.Requests.User;
+﻿using UniversityHelper.Core.BrokerSupport.Attributes;
+using UniversityHelper.Core.BrokerSupport.Configurations;
+using UniversityHelper.Models.Broker.Requests.Auth;
+using UniversityHelper.Models.Broker.Requests.Company;
+using UniversityHelper.Models.Broker.Requests.Department;
+using UniversityHelper.Models.Broker.Requests.Email;
+using UniversityHelper.Models.Broker.Requests.Image;
+using UniversityHelper.Models.Broker.Requests.Office;
+using UniversityHelper.Models.Broker.Requests.Position;
+using UniversityHelper.Models.Broker.Requests.Rights;
+using UniversityHelper.Models.Broker.Requests.TextTemplate;
+using UniversityHelper.Models.Broker.Requests.User;
 
-namespace HerzenHelper.UserService.Models.Dto.Configurations
+namespace UniversityHelper.UserService.Models.Dto.Configurations
 {
   public class RabbitMqConfig : ExtendedBaseRabbitMqConfig
   {

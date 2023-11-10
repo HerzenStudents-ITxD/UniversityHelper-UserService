@@ -1,4 +1,4 @@
-﻿namespace HerzenHelper.UserService.Models.Dto.Configurations
+﻿namespace UniversityHelper.UserService.Models.Dto.Configurations
 {
   public record MemoryCacheConfig
   {

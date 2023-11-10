@@ -1,7 +1,7 @@
-﻿using HerzenHelper.UserService.Models.Dto.Models;
+﻿using UniversityHelper.UserService.Models.Dto.Models;
 using System.Collections.Generic;
 
-namespace HerzenHelper.UserService.Models.Dto.Responses.User
+namespace UniversityHelper.UserService.Models.Dto.Responses.User
 {
   public record UserResponse
   {

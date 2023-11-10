@@ -1,14 +1,14 @@
-﻿using HerzenHelper.CompanyService.Data.Provider;
-using HerzenHelper.Core.Extensions;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Enums;
+﻿using UniversityHelper.CompanyService.Data.Provider;
+using UniversityHelper.Core.Extensions;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Data
+namespace UniversityHelper.UserService.Data
 {
   public class UserCommunicationRepository : IUserCommunicationRepository
   {

@@ -1,15 +1,15 @@
-﻿using HerzenHelper.Core.Extensions;
-using HerzenHelper.Core.FluentValidationExtensions;
-using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Business.Commands.Password.Interfaces;
-using HerzenHelper.UserService.Business.Commands.Password.Resources;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Mappers.Helpers.Password;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.Credentials.Filters;
-using HerzenHelper.UserService.Models.Dto.Requests.Password;
-using HerzenHelper.UserService.Validation.Password.Interfaces;
+﻿using UniversityHelper.Core.Extensions;
+using UniversityHelper.Core.FluentValidationExtensions;
+using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Business.Commands.Password.Interfaces;
+using UniversityHelper.UserService.Business.Commands.Password.Resources;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Mappers.Helpers.Password;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.Credentials.Filters;
+using UniversityHelper.UserService.Models.Dto.Requests.Password;
+using UniversityHelper.UserService.Validation.Password.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,7 +17,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Password
+namespace UniversityHelper.UserService.Business.Commands.Password
 {
   public class ChangePasswordCommand : IChangePasswordCommand
   {

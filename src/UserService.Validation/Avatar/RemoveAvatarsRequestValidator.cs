@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using HerzenHelper.UserService.Models.Dto.Requests.Avatar;
-using HerzenHelper.UserService.Validation.Image.Interfaces;
+using UniversityHelper.UserService.Models.Dto.Requests.Avatar;
+using UniversityHelper.UserService.Validation.Image.Interfaces;
 
-namespace HerzenHelper.UserService.Validation.Avatar
+namespace UniversityHelper.UserService.Validation.Avatar
 {
   public class RemoveAvatarsRequestValidator : AbstractValidator<RemoveAvatarsRequest>, IRemoveAvatarsRequestValidator
   {

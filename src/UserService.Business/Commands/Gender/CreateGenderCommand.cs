@@ -1,21 +1,21 @@
 ﻿using FluentValidation.Results;
-using HerzenHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using HerzenHelper.Core.Extensions;
-using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Business.Commands.User.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Mappers.Db.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.Gender;
-using HerzenHelper.UserService.Validation.Gender.Interfaces;
+using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
+using UniversityHelper.Core.Extensions;
+using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Business.Commands.User.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Mappers.Db.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.Gender;
+using UniversityHelper.UserService.Validation.Gender.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.User
+namespace UniversityHelper.UserService.Business.Commands.User
 {
   public class CreateGenderCommand : ICreateGenderCommand
   {

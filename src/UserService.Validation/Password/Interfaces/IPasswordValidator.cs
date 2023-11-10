@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using HerzenHelper.Core.Attributes;
+using UniversityHelper.Core.Attributes;
 
-namespace HerzenHelper.UserService.Validation.Password.Interfaces
+namespace UniversityHelper.UserService.Validation.Password.Interfaces
 {
   [AutoInject]
   public interface IPasswordValidator : IValidator<string>

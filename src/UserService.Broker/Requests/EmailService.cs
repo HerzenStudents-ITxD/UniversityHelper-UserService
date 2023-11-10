@@ -1,14 +1,14 @@
-﻿using HerzenHelper.Core.BrokerSupport.Helpers;
-using HerzenHelper.Core.Extensions;
-using HerzenHelper.Models.Broker.Requests.Email;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
+﻿using UniversityHelper.Core.BrokerSupport.Helpers;
+using UniversityHelper.Core.Extensions;
+using UniversityHelper.Models.Broker.Requests.Email;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
 using MassTransit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests
 {
   public class EmailService : IEmailService
   {

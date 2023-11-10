@@ -1,27 +1,27 @@
-﻿using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.Models.Broker.Models;
-using HerzenHelper.Models.Broker.Models.Company;
-using HerzenHelper.Models.Broker.Models.Department;
-using HerzenHelper.Models.Broker.Models.Office;
-using HerzenHelper.Models.Broker.Models.Position;
-using HerzenHelper.Models.Broker.Models.Right;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
-using HerzenHelper.UserService.Business.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Mappers.Models.Interfaces;
-using HerzenHelper.UserService.Mappers.Responses.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Models;
-using HerzenHelper.UserService.Models.Dto.Requests.User.Filters;
-using HerzenHelper.UserService.Models.Dto.Responses.User;
+﻿using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.Models.Broker.Models;
+using UniversityHelper.Models.Broker.Models.Company;
+using UniversityHelper.Models.Broker.Models.Department;
+using UniversityHelper.Models.Broker.Models.Office;
+using UniversityHelper.Models.Broker.Models.Position;
+using UniversityHelper.Models.Broker.Models.Right;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
+using UniversityHelper.UserService.Business.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Mappers.Models.Interfaces;
+using UniversityHelper.UserService.Mappers.Responses.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Models;
+using UniversityHelper.UserService.Models.Dto.Requests.User.Filters;
+using UniversityHelper.UserService.Models.Dto.Responses.User;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.User
+namespace UniversityHelper.UserService.Business.Commands.User
 {
   public class GetUserCommand : IGetUserCommand
   {

@@ -1,10 +1,10 @@
-﻿using HerzenHelper.UserService.Mappers.Db.Interfaces;
-using HerzenHelper.UserService.Mappers.Helpers.Password;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.Credentials;
+﻿using UniversityHelper.UserService.Mappers.Db.Interfaces;
+using UniversityHelper.UserService.Mappers.Helpers.Password;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.Credentials;
 using System;
 
-namespace HerzenHelper.UserService.Mappers.Db
+namespace UniversityHelper.UserService.Mappers.Db
 {
   public class DbUserCredentialsMapper : IDbUserCredentialsMapper
   {

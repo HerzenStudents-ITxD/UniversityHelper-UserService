@@ -1,7 +1,7 @@
-﻿using HerzenHelper.Core.RedisSupport.Helpers.Interfaces;
-using HerzenHelper.Models.Broker.Models.Office;
-using HerzenHelper.Models.Broker.Requests.Office;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
+﻿using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
+using UniversityHelper.Models.Broker.Models.Office;
+using UniversityHelper.Models.Broker.Requests.Office;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests
 {
   public class OfficeService : IOfficeService
   {

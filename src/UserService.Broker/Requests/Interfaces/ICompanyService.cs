@@ -1,11 +1,11 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.Models.Broker.Models.Company;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.Models.Broker.Models.Company;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Requests.Interfaces
+namespace UniversityHelper.UserService.Broker.Requests.Interfaces
 {
   [AutoInject]
   public interface ICompanyService

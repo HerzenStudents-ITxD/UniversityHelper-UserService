@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.Credentials.Filters
+namespace UniversityHelper.UserService.Models.Dto.Requests.Credentials.Filters
 {
   public record GetCredentialsFilter
   {

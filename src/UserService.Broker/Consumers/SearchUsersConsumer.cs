@@ -1,17 +1,17 @@
-﻿using HerzenHelper.Core.BrokerSupport.Broker;
-using HerzenHelper.Models.Broker.Models;
-using HerzenHelper.Models.Broker.Models.User;
-using HerzenHelper.Models.Broker.Requests.User;
-using HerzenHelper.Models.Broker.Responses.Search;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Db;
+﻿using UniversityHelper.Core.BrokerSupport.Broker;
+using UniversityHelper.Models.Broker.Models;
+using UniversityHelper.Models.Broker.Models.User;
+using UniversityHelper.Models.Broker.Requests.User;
+using UniversityHelper.Models.Broker.Responses.Search;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Db;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Consumers
+namespace UniversityHelper.UserService.Broker.Consumers
 {
   public class SearchUsersConsumer : IConsumer<ISearchUsersRequest>
   {

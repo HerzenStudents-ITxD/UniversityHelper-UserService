@@ -1,10 +1,10 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.Credentials.Filters;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.Credentials.Filters;
 using System;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Data.Interfaces
+namespace UniversityHelper.UserService.Data.Interfaces
 {
   [AutoInject]
   public interface IUserCredentialsRepository

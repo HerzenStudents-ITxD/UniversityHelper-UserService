@@ -1,16 +1,16 @@
-﻿using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
-using HerzenHelper.UserService.Business.Commands.Avatar.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Mappers.Responses.Interfaces;
-using HerzenHelper.UserService.Models.Dto.Responses.Image;
+﻿using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
+using UniversityHelper.UserService.Business.Commands.Avatar.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Mappers.Responses.Interfaces;
+using UniversityHelper.UserService.Models.Dto.Responses.Image;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Avatar
+namespace UniversityHelper.UserService.Business.Commands.Avatar
 {
   public class GetAvatarsCommand : IGetAvatarsCommand
   {

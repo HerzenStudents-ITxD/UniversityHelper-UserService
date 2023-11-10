@@ -1,9 +1,9 @@
 ﻿using FluentValidation;
-using HerzenHelper.Core.Validators.Interfaces;
-using HerzenHelper.UserService.Models.Dto.Requests.Avatar;
-using HerzenHelper.UserService.Validation.Image.Interfaces;
+using UniversityHelper.Core.Validators.Interfaces;
+using UniversityHelper.UserService.Models.Dto.Requests.Avatar;
+using UniversityHelper.UserService.Validation.Image.Interfaces;
 
-namespace HerzenHelper.UserService.Validation.Avatars
+namespace UniversityHelper.UserService.Validation.Avatars
 {
   public class CreateAvatarRequestValidator : AbstractValidator<CreateAvatarRequest>, ICreateAvatarRequestValidator
   {

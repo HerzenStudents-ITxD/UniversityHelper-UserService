@@ -1,9 +1,9 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.Models.Broker.Requests.User;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.Models.Broker.Requests.User;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto;
 
-namespace HerzenHelper.UserService.Mappers.Db.Interfaces
+namespace UniversityHelper.UserService.Mappers.Db.Interfaces
 {
   [AutoInject]
   public interface IDbUserMapper

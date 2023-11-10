@@ -1,7 +1,7 @@
-﻿using HerzenHelper.Models.Broker.Enums;
+﻿using UniversityHelper.Models.Broker.Enums;
 using System;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.UserCompany
+namespace UniversityHelper.UserService.Models.Dto.Requests.UserCompany
 {
   public record CreateUserCompanyRequest
   {

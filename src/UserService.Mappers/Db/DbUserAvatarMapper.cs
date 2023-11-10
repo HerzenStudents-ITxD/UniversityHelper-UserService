@@ -1,8 +1,8 @@
-﻿using HerzenHelper.UserService.Mappers.Db.Interfaces;
-using HerzenHelper.UserService.Models.Db;
+﻿using UniversityHelper.UserService.Mappers.Db.Interfaces;
+using UniversityHelper.UserService.Models.Db;
 using System;
 
-namespace HerzenHelper.UserService.Mappers.Db
+namespace UniversityHelper.UserService.Mappers.Db
 {
   public class DbUserAvatarMapper : IDbUserAvatarMapper
   {

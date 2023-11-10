@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using HerzenHelper.Core.Attributes;
-using HerzenHelper.UserService.Models.Dto;
+using UniversityHelper.Core.Attributes;
+using UniversityHelper.UserService.Models.Dto;
 
-namespace HerzenHelper.UserService.Validation.Password.Interfaces
+namespace UniversityHelper.UserService.Validation.Password.Interfaces
 {
   [AutoInject]
   public interface IReconstructPassordRequestValidator : IValidator<ReconstructPasswordRequest>

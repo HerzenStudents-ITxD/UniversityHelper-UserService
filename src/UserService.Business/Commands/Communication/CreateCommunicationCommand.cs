@@ -1,21 +1,21 @@
 ﻿using FluentValidation.Results;
-using HerzenHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using HerzenHelper.Core.Constants;
-using HerzenHelper.Core.Extensions;
-using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.Helpers.TextHandlers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.Models.Broker.Enums;
-using HerzenHelper.Models.Broker.Responses.TextTemplate;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
-using HerzenHelper.UserService.Business.Commands.Communication.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Mappers.Db.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Configurations;
-using HerzenHelper.UserService.Models.Dto.Enums;
-using HerzenHelper.UserService.Models.Dto.Requests.Communication;
-using HerzenHelper.UserService.Validation.Communication.Interfaces;
+using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
+using UniversityHelper.Core.Constants;
+using UniversityHelper.Core.Extensions;
+using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.Helpers.TextHandlers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.Models.Broker.Enums;
+using UniversityHelper.Models.Broker.Responses.TextTemplate;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
+using UniversityHelper.UserService.Business.Commands.Communication.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Mappers.Db.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Configurations;
+using UniversityHelper.UserService.Models.Dto.Enums;
+using UniversityHelper.UserService.Models.Dto.Requests.Communication;
+using UniversityHelper.UserService.Validation.Communication.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
@@ -25,7 +25,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Communication
+namespace UniversityHelper.UserService.Business.Commands.Communication
 {
   public class CreateCommunicationCommand : ICreateCommunicationCommand
   {

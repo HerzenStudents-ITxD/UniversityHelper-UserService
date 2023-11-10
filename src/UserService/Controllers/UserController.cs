@@ -1,21 +1,21 @@
-﻿using HerzenHelper.Core.Responses;
-using HerzenHelper.Models.Broker.Models;
-using HerzenHelper.Models.Broker.Models.User;
-using HerzenHelper.UserService.Business.Commands.User.Interfaces;
-using HerzenHelper.UserService.Business.Interfaces;
-using HerzenHelper.UserService.Models.Dto;
-using HerzenHelper.UserService.Models.Dto.Models;
-using HerzenHelper.UserService.Models.Dto.Requests.Filtres;
-using HerzenHelper.UserService.Models.Dto.Requests.User;
-using HerzenHelper.UserService.Models.Dto.Requests.User.Filters;
-using HerzenHelper.UserService.Models.Dto.Responses.User;
+﻿using UniversityHelper.Core.Responses;
+using UniversityHelper.Models.Broker.Models;
+using UniversityHelper.Models.Broker.Models.User;
+using UniversityHelper.UserService.Business.Commands.User.Interfaces;
+using UniversityHelper.UserService.Business.Interfaces;
+using UniversityHelper.UserService.Models.Dto;
+using UniversityHelper.UserService.Models.Dto.Models;
+using UniversityHelper.UserService.Models.Dto.Requests.Filtres;
+using UniversityHelper.UserService.Models.Dto.Requests.User;
+using UniversityHelper.UserService.Models.Dto.Requests.User.Filters;
+using UniversityHelper.UserService.Models.Dto.Responses.User;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Controllers
+namespace UniversityHelper.UserService.Controllers
 {
   [ApiController]
   [Route("[controller]")]

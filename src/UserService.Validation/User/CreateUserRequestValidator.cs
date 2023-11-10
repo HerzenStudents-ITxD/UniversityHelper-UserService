@@ -1,15 +1,15 @@
 ﻿using FluentValidation;
-using HerzenHelper.Models.Broker.Enums;
-using HerzenHelper.UserService.Models.Dto;
-using HerzenHelper.UserService.Models.Dto.Enums;
-using HerzenHelper.UserService.Validation.Communication.Interfaces;
-using HerzenHelper.UserService.Validation.Image.Interfaces;
-using HerzenHelper.UserService.Validation.Password.Interfaces;
-using HerzenHelper.UserService.Validation.User.Interfaces;
+using UniversityHelper.Models.Broker.Enums;
+using UniversityHelper.UserService.Models.Dto;
+using UniversityHelper.UserService.Models.Dto.Enums;
+using UniversityHelper.UserService.Validation.Communication.Interfaces;
+using UniversityHelper.UserService.Validation.Image.Interfaces;
+using UniversityHelper.UserService.Validation.Password.Interfaces;
+using UniversityHelper.UserService.Validation.User.Interfaces;
 using System;
 using System.Text.RegularExpressions;
 
-namespace HerzenHelper.UserService.Validation.User
+namespace UniversityHelper.UserService.Validation.User
 {
   public class CreateUserRequestValidator : AbstractValidator<CreateUserRequest>, ICreateUserRequestValidator
   {

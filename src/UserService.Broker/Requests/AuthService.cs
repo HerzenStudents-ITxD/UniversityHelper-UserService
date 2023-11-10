@@ -1,14 +1,14 @@
-﻿using HerzenHelper.Core.BrokerSupport.Helpers;
-using HerzenHelper.Models.Broker.Requests.Auth;
-using HerzenHelper.Models.Broker.Responses.Auth;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
+﻿using UniversityHelper.Core.BrokerSupport.Helpers;
+using UniversityHelper.Models.Broker.Requests.Auth;
+using UniversityHelper.Models.Broker.Responses.Auth;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests
 {
   public class AuthService : IAuthService
   {

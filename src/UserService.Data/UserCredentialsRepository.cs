@@ -1,8 +1,8 @@
-﻿using HerzenHelper.CompanyService.Data.Provider;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Enums;
-using HerzenHelper.UserService.Models.Dto.Requests.Credentials.Filters;
+﻿using UniversityHelper.CompanyService.Data.Provider;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Enums;
+using UniversityHelper.UserService.Models.Dto.Requests.Credentials.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -10,7 +10,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Data
+namespace UniversityHelper.UserService.Data
 {
   public class UserCredentialsRepository : IUserCredentialsRepository
   {

@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using HerzenHelper.UserService.Validation.Password.Interfaces;
+using UniversityHelper.UserService.Validation.Password.Interfaces;
 using System.Text.RegularExpressions;
 
-namespace HerzenHelper.UserService.Validation.Password
+namespace UniversityHelper.UserService.Validation.Password
 {
   public class PasswordValidator : AbstractValidator<string>, IPasswordValidator
   {

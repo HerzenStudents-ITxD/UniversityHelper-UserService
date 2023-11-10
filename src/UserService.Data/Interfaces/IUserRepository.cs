@@ -1,7 +1,7 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.Filtres;
-using HerzenHelper.UserService.Models.Dto.Requests.User.Filters;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.Filtres;
+using UniversityHelper.UserService.Models.Dto.Requests.User.Filters;
 using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Data.Interfaces
+namespace UniversityHelper.UserService.Data.Interfaces
 {
   [AutoInject]
   public interface IUserRepository

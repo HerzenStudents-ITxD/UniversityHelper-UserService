@@ -1,7 +1,7 @@
-using HerzenHelper.UserService.Models.Dto.Enums;
+using UniversityHelper.UserService.Models.Dto.Enums;
 using System;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.User
+namespace UniversityHelper.UserService.Models.Dto.Requests.User
 {
   public class EditUserRequest
   {

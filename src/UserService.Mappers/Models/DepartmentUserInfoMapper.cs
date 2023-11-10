@@ -1,10 +1,10 @@
-﻿using HerzenHelper.Models.Broker.Models.Department;
-using HerzenHelper.UserService.Mappers.Models.Interfaces;
-using HerzenHelper.UserService.Models.Dto.Models;
+﻿using UniversityHelper.Models.Broker.Models.Department;
+using UniversityHelper.UserService.Mappers.Models.Interfaces;
+using UniversityHelper.UserService.Models.Dto.Models;
 using System;
 using System.Linq;
 
-namespace HerzenHelper.UserService.Mappers.Models
+namespace UniversityHelper.UserService.Mappers.Models
 {
   public class DepartmentUserInfoMapper : IDepartmentInfoMapper
   {

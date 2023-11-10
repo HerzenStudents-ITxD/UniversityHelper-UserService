@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
-using HerzenHelper.UserService.Models.Dto;
-using HerzenHelper.UserService.Validation.Password.Interfaces;
+using UniversityHelper.UserService.Models.Dto;
+using UniversityHelper.UserService.Validation.Password.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 
-namespace HerzenHelper.UserService.Validation.Password
+namespace UniversityHelper.UserService.Validation.Password
 {
   public class ReconstructPasswordRequestValidator : AbstractValidator<ReconstructPasswordRequest>, IReconstructPassordRequestValidator
   {

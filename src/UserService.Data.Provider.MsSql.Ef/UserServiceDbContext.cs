@@ -1,11 +1,11 @@
-﻿using HerzenHelper.CompanyService.Data.Provider;
-using HerzenHelper.Core.EFSupport.Provider;
-using HerzenHelper.UserService.Models.Db;
+﻿using UniversityHelper.CompanyService.Data.Provider;
+using UniversityHelper.Core.EFSupport.Provider;
+using UniversityHelper.UserService.Models.Db;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Data.Provider.MsSql.Ef
+namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef
 {
   public class UserServiceDbContext : DbContext, IDataProvider
   {
@@ -25,7 +25,7 @@ namespace HerzenHelper.UserService.Data.Provider.MsSql.Ef
     // Fluent API is written here.
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      modelBuilder.ApplyConfigurationsFromAssembly(Assembly.Load("HerzenHelper.UserService.Models.Db"));
+      modelBuilder.ApplyConfigurationsFromAssembly(Assembly.Load("UniversityHelper.UserService.Models.Db"));
     }
 
     public object MakeEntityDetached(object obj)

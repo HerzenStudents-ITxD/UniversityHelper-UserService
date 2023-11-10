@@ -1,21 +1,21 @@
-﻿using HerzenHelper.Core.FluentValidationExtensions;
-using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.Core.Validators.Interfaces;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
-using HerzenHelper.UserService.Business.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Mappers.Models.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Models;
-using HerzenHelper.UserService.Models.Dto.Requests.Filtres;
+﻿using UniversityHelper.Core.FluentValidationExtensions;
+using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.Core.Validators.Interfaces;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
+using UniversityHelper.UserService.Business.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Mappers.Models.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Models;
+using UniversityHelper.UserService.Models.Dto.Requests.Filtres;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.User
+namespace UniversityHelper.UserService.Business.Commands.User
 {
   public class FindUserCommand : IFindUserCommand
   {

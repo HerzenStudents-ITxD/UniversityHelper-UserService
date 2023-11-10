@@ -1,14 +1,14 @@
-﻿using HerzenHelper.Core.Extensions;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.Models.Broker.Models;
-using HerzenHelper.Models.Broker.Models.User;
-using HerzenHelper.UserService.Business.Commands.User.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Db;
+﻿using UniversityHelper.Core.Extensions;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.Models.Broker.Models;
+using UniversityHelper.Models.Broker.Models.User;
+using UniversityHelper.UserService.Business.Commands.User.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Db;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.User
+namespace UniversityHelper.UserService.Business.Commands.User
 {
   public class GetUserInfoCommand : IGetUserInfoCommand
   {

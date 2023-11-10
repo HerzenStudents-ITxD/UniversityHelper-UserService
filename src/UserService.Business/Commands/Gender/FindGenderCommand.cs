@@ -1,20 +1,20 @@
-﻿using HerzenHelper.Core.Enums;
-using HerzenHelper.Core.FluentValidationExtensions;
-using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.Core.Validators.Interfaces;
-using HerzenHelper.UserService.Business.Commands.Gender.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Mappers.Models.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Models;
-using HerzenHelper.UserService.Models.Dto.Requests.Gender.Filters;
+﻿using UniversityHelper.Core.Enums;
+using UniversityHelper.Core.FluentValidationExtensions;
+using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.Core.Validators.Interfaces;
+using UniversityHelper.UserService.Business.Commands.Gender.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Mappers.Models.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Models;
+using UniversityHelper.UserService.Models.Dto.Requests.Gender.Filters;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Gender
+namespace UniversityHelper.UserService.Business.Commands.Gender
 {
   public class FindGenderCommand : IFindGenderCommand
   {

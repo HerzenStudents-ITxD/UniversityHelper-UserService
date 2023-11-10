@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HerzenHelper.UserService.Business.Commands.Password.Resources {
+namespace UniversityHelper.UserService.Business.Commands.Password.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace HerzenHelper.UserService.Business.Commands.Password.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HerzenHelper.UserService.Business.Commands.Password.Resources.ChangePasswordC" +
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UniversityHelper.UserService.Business.Commands.Password.Resources.ChangePasswordC" +
                             "ommandResource", typeof(ChangePasswordCommandResource).Assembly);
                     resourceMan = temp;
                 }

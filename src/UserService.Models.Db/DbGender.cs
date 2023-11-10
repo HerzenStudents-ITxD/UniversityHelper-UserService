@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 
-namespace HerzenHelper.UserService.Models.Db
+namespace UniversityHelper.UserService.Models.Db
 {
   public class DbGender
   {

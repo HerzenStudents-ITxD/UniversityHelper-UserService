@@ -1,4 +1,4 @@
-﻿namespace HerzenHelper.UserService.Models.Dto.Models
+﻿namespace UniversityHelper.UserService.Models.Dto.Models
 {
   public class ProjectUserInfo
   {

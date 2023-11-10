@@ -1,11 +1,11 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.UserService.Models.Db;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.UserService.Models.Db;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Data.Interfaces
+namespace UniversityHelper.UserService.Data.Interfaces
 {
   [AutoInject]
   public interface IUserAvatarRepository

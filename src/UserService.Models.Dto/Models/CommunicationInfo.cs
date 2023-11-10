@@ -1,7 +1,7 @@
-﻿using HerzenHelper.UserService.Models.Dto.Enums;
+﻿using UniversityHelper.UserService.Models.Dto.Enums;
 using System;
 
-namespace HerzenHelper.UserService.Models.Dto.Models
+namespace UniversityHelper.UserService.Models.Dto.Models
 {
   public record CommunicationInfo
   {

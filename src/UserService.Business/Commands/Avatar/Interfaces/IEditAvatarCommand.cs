@@ -1,9 +1,9 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.Core.Responses;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.Core.Responses;
 using System;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Avatar.Interfaces
+namespace UniversityHelper.UserService.Business.Commands.Avatar.Interfaces
 {
   [AutoInject]
   public interface IEditAvatarCommand

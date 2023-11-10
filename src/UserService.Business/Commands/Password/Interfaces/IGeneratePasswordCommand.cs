@@ -1,6 +1,6 @@
-﻿using HerzenHelper.Core.Attributes;
+﻿using UniversityHelper.Core.Attributes;
 
-namespace HerzenHelper.UserService.Business.Commands.Password.Interfaces
+namespace UniversityHelper.UserService.Business.Commands.Password.Interfaces
 {
     /// <summary>
     /// Represents interface for a command in command pattern.

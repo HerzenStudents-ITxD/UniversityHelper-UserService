@@ -2,7 +2,7 @@
 using System.Net.Mail;
 using System.Text;
 
-namespace HerzenHelper.UserService.Broker.Helpers.Login;
+namespace UniversityHelper.UserService.Broker.Helpers.Login;
 public static class CredentialsParser
 {
   public static bool IsEmail(this string value)

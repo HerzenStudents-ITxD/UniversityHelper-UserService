@@ -1,9 +1,9 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Models.Dto.Requests.Password;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Models.Dto.Requests.Password;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Password.Interfaces
+namespace UniversityHelper.UserService.Business.Commands.Password.Interfaces
 {
   [AutoInject]
   public interface IChangePasswordCommand

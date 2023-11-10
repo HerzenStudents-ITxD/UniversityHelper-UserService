@@ -1,8 +1,8 @@
-﻿using HerzenHelper.Models.Broker.Enums;
-using HerzenHelper.Models.Broker.Models.Company;
+﻿using UniversityHelper.Models.Broker.Enums;
+using UniversityHelper.Models.Broker.Models.Company;
 using System;
 
-namespace HerzenHelper.UserService.Models.Dto.Models
+namespace UniversityHelper.UserService.Models.Dto.Models
 {
   public record CompanyUserInfo
   {

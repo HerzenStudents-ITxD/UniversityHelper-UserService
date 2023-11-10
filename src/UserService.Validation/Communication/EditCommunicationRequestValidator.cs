@@ -1,14 +1,14 @@
 ﻿using FluentValidation;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Enums;
-using HerzenHelper.UserService.Models.Dto.Requests.Communication;
-using HerzenHelper.UserService.Validation.Communication.Interfaces;
-using HerzenHelper.UserService.Validation.Communication.Resources;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Enums;
+using UniversityHelper.UserService.Models.Dto.Requests.Communication;
+using UniversityHelper.UserService.Validation.Communication.Interfaces;
+using UniversityHelper.UserService.Validation.Communication.Resources;
 using System.Globalization;
 using System.Threading;
 
-namespace HerzenHelper.UserService.Validation.Communication
+namespace UniversityHelper.UserService.Validation.Communication
 {
   public class EditCommunicationRequestValidator : AbstractValidator<(
       DbUserCommunication dbUserCommunication,

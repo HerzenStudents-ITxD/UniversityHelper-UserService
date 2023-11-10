@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 
-namespace HerzenHelper.UserService.Models.Db
+namespace UniversityHelper.UserService.Models.Db
 {
   public class DbUserAddition
   {

@@ -1,10 +1,10 @@
-﻿using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Business.Commands.Pending.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
+﻿using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Business.Commands.Pending.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Credentials
+namespace UniversityHelper.UserService.Business.Commands.Credentials
 {
   public class CheckPendingUserCommand : ICheckPendingUserCommand
   {

@@ -1,11 +1,11 @@
-﻿using HerzenHelper.Core.BrokerSupport.AccessValidatorEngine.Requests;
-using HerzenHelper.Core.BrokerSupport.Broker;
-using HerzenHelper.UserService.Data.Interfaces;
+﻿using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Requests;
+using UniversityHelper.Core.BrokerSupport.Broker;
+using UniversityHelper.UserService.Data.Interfaces;
 using MassTransit;
 using System;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Consumers
+namespace UniversityHelper.UserService.Broker.Consumers
 {
   public class AccessValidatorConsumer : IConsumer<ICheckUserIsAdminRequest>
   {

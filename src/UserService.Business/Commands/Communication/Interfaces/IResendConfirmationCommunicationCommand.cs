@@ -1,9 +1,9 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.Core.Responses;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.Core.Responses;
 using System;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Communication.Interfaces
+namespace UniversityHelper.UserService.Business.Commands.Communication.Interfaces
 {
   [AutoInject]
   public interface IResendConfirmationCommunicationCommand

@@ -1,8 +1,8 @@
-﻿using HerzenHelper.UserService.Models.Dto.Enums;
+﻿using UniversityHelper.UserService.Models.Dto.Enums;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.Communication
+namespace UniversityHelper.UserService.Models.Dto.Requests.Communication
 {
   public record CreateCommunicationRequest
   {

@@ -1,16 +1,16 @@
-﻿using HerzenHelper.Core.BrokerSupport.Broker;
-using HerzenHelper.Core.RedisSupport.Configurations;
-using HerzenHelper.Core.RedisSupport.Constants;
-using HerzenHelper.Core.RedisSupport.Extensions;
-using HerzenHelper.Core.RedisSupport.Helpers.Interfaces;
-using HerzenHelper.Models.Broker.Models;
-using HerzenHelper.Models.Broker.Models.User;
-using HerzenHelper.Models.Broker.Requests.User;
-using HerzenHelper.Models.Broker.Responses.User;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Enums;
-using HerzenHelper.UserService.Models.Dto.Requests.Filtres;
+﻿using UniversityHelper.Core.BrokerSupport.Broker;
+using UniversityHelper.Core.RedisSupport.Configurations;
+using UniversityHelper.Core.RedisSupport.Constants;
+using UniversityHelper.Core.RedisSupport.Extensions;
+using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
+using UniversityHelper.Models.Broker.Models;
+using UniversityHelper.Models.Broker.Models.User;
+using UniversityHelper.Models.Broker.Requests.User;
+using UniversityHelper.Models.Broker.Responses.User;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Enums;
+using UniversityHelper.UserService.Models.Dto.Requests.Filtres;
 using MassTransit;
 using Microsoft.Extensions.Options;
 using System;
@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Consumers
+namespace UniversityHelper.UserService.Broker.Consumers
 {
   public class GetUsersDataConsumer : IConsumer<IGetUsersDataRequest>
   {

@@ -1,22 +1,22 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using HerzenHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using HerzenHelper.Core.Constants;
-using HerzenHelper.Core.FluentValidationExtensions;
-using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.Helpers.TextHandlers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.Models.Broker.Enums;
-using HerzenHelper.Models.Broker.Responses.TextTemplate;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
-using HerzenHelper.UserService.Business.Commands.Password.Interfaces;
-using HerzenHelper.UserService.Business.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Mappers.Db.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto;
-using HerzenHelper.UserService.Models.Dto.Enums;
-using HerzenHelper.UserService.Validation.User.Interfaces;
+using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
+using UniversityHelper.Core.Constants;
+using UniversityHelper.Core.FluentValidationExtensions;
+using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.Helpers.TextHandlers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.Models.Broker.Enums;
+using UniversityHelper.Models.Broker.Responses.TextTemplate;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
+using UniversityHelper.UserService.Business.Commands.Password.Interfaces;
+using UniversityHelper.UserService.Business.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Mappers.Db.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto;
+using UniversityHelper.UserService.Models.Dto.Enums;
+using UniversityHelper.UserService.Validation.User.Interfaces;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.User
+namespace UniversityHelper.UserService.Business.Commands.User
 {
   /// <inheritdoc/>
   public class CreateUserCommand : ICreateUserCommand

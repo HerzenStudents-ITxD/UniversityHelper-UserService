@@ -1,13 +1,13 @@
-﻿using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Business.Commands.Avatar.Interfaces;
-using HerzenHelper.UserService.Models.Dto.Requests.Avatar;
-using HerzenHelper.UserService.Models.Dto.Responses.Image;
+﻿using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Business.Commands.Avatar.Interfaces;
+using UniversityHelper.UserService.Models.Dto.Requests.Avatar;
+using UniversityHelper.UserService.Models.Dto.Responses.Image;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Controllers
+namespace UniversityHelper.UserService.Controllers
 {
   [ApiController]
   [Route("[controller]")]

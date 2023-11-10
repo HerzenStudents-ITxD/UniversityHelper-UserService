@@ -1,12 +1,12 @@
-﻿using HerzenHelper.CompanyService.Data.Provider;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Db;
+﻿using UniversityHelper.CompanyService.Data.Provider;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Db;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Data
+namespace UniversityHelper.UserService.Data
 {
   public class PendingUserRepository : IPendingUserRepository
   {

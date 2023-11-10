@@ -1,10 +1,10 @@
-﻿using HerzenHelper.Core.BrokerSupport.Attributes.ParseEntity;
+﻿using UniversityHelper.Core.BrokerSupport.Attributes.ParseEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 
-namespace HerzenHelper.UserService.Models.Db
+namespace UniversityHelper.UserService.Models.Db
 {
   [ParseEntity]
   public class DbUser

@@ -1,8 +1,8 @@
-﻿using HerzenHelper.UserService.Business.Commands.Password.Interfaces;
+﻿using UniversityHelper.UserService.Business.Commands.Password.Interfaces;
 using System;
 using System.Linq;
 
-namespace HerzenHelper.UserService.Business.Commands.Password
+namespace UniversityHelper.UserService.Business.Commands.Password
 {
   public class GeneratePasswordCommand : IGeneratePasswordCommand
   {

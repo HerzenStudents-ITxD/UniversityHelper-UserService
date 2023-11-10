@@ -1,10 +1,10 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Models.Dto.Requests.Credentials;
-using HerzenHelper.UserService.Models.Dto.Responses.Credentials;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Models.Dto.Requests.Credentials;
+using UniversityHelper.UserService.Models.Dto.Responses.Credentials;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Credentials.Interfaces
+namespace UniversityHelper.UserService.Business.Commands.Credentials.Interfaces
 {
   [AutoInject]
   public interface ICreateCredentialsCommand

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace HerzenHelper.UserService.Data.Provider.MsSql.Ef.Migrations
+namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

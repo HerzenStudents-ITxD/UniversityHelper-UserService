@@ -1,24 +1,24 @@
-﻿using HerzenHelper.Core.RedisSupport.Extensions;
+﻿using UniversityHelper.Core.RedisSupport.Extensions;
 using FluentValidation;
 using HealthChecks.UI.Client;
-using HerzenHelper.Core.BrokerSupport.Broker.Consumer;
-using HerzenHelper.Core.BrokerSupport.Configurations;
-using HerzenHelper.Core.BrokerSupport.Extensions;
-using HerzenHelper.Core.BrokerSupport.Helpers;
-using HerzenHelper.Core.BrokerSupport.Middlewares.Token;
-using HerzenHelper.Core.Configurations;
-using HerzenHelper.Core.EFSupport.Extensions;
-using HerzenHelper.Core.EFSupport.Helpers;
-using HerzenHelper.Core.Extensions;
-using HerzenHelper.Core.Middlewares.ApiInformation;
-using HerzenHelper.Core.RedisSupport.Configurations;
-using HerzenHelper.Core.RedisSupport.Constants;
-using HerzenHelper.Core.RedisSupport.Helpers;
-using HerzenHelper.UserService.Broker.Consumers;
-using HerzenHelper.UserService.Data.Provider.MsSql.Ef;
-using HerzenHelper.UserService.Models.Dto.Configurations;
-using HerzenHelper.UserService.Models.Dto.Requests.User;
-using HerzenHelper.UserService.Validation.User;
+using UniversityHelper.Core.BrokerSupport.Broker.Consumer;
+using UniversityHelper.Core.BrokerSupport.Configurations;
+using UniversityHelper.Core.BrokerSupport.Extensions;
+using UniversityHelper.Core.BrokerSupport.Helpers;
+using UniversityHelper.Core.BrokerSupport.Middlewares.Token;
+using UniversityHelper.Core.Configurations;
+using UniversityHelper.Core.EFSupport.Extensions;
+using UniversityHelper.Core.EFSupport.Helpers;
+using UniversityHelper.Core.Extensions;
+using UniversityHelper.Core.Middlewares.ApiInformation;
+using UniversityHelper.Core.RedisSupport.Configurations;
+using UniversityHelper.Core.RedisSupport.Constants;
+using UniversityHelper.Core.RedisSupport.Helpers;
+using UniversityHelper.UserService.Broker.Consumers;
+using UniversityHelper.UserService.Data.Provider.MsSql.Ef;
+using UniversityHelper.UserService.Models.Dto.Configurations;
+using UniversityHelper.UserService.Models.Dto.Requests.User;
+using UniversityHelper.UserService.Validation.User;
 using MassTransit;
 using MassTransit.ExtensionsDependencyInjectionIntegration;
 using MassTransit.RabbitMqTransport;
@@ -39,12 +39,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
-using HerzenHelper.UserService.Validation.User.Interfaces;
+using UniversityHelper.UserService.Validation.User.Interfaces;
 using Microsoft.OpenApi.Models;
-using HerzenHelper.Models.Broker.Responses.Search;
+using UniversityHelper.Models.Broker.Responses.Search;
 using System.Reflection;
 
-namespace HerzenHelper.UserService
+namespace UniversityHelper.UserService
 {
   public class Startup : BaseApiInfo
   {
@@ -68,10 +68,10 @@ namespace HerzenHelper.UserService
         .GetSection(BaseRabbitMqConfig.SectionName)
         .Get<RabbitMqConfig>();
 
-      Version = "2.0.1.0";
+      Version = "2.0.2.0";
       Description = "UserService is an API that intended to work with users.";
       StartTime = DateTime.UtcNow;
-      ApiName = $"HerzenHelper - {_serviceInfoConfig.Name}";
+      ApiName = $"UniversityHelper - {_serviceInfoConfig.Name}";
     }
 
     private static NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter()

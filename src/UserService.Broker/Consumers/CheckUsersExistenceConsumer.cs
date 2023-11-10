@@ -1,12 +1,12 @@
-﻿using HerzenHelper.Core.BrokerSupport.Broker;
-using HerzenHelper.Models.Broker.Common;
-using HerzenHelper.UserService.Data.Interfaces;
+﻿using UniversityHelper.Core.BrokerSupport.Broker;
+using UniversityHelper.Models.Broker.Common;
+using UniversityHelper.UserService.Data.Interfaces;
 using MassTransit;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Consumers
+namespace UniversityHelper.UserService.Broker.Consumers
 {
   public class CheckUsersExistenceConsumer : IConsumer<ICheckUsersExistence>
   {

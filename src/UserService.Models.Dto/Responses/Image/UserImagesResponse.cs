@@ -1,8 +1,8 @@
-﻿using HerzenHelper.UserService.Models.Dto.Models;
+﻿using UniversityHelper.UserService.Models.Dto.Models;
 using System;
 using System.Collections.Generic;
 
-namespace HerzenHelper.UserService.Models.Dto.Responses.Image
+namespace UniversityHelper.UserService.Models.Dto.Responses.Image
 {
   public record UserImagesResponse
   {

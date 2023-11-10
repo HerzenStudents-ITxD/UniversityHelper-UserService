@@ -1,15 +1,15 @@
-﻿using HerzenHelper.Core.BrokerSupport.Broker;
-using HerzenHelper.Core.Exceptions.Models;
-using HerzenHelper.Models.Broker.Requests.User;
-using HerzenHelper.Models.Broker.Responses.User;
-using HerzenHelper.UserService.Broker.Helpers.Login;
-using HerzenHelper.UserService.Data.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto.Requests.Credentials.Filters;
+﻿using UniversityHelper.Core.BrokerSupport.Broker;
+using UniversityHelper.Core.Exceptions.Models;
+using UniversityHelper.Models.Broker.Requests.User;
+using UniversityHelper.Models.Broker.Responses.User;
+using UniversityHelper.UserService.Broker.Helpers.Login;
+using UniversityHelper.UserService.Data.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto.Requests.Credentials.Filters;
 using MassTransit;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Consumers
+namespace UniversityHelper.UserService.Broker.Consumers
 {
   public class UserLoginConsumer : IConsumer<IGetUserCredentialsRequest>
   {

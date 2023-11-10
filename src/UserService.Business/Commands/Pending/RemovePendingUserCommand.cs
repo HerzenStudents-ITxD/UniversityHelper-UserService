@@ -1,15 +1,15 @@
-﻿using HerzenHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using HerzenHelper.Core.Constants;
-using HerzenHelper.Core.Helpers.Interfaces;
-using HerzenHelper.Core.RedisSupport.Helpers.Interfaces;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Business.Commands.Pending.Interfaces;
-using HerzenHelper.UserService.Data.Interfaces;
+﻿using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
+using UniversityHelper.Core.Constants;
+using UniversityHelper.Core.Helpers.Interfaces;
+using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Business.Commands.Pending.Interfaces;
+using UniversityHelper.UserService.Data.Interfaces;
 using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Commands.Pending
+namespace UniversityHelper.UserService.Business.Commands.Pending
 {
   public class RemovePendingUserCommand : IRemovePendingUserCommand
   {

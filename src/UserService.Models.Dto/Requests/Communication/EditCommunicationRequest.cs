@@ -1,6 +1,6 @@
-﻿using HerzenHelper.UserService.Models.Dto.Enums;
+﻿using UniversityHelper.UserService.Models.Dto.Enums;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.Communication
+namespace UniversityHelper.UserService.Models.Dto.Requests.Communication
 {
   public record EditCommunicationRequest
   {

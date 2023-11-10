@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.Avatar
+namespace UniversityHelper.UserService.Models.Dto.Requests.Avatar
 {
   public record CreateAvatarRequest
   {

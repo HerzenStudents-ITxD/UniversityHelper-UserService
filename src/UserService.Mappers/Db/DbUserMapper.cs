@@ -1,14 +1,14 @@
-﻿using HerzenHelper.Core.Extensions;
-using HerzenHelper.Models.Broker.Requests.User;
-using HerzenHelper.UserService.Mappers.Db.Interfaces;
-using HerzenHelper.UserService.Models.Db;
-using HerzenHelper.UserService.Models.Dto;
-using HerzenHelper.UserService.Models.Dto.Enums;
+﻿using UniversityHelper.Core.Extensions;
+using UniversityHelper.Models.Broker.Requests.User;
+using UniversityHelper.UserService.Mappers.Db.Interfaces;
+using UniversityHelper.UserService.Models.Db;
+using UniversityHelper.UserService.Models.Dto;
+using UniversityHelper.UserService.Models.Dto.Enums;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 
-namespace HerzenHelper.UserService.Mappers.Db
+namespace UniversityHelper.UserService.Mappers.Db
 {
   public class DbUserMapper : IDbUserMapper
   {

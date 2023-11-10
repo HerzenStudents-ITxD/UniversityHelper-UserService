@@ -1,11 +1,11 @@
-﻿using HerzenHelper.Core.BrokerSupport.Helpers;
-using HerzenHelper.Core.RedisSupport.Constants;
-using HerzenHelper.Core.RedisSupport.Extensions;
-using HerzenHelper.Core.RedisSupport.Helpers.Interfaces;
-using HerzenHelper.Models.Broker.Models.Company;
-using HerzenHelper.Models.Broker.Requests.Company;
-using HerzenHelper.Models.Broker.Responses.Company;
-using HerzenHelper.UserService.Broker.Requests.Interfaces;
+﻿using UniversityHelper.Core.BrokerSupport.Helpers;
+using UniversityHelper.Core.RedisSupport.Constants;
+using UniversityHelper.Core.RedisSupport.Extensions;
+using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
+using UniversityHelper.Models.Broker.Models.Company;
+using UniversityHelper.Models.Broker.Requests.Company;
+using UniversityHelper.Models.Broker.Responses.Company;
+using UniversityHelper.UserService.Broker.Requests.Interfaces;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests
 {
   public class CompanyService : ICompanyService
   {

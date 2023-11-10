@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.User
+namespace UniversityHelper.UserService.Models.Dto.Requests.User
 {
   public record EditUserActiveRequest
   {

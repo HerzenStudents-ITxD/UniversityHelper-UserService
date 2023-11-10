@@ -1,8 +1,8 @@
-﻿using HerzenHelper.Core.Requests;
+﻿using UniversityHelper.Core.Requests;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.Filtres
+namespace UniversityHelper.UserService.Models.Dto.Requests.Filtres
 {
   public record FindUsersFilter : BaseFindFilter
   {

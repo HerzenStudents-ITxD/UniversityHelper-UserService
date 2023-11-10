@@ -1,11 +1,11 @@
-﻿using HerzenHelper.Core.Attributes;
-using HerzenHelper.Core.Responses;
-using HerzenHelper.UserService.Models.Dto.Requests.User;
+﻿using UniversityHelper.Core.Attributes;
+using UniversityHelper.Core.Responses;
+using UniversityHelper.UserService.Models.Dto.Requests.User;
 using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Threading.Tasks;
 
-namespace HerzenHelper.UserService.Business.Interfaces
+namespace UniversityHelper.UserService.Business.Interfaces
 {
   /// <summary>
   /// Represents interface for a command in command pattern.

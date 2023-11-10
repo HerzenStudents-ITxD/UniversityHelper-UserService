@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.Credentials
+namespace UniversityHelper.UserService.Models.Dto.Requests.Credentials
 {
   public record CreateCredentialsRequest
   {

@@ -2,7 +2,7 @@
 using System;
 using System.Threading;
 
-namespace HerzenHelper.UserService.Models.Dto.Requests.User.Filters
+namespace UniversityHelper.UserService.Models.Dto.Requests.User.Filters
 {
   public class GetUserFilter
   {
