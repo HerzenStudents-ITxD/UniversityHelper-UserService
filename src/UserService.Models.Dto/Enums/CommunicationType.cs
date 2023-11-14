@@ -9,8 +9,7 @@ namespace UniversityHelper.UserService.Models.Dto.Enums
     Email,
     Telegram,
     Phone,
-    Skype,
-    Twitter,
+    VK,
     BaseEmail
   }
 }
