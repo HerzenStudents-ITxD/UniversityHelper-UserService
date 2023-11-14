@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Validation.Credentials.Interfaces
-{
-    [AutoInject]
-    public interface ICreateCredentialsRequestValidator : IValidator<CreateCredentialsRequest>
-    {
-    }
-}
+namespace UniversityHelper.UserService.Validation.Credentials.Interfaces;
+
+  [AutoInject]
+  public interface ICreateCredentialsRequestValidator : IValidator<CreateCredentialsRequest>
+  {
+  }

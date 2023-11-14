@@ -2,10 +2,9 @@
 using UniversityHelper.Core.Attributes;
 using UniversityHelper.UserService.Models.Dto;
 
-namespace UniversityHelper.UserService.Validation.Password.Interfaces
+namespace UniversityHelper.UserService.Validation.Password.Interfaces;
+
+[AutoInject]
+public interface IReconstructPassordRequestValidator : IValidator<ReconstructPasswordRequest>
 {
-  [AutoInject]
-  public interface IReconstructPassordRequestValidator : IValidator<ReconstructPasswordRequest>
-  {
-  }
 }

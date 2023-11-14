@@ -1,8 +1,7 @@
-﻿namespace UniversityHelper.UserService.Models.Dto.Models
+﻿namespace UniversityHelper.UserService.Models.Dto.Models;
+
+public record ImageConsist
 {
-  public record ImageConsist
-  {
-    public string Content { get; set; }
-    public string Extension { get; set; }
-  }
+  public string Content { get; set; }
+  public string Extension { get; set; }
 }

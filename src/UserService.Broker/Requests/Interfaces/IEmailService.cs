@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests.Interfaces
+namespace UniversityHelper.UserService.Broker.Requests.Interfaces;
+
+[AutoInject]
+public interface IEmailService
 {
-  [AutoInject]
-  public interface IEmailService
-  {
-    Task SendAsync(string email, string subject, string text, List<string> errors);
-  }
+  Task SendAsync(string email, string subject, string text, List<string> errors);
 }

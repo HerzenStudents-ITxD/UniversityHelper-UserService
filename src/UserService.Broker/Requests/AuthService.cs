@@ -8,28 +8,27 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests;
+
+public class AuthService : IAuthService
 {
-  public class AuthService : IAuthService
+  private readonly IRequestClient<IGetTokenRequest> _rcGetToken;
+  private readonly ILogger<AuthService> _logger;
+
+  public AuthService(
+    IRequestClient<IGetTokenRequest> rcGetToken,
+    ILogger<AuthService> logger)
   {
-    private readonly IRequestClient<IGetTokenRequest> _rcGetToken;
-    private readonly ILogger<AuthService> _logger;
+    _rcGetToken = rcGetToken;
+    _logger = logger;
+  }
 
-    public AuthService(
-      IRequestClient<IGetTokenRequest> rcGetToken,
-      ILogger<AuthService> logger)
-    {
-      _rcGetToken = rcGetToken;
-      _logger = logger;
-    }
-
-    public async Task<IGetTokenResponse> GetTokenAsync(Guid userId, List<string> errors)
-    {
-      return await RequestHandler.ProcessRequest<IGetTokenRequest, IGetTokenResponse>(
-        _rcGetToken,
-        IGetTokenRequest.CreateObj(userId),
-        errors,
-        _logger);
-    }
+  public async Task<IGetTokenResponse> GetTokenAsync(Guid userId, List<string> errors)
+  {
+    return await RequestHandler.ProcessRequest<IGetTokenRequest, IGetTokenResponse>(
+      _rcGetToken,
+      IGetTokenRequest.CreateObj(userId),
+      errors,
+      _logger);
   }
 }

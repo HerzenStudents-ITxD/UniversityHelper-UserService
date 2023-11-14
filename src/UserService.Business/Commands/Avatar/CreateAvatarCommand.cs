@@ -17,79 +17,78 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Avatar
+namespace UniversityHelper.UserService.Business.Commands.Avatar;
+
+public class CreateAvatarCommand : ICreateAvatarCommand
 {
-  public class CreateAvatarCommand : ICreateAvatarCommand
+  private readonly IUserAvatarRepository _avatarRepository;
+  //private readonly IAccessValidator _accessValidator;
+  private readonly ICreateAvatarRequestValidator _requestValidator;
+  private readonly IDbUserAvatarMapper _dbUserAvatarMapper;
+  private readonly IHttpContextAccessor _httpContextAccessor;
+  private readonly IImageService _imageService;
+  private readonly IResponseCreator _responseCreator;
+  private readonly IGlobalCacheRepository _globalCache;
+
+  public CreateAvatarCommand(
+    IUserAvatarRepository avatarRepository,
+    //IAccessValidator accessValidator,
+    ICreateAvatarRequestValidator requestValidator,
+    IDbUserAvatarMapper dbEntityImageMapper,
+    IHttpContextAccessor httpContextAccessor,
+    IImageService imageService,
+    IResponseCreator responseCreator,
+    IGlobalCacheRepository globalCache)
   {
-    private readonly IUserAvatarRepository _avatarRepository;
-    //private readonly IAccessValidator _accessValidator;
-    private readonly ICreateAvatarRequestValidator _requestValidator;
-    private readonly IDbUserAvatarMapper _dbUserAvatarMapper;
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    private readonly IImageService _imageService;
-    private readonly IResponseCreator _responseCreator;
-    private readonly IGlobalCacheRepository _globalCache;
+    _avatarRepository = avatarRepository;
+    //_accessValidator = accessValidator;
+    _requestValidator = requestValidator;
+    _dbUserAvatarMapper = dbEntityImageMapper;
+    _httpContextAccessor = httpContextAccessor;
+    _imageService = imageService;
+    _responseCreator = responseCreator;
+    _globalCache = globalCache;
+  }
 
-    public CreateAvatarCommand(
-      IUserAvatarRepository avatarRepository,
-      //IAccessValidator accessValidator,
-      ICreateAvatarRequestValidator requestValidator,
-      IDbUserAvatarMapper dbEntityImageMapper,
-      IHttpContextAccessor httpContextAccessor,
-      IImageService imageService,
-      IResponseCreator responseCreator,
-      IGlobalCacheRepository globalCache)
+  public async Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateAvatarRequest request)
+  {
+    //if (_httpContextAccessor.HttpContext.GetUserId() != request.UserId
+    //  && !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
+    //{
+    //  return _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.Forbidden);
+    //}
+
+    ValidationResult validationResult = await _requestValidator.ValidateAsync(request);
+
+    if (!validationResult.IsValid)
     {
-      _avatarRepository = avatarRepository;
-      //_accessValidator = accessValidator;
-      _requestValidator = requestValidator;
-      _dbUserAvatarMapper = dbEntityImageMapper;
-      _httpContextAccessor = httpContextAccessor;
-      _imageService = imageService;
-      _responseCreator = responseCreator;
-      _globalCache = globalCache;
+      return _responseCreator.CreateFailureResponse<Guid?>(
+        HttpStatusCode.BadRequest,
+        validationResult.Errors.Select(validationFailure => validationFailure.ErrorMessage).ToList());
     }
 
-    public async Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateAvatarRequest request)
+    OperationResultResponse<Guid?> response = new();
+
+    response.Body = await _imageService.CreateImageAsync(request, response.Errors);
+
+    if (response.Body is not null)
     {
-      //if (_httpContextAccessor.HttpContext.GetUserId() != request.UserId
-      //  && !await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
-      //{
-      //  return _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.Forbidden);
-      //}
+      await _avatarRepository.CreateAsync(
+        _dbUserAvatarMapper
+          .Map(response.Body.Value, request.UserId.Value, request.IsCurrentAvatar));
 
-      ValidationResult validationResult = await _requestValidator.ValidateAsync(request);
+      _httpContextAccessor.HttpContext.Response.StatusCode = (int)HttpStatusCode.Created;
 
-      if (!validationResult.IsValid)
+      if (request.IsCurrentAvatar)
       {
-        return _responseCreator.CreateFailureResponse<Guid?>(
-          HttpStatusCode.BadRequest,
-          validationResult.Errors.Select(validationFailure => validationFailure.ErrorMessage).ToList());
+        await _globalCache.RemoveAsync(request.UserId.Value);
       }
-
-      OperationResultResponse<Guid?> response = new();
-
-      response.Body = await _imageService.CreateImageAsync(request, response.Errors);
-
-      if (response.Body is not null)
-      {
-        await _avatarRepository.CreateAsync(
-          _dbUserAvatarMapper
-            .Map(response.Body.Value, request.UserId.Value, request.IsCurrentAvatar));
-
-        _httpContextAccessor.HttpContext.Response.StatusCode = (int)HttpStatusCode.Created;
-
-        if (request.IsCurrentAvatar)
-        {
-          await _globalCache.RemoveAsync(request.UserId.Value);
-        }
-      }
-      else
-      {
-        response = _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.BadRequest);
-      }
-
-      return response;
     }
+    else
+    {
+      response = _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.BadRequest);
+    }
+
+    return response;
   }
 }

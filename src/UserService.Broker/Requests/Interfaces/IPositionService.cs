@@ -5,11 +5,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests.Interfaces
+namespace UniversityHelper.UserService.Broker.Requests.Interfaces;
+
+[AutoInject]
+public interface IPositionService
 {
-  [AutoInject]
-  public interface IPositionService
-  {
-    Task<List<PositionData>> GetPositionsAsync(Guid userId, List<string> errors, CancellationToken cancellationToken = default);
-  }
+  Task<List<PositionData>> GetPositionsAsync(Guid userId, List<string> errors, CancellationToken cancellationToken = default);
 }

@@ -9,45 +9,44 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Pending
+namespace UniversityHelper.UserService.Business.Commands.Pending;
+
+public class RemovePendingUserCommand : IRemovePendingUserCommand
 {
-  public class RemovePendingUserCommand : IRemovePendingUserCommand
+  //private readonly IAccessValidator _accessValidator;
+  private readonly IResponseCreator _responseCreator;
+  private readonly IPendingUserRepository _repository;
+  private readonly IGlobalCacheRepository _globalCache;
+
+  public RemovePendingUserCommand(
+    //IAccessValidator accessValidator,
+    IResponseCreator responseCreator,
+    IPendingUserRepository repository,
+    IGlobalCacheRepository globalCache)
   {
-    //private readonly IAccessValidator _accessValidator;
-    private readonly IResponseCreator _responseCreator;
-    private readonly IPendingUserRepository _repository;
-    private readonly IGlobalCacheRepository _globalCache;
+    //_accessValidator = accessValidator;
+    _responseCreator = responseCreator;
+    _repository = repository;
+    _globalCache = globalCache;
+  }
 
-    public RemovePendingUserCommand(
-      //IAccessValidator accessValidator,
-      IResponseCreator responseCreator,
-      IPendingUserRepository repository,
-      IGlobalCacheRepository globalCache)
+  public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid userId)
+  {
+    //if (!await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
+    //{
+    //  return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
+    //}
+
+    OperationResultResponse<bool> response = new();
+    response.Body = (await _repository.RemoveAsync(userId)) is not null;
+
+    if (response.Body)
     {
-      //_accessValidator = accessValidator;
-      _responseCreator = responseCreator;
-      _repository = repository;
-      _globalCache = globalCache;
+      await _globalCache.RemoveAsync(userId);
     }
 
-    public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid userId)
-    {
-      //if (!await _accessValidator.HasRightsAsync(Rights.AddEditRemoveUsers))
-      //{
-      //  return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
-      //}
-
-      OperationResultResponse<bool> response = new();
-      response.Body = (await _repository.RemoveAsync(userId)) is not null;
-
-      if (response.Body)
-      {
-        await _globalCache.RemoveAsync(userId);
-      }
-
-      return response.Body
-        ? response
-        : _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
-    }
+    return response.Body
+      ? response
+      : _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
   }
 }

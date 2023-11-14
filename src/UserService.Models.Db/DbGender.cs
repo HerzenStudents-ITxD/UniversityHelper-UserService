@@ -3,41 +3,40 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 
-namespace UniversityHelper.UserService.Models.Db
+namespace UniversityHelper.UserService.Models.Db;
+
+public class DbGender
 {
-  public class DbGender
+  public const string TableName = "Genders";
+
+  public Guid Id { get; set; }
+  public string Name { get; set; }
+  public Guid CreatedBy { get; set; }
+  public DateTime CreatedAtUtc { get; set; }
+  public ICollection<DbUserAddition> UsersAdditions { get; set; }
+
+  public DbGender()
   {
-    public const string TableName = "Genders";
-
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-    public Guid CreatedBy { get; set; }
-    public DateTime CreatedAtUtc { get; set; }
-    public ICollection<DbUserAddition> UsersAdditions { get; set; }
-
-    public DbGender()
-    {
-      UsersAdditions = new HashSet<DbUserAddition>();
-    }
+    UsersAdditions = new HashSet<DbUserAddition>();
   }
+}
 
-  public class GenderConfiguration : IEntityTypeConfiguration<DbGender>
+public class GenderConfiguration : IEntityTypeConfiguration<DbGender>
+{
+  public void Configure(EntityTypeBuilder<DbGender> builder)
   {
-    public void Configure(EntityTypeBuilder<DbGender> builder)
-    {
-      builder
-        .ToTable(DbGender.TableName);
+    builder
+      .ToTable(DbGender.TableName);
 
-      builder
-        .HasKey(g => g.Id);
+    builder
+      .HasKey(g => g.Id);
 
-      builder
-        .Property(g => g.Name)
-        .IsRequired();
+    builder
+      .Property(g => g.Name)
+      .IsRequired();
 
-      builder
-        .HasMany(g => g.UsersAdditions)
-        .WithOne(ua => ua.Gender);
-    }
+    builder
+      .HasMany(g => g.UsersAdditions)
+      .WithOne(ua => ua.Gender);
   }
 }

@@ -9,50 +9,49 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests;
+
+public class OfficeService : IOfficeService
 {
-  public class OfficeService : IOfficeService
+  private readonly IRequestClient<IGetOfficesRequest> _rcGetOffices;
+  private readonly ILogger<OfficeService> _logger;
+  private readonly IGlobalCacheRepository _globalCache;
+
+  public OfficeService(
+    IRequestClient<IGetOfficesRequest> rcGetOffices,
+    ILogger<OfficeService> logger,
+    IGlobalCacheRepository globalCache)
   {
-    private readonly IRequestClient<IGetOfficesRequest> _rcGetOffices;
-    private readonly ILogger<OfficeService> _logger;
-    private readonly IGlobalCacheRepository _globalCache;
+    _rcGetOffices = rcGetOffices;
+    _logger = logger;
+    _globalCache = globalCache;
+  }
 
-    public OfficeService(
-      IRequestClient<IGetOfficesRequest> rcGetOffices,
-      ILogger<OfficeService> logger,
-      IGlobalCacheRepository globalCache)
+  public async Task<List<OfficeData>> GetOfficesAsync(
+    Guid userId,
+    List<string> errors,
+    CancellationToken cancellationToken = default)
+  {
+    /*List<OfficeData> offices = await _globalCache
+      .GetAsync<List<OfficeData>>(Cache.Offices, userId.GetRedisCacheHashCode());
+
+    if (offices is not null)
     {
-      _rcGetOffices = rcGetOffices;
-      _logger = logger;
-      _globalCache = globalCache;
+      _logger.LogInformation(
+        "Offices for user id '{UserId}' were taken from cache.",
+        userId);
+    }
+    else
+    {
+      offices = (await RequestHandler.ProcessRequest<IGetOfficesRequest, IGetOfficesResponse>(
+          _rcGetOffices,
+          IGetOfficesRequest.CreateObj(usersIds: new() { userId }),
+          errors,
+          _logger))
+        ?.Offices;
     }
 
-    public async Task<List<OfficeData>> GetOfficesAsync(
-      Guid userId,
-      List<string> errors,
-      CancellationToken cancellationToken = default)
-    {
-      /*List<OfficeData> offices = await _globalCache
-        .GetAsync<List<OfficeData>>(Cache.Offices, userId.GetRedisCacheHashCode());
-
-      if (offices is not null)
-      {
-        _logger.LogInformation(
-          "Offices for user id '{UserId}' were taken from cache.",
-          userId);
-      }
-      else
-      {
-        offices = (await RequestHandler.ProcessRequest<IGetOfficesRequest, IGetOfficesResponse>(
-            _rcGetOffices,
-            IGetOfficesRequest.CreateObj(usersIds: new() { userId }),
-            errors,
-            _logger))
-          ?.Offices;
-      }
-
-      return offices;*/
-      return null;
-    }
+    return offices;*/
+    return null;
   }
 }

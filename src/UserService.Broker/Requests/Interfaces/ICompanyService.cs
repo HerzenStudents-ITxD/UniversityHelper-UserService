@@ -5,11 +5,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests.Interfaces
+namespace UniversityHelper.UserService.Broker.Requests.Interfaces;
+
+[AutoInject]
+public interface ICompanyService
 {
-  [AutoInject]
-  public interface ICompanyService
-  {
-    Task<List<CompanyData>> GetCompaniesAsync(Guid userId, List<string> errors, CancellationToken cancellationToken = default);
-  }
+  Task<List<CompanyData>> GetCompaniesAsync(Guid userId, List<string> errors, CancellationToken cancellationToken = default);
 }

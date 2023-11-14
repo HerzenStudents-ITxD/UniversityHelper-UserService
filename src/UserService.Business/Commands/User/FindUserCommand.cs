@@ -15,60 +15,59 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.User
+namespace UniversityHelper.UserService.Business.Commands.User;
+
+public class FindUserCommand : IFindUserCommand
 {
-  public class FindUserCommand : IFindUserCommand
+  private readonly IUserRepository _userRepository;
+  private readonly IUserInfoMapper _userInfoMapper;
+  private readonly IImageService _imageService;
+  private readonly IResponseCreator _responseCreator;
+
+  public FindUserCommand(
+    IUserRepository userRepository,
+    IUserInfoMapper userInfoMapper,
+    IImageService imageService,
+    IResponseCreator responseCreator)
   {
-    private readonly IUserRepository _userRepository;
-    private readonly IUserInfoMapper _userInfoMapper;
-    private readonly IImageService _imageService;
-    private readonly IResponseCreator _responseCreator;
+    _userRepository = userRepository;
+    _userInfoMapper = userInfoMapper;
+    _imageService = imageService;
+    _responseCreator = responseCreator;
+  }
 
-    public FindUserCommand(
-      IUserRepository userRepository,
-      IUserInfoMapper userInfoMapper,
-      IImageService imageService,
-      IResponseCreator responseCreator)
-    {
-      _userRepository = userRepository;
-      _userInfoMapper = userInfoMapper;
-      _imageService = imageService;
-      _responseCreator = responseCreator;
-    }
+  public async Task<FindResultResponse<UserInfo>> ExecuteAsync(FindUsersFilter filter, CancellationToken cancellationToken = default)
+  {
+    //TODO
+    //if (!_baseFindValidator.ValidateCustom(filter, out List<string> errors))
+    //{
+    //  return _responseCreator.CreateFailureFindResponse<UserInfo>(HttpStatusCode.BadRequest, errors);
+    //}
 
-    public async Task<FindResultResponse<UserInfo>> ExecuteAsync(FindUsersFilter filter, CancellationToken cancellationToken = default)
-    {
-      //TODO
-      //if (!_baseFindValidator.ValidateCustom(filter, out List<string> errors))
-      //{
-      //  return _responseCreator.CreateFailureFindResponse<UserInfo>(HttpStatusCode.BadRequest, errors);
-      //}
+    FindResultResponse<UserInfo> response = new();
 
-      FindResultResponse<UserInfo> response = new();
+    (List<DbUser> dbUsers, int totalCount) = await _userRepository.FindAsync(filter, cancellationToken: cancellationToken);
 
-      (List<DbUser> dbUsers, int totalCount) = await _userRepository.FindAsync(filter, cancellationToken: cancellationToken);
+    List<ImageInfo> images = filter.IncludeCurrentAvatar
+      ? await _imageService.GetImagesAsync(
+        dbUsers
+          .Where(u => u.Avatars.Any()).Select(u => u.Avatars.FirstOrDefault())
+          .Select(ua => ua.AvatarId)
+          .ToList(),
+        response.Errors,
+        cancellationToken)
+      : default;
 
-      List<ImageInfo> images = filter.IncludeCurrentAvatar
-        ? await _imageService.GetImagesAsync(
-          dbUsers
-            .Where(u => u.Avatars.Any()).Select(u => u.Avatars.FirstOrDefault())
-            .Select(ua => ua.AvatarId)
-            .ToList(),
-          response.Errors,
-          cancellationToken)
-        : default;
+    response.Body = new();
+    response.Body
+      .AddRange(dbUsers.Select(dbUser =>
+      _userInfoMapper.Map(
+        dbUser,
+        images?.FirstOrDefault(i => i.Id == dbUser.Avatars.FirstOrDefault()?.AvatarId)
+      )));
 
-      response.Body = new();
-      response.Body
-        .AddRange(dbUsers.Select(dbUser =>
-        _userInfoMapper.Map(
-          dbUser,
-          images?.FirstOrDefault(i => i.Id == dbUser.Avatars.FirstOrDefault()?.AvatarId)
-        )));
+    response.TotalCount = totalCount;
 
-      response.TotalCount = totalCount;
-
-      return response;
-    }
+    return response;
   }
 }

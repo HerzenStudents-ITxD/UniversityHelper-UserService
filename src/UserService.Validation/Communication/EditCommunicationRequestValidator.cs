@@ -8,45 +8,44 @@ using UniversityHelper.UserService.Validation.Communication.Resources;
 using System.Globalization;
 using System.Threading;
 
-namespace UniversityHelper.UserService.Validation.Communication
+namespace UniversityHelper.UserService.Validation.Communication;
+
+public class EditCommunicationRequestValidator : AbstractValidator<(
+    DbUserCommunication dbUserCommunication,
+    EditCommunicationRequest request)>,
+  IEditCommunicationRequestValidator
 {
-  public class EditCommunicationRequestValidator : AbstractValidator<(
-      DbUserCommunication dbUserCommunication,
-      EditCommunicationRequest request)>,
-    IEditCommunicationRequestValidator
+  private readonly IUserCommunicationRepository _communicationRepository;
+
+  public EditCommunicationRequestValidator(
+    IUserCommunicationRepository communicationRepository)
   {
-    private readonly IUserCommunicationRepository _communicationRepository;
+    _communicationRepository = communicationRepository;
 
-    public EditCommunicationRequestValidator(
-      IUserCommunicationRepository communicationRepository)
+    Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru-RU");
+
+    RuleFor(x => x)
+      .Must(x => !(x.request.Type is not null && !string.IsNullOrEmpty(x.request.Value)))
+      .WithMessage(EditCommunicationRequestValidatorResource.MoreThenOneProperty)
+      .Must(x => !(x.request.Type is null && string.IsNullOrEmpty(x.request.Value)))
+      .WithMessage(EditCommunicationRequestValidatorResource.NoChanges);
+
+    When(x => x.request.Type is not null, () =>
     {
-      _communicationRepository = communicationRepository;
-
-      Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru-RU");
-
       RuleFor(x => x)
-        .Must(x => !(x.request.Type is not null && !string.IsNullOrEmpty(x.request.Value)))
-        .WithMessage(EditCommunicationRequestValidatorResource.MoreThenOneProperty)
-        .Must(x => !(x.request.Type is null && string.IsNullOrEmpty(x.request.Value)))
-        .WithMessage(EditCommunicationRequestValidatorResource.NoChanges);
+        .Cascade(CascadeMode.Stop)
+        .Must(x => x.request.Type == CommunicationType.BaseEmail)
+        .WithMessage(EditCommunicationRequestValidatorResource.InvalidType)
+        .Must(x => x.dbUserCommunication.IsConfirmed
+          && x.dbUserCommunication.Type == (int)CommunicationType.Email)
+        .WithMessage(EditCommunicationRequestValidatorResource.NotVerifiedEmail);
+    });
 
-      When(x => x.request.Type is not null, () =>
-      {
-        RuleFor(x => x)
-          .Cascade(CascadeMode.Stop)
-          .Must(x => x.request.Type == CommunicationType.BaseEmail)
-          .WithMessage(EditCommunicationRequestValidatorResource.InvalidType)
-          .Must(x => x.dbUserCommunication.IsConfirmed
-            && x.dbUserCommunication.Type == (int)CommunicationType.Email)
-          .WithMessage(EditCommunicationRequestValidatorResource.NotVerifiedEmail);
-      });
-
-      When(x => !string.IsNullOrEmpty(x.request.Value), () =>
-      {
-        RuleFor(x => x.request.Value)
-          .MustAsync(async (x, _) => !await _communicationRepository.DoesValueExist(x))
-          .WithMessage(EditCommunicationRequestValidatorResource.ExistingCommunicationValue);
-      });
-    }
+    When(x => !string.IsNullOrEmpty(x.request.Value), () =>
+    {
+      RuleFor(x => x.request.Value)
+        .MustAsync(async (x, _) => !await _communicationRepository.DoesValueExist(x))
+        .WithMessage(EditCommunicationRequestValidatorResource.ExistingCommunicationValue);
+    });
   }
 }

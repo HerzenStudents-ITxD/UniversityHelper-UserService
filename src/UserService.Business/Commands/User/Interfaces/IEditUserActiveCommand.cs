@@ -3,11 +3,10 @@ using UniversityHelper.Core.Responses;
 using UniversityHelper.UserService.Models.Dto.Requests.User;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.User.Interfaces
+namespace UniversityHelper.UserService.Business.Commands.User.Interfaces;
+
+[AutoInject]
+public interface IEditUserActiveCommand
 {
-  [AutoInject]
-  public interface IEditUserActiveCommand
-  {
-    Task<OperationResultResponse<bool>> ExecuteAsync(EditUserActiveRequest request);
-  }
+  Task<OperationResultResponse<bool>> ExecuteAsync(EditUserActiveRequest request);
 }

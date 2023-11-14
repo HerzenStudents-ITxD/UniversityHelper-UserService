@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UniversityHelper.UserService.Models.Dto.Models
+namespace UniversityHelper.UserService.Models.Dto.Models;
+
+public record DepartmentInfo
 {
-  public record DepartmentInfo
-  {
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-    public string ShortName { get; set; }
-    public List<Guid> ChildDepartmentsIds { get; set; }
-  }
+  public Guid Id { get; set; }
+  public string Name { get; set; }
+  public string ShortName { get; set; }
+  public List<Guid> ChildDepartmentsIds { get; set; }
 }

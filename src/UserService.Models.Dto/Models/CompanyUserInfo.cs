@@ -2,16 +2,15 @@
 using UniversityHelper.Models.Broker.Models.Company;
 using System;
 
-namespace UniversityHelper.UserService.Models.Dto.Models
+namespace UniversityHelper.UserService.Models.Dto.Models;
+
+public record CompanyUserInfo
 {
-  public record CompanyUserInfo
-  {
-    public CompanyInfo Company { get; set; }
-    //public ContractSubjectData ContractSubject { get; set; }
-    //public ContractTerm ContractTermType { get; set; }
-    public double? Rate { get; set; }
-    public DateTime StartWorkingAt { get; set; }
-    public DateTime? EndWorkingAt { get; set; }
-    public DateTime? Probation { get; set; }
-  }
+  public CompanyInfo Company { get; set; }
+  //public ContractSubjectData ContractSubject { get; set; }
+  //public ContractTerm ContractTermType { get; set; }
+  public double? Rate { get; set; }
+  public DateTime StartWorkingAt { get; set; }
+  public DateTime? EndWorkingAt { get; set; }
+  public DateTime? Probation { get; set; }
 }

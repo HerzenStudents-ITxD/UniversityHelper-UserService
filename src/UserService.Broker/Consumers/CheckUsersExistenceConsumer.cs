@@ -6,29 +6,28 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Consumers
+namespace UniversityHelper.UserService.Broker.Consumers;
+
+public class CheckUsersExistenceConsumer : IConsumer<ICheckUsersExistence>
 {
-  public class CheckUsersExistenceConsumer : IConsumer<ICheckUsersExistence>
+  private readonly IUserRepository _repository;
+
+  public CheckUsersExistenceConsumer(IUserRepository repository)
   {
-    private readonly IUserRepository _repository;
+    _repository = repository;
+  }
 
-    public CheckUsersExistenceConsumer(IUserRepository repository)
-    {
-      _repository = repository;
-    }
+  public async Task Consume(ConsumeContext<ICheckUsersExistence> context)
+  {
+    var response = OperationResultWrapper.CreateResponse(GetUsersExistenceInfoAsync, context.Message);
 
-    public async Task Consume(ConsumeContext<ICheckUsersExistence> context)
-    {
-      var response = OperationResultWrapper.CreateResponse(GetUsersExistenceInfoAsync, context.Message);
+    await context.RespondAsync<IOperationResult<ICheckUsersExistence>>(response);
+  }
 
-      await context.RespondAsync<IOperationResult<ICheckUsersExistence>>(response);
-    }
+  public async Task<object> GetUsersExistenceInfoAsync(ICheckUsersExistence requestIds)
+  {
+    List<Guid> userIds = await _repository.AreExistingIdsAsync(requestIds.UserIds);
 
-    public async Task<object> GetUsersExistenceInfoAsync(ICheckUsersExistence requestIds)
-    {
-      List<Guid> userIds = await _repository.AreExistingIdsAsync(requestIds.UserIds);
-
-      return ICheckUsersExistence.CreateObj(userIds);
-    }
+    return ICheckUsersExistence.CreateObj(userIds);
   }
 }

@@ -13,51 +13,50 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Password
+namespace UniversityHelper.UserService.Business.Commands.Password;
+
+public class ReconstructPasswordCommand : IReconstructPasswordCommand
 {
-  public class ReconstructPasswordCommand : IReconstructPasswordCommand
+  private readonly IReconstructPassordRequestValidator _validator;
+  private readonly IUserCredentialsRepository _repository;
+  private readonly IResponseCreator _responseCreator;
+
+  public ReconstructPasswordCommand(
+    IReconstructPassordRequestValidator validator,
+    IUserCredentialsRepository repository,
+    IResponseCreator responseCreator)
   {
-    private readonly IReconstructPassordRequestValidator _validator;
-    private readonly IUserCredentialsRepository _repository;
-    private readonly IResponseCreator _responseCreator;
+    _validator = validator;
+    _repository = repository;
+    _responseCreator = responseCreator;
+  }
 
-    public ReconstructPasswordCommand(
-      IReconstructPassordRequestValidator validator,
-      IUserCredentialsRepository repository,
-      IResponseCreator responseCreator)
+  public async Task<OperationResultResponse<bool>> ExecuteAsync(ReconstructPasswordRequest request)
+  {
+    if (!_validator.ValidateCustom(request, out List<string> errors))
     {
-      _validator = validator;
-      _repository = repository;
-      _responseCreator = responseCreator;
+      return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.BadRequest, errors);
     }
 
-    public async Task<OperationResultResponse<bool>> ExecuteAsync(ReconstructPasswordRequest request)
+    DbUserCredentials dbUserCredentials = await _repository.GetAsync(new GetCredentialsFilter() { UserId = request.UserId });
+
+    if (dbUserCredentials is null)
     {
-      if (!_validator.ValidateCustom(request, out List<string> errors))
-      {
-        return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.BadRequest, errors);
-      }
-
-      DbUserCredentials dbUserCredentials = await _repository.GetAsync(new GetCredentialsFilter() { UserId = request.UserId });
-
-      if (dbUserCredentials is null)
-      {
-        return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
-      }
-
-      dbUserCredentials.Salt = $"{Guid.NewGuid()}{Guid.NewGuid()}";
-      dbUserCredentials.PasswordHash = UserPasswordHash.GetPasswordHash(
-        dbUserCredentials.Login,
-        dbUserCredentials.Salt,
-        request.NewPassword);
-
-      OperationResultResponse<bool> response = new();
-
-      response.Body = await _repository.EditAsync(dbUserCredentials);
-
-      return response.Body
-        ? response
-        : _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.BadRequest);
+      return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.NotFound);
     }
+
+    dbUserCredentials.Salt = $"{Guid.NewGuid()}{Guid.NewGuid()}";
+    dbUserCredentials.PasswordHash = UserPasswordHash.GetPasswordHash(
+      dbUserCredentials.Login,
+      dbUserCredentials.Salt,
+      request.NewPassword);
+
+    OperationResultResponse<bool> response = new();
+
+    response.Body = await _repository.EditAsync(dbUserCredentials);
+
+    return response.Body
+      ? response
+      : _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.BadRequest);
   }
 }

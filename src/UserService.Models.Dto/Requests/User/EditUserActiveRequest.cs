@@ -1,11 +1,10 @@
 ﻿using System;
 
-namespace UniversityHelper.UserService.Models.Dto.Requests.User
+namespace UniversityHelper.UserService.Models.Dto.Requests.User;
+
+public record EditUserActiveRequest
 {
-  public record EditUserActiveRequest
-  {
-    public Guid UserId { get; set; }
-    public bool IsActive { get; set; }
-    public Guid? CommunicationId { get; set; }
-  }
+  public Guid UserId { get; set; }
+  public bool IsActive { get; set; }
+  public Guid? CommunicationId { get; set; }
 }

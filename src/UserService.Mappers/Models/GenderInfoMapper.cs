@@ -4,19 +4,18 @@ using UniversityHelper.UserService.Models.Dto.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace UniversityHelper.UserService.Mappers.Models
+namespace UniversityHelper.UserService.Mappers.Models;
+
+public class GenderInfoMapper : IGenderInfoMapper
 {
-  public class GenderInfoMapper : IGenderInfoMapper
+  public List<GenderInfo> Map(List<DbGender> dbGenders)
   {
-    public List<GenderInfo> Map(List<DbGender> dbGenders)
-    {
-      return dbGenders is null
-        ? default
-        : dbGenders.Select(x => new GenderInfo 
-          {
-            Id = x.Id,
-            Name = x.Name
-          }).ToList();
-    }
+    return dbGenders is null
+      ? default
+      : dbGenders.Select(x => new GenderInfo 
+        {
+          Id = x.Id,
+          Name = x.Name
+        }).ToList();
   }
 }

@@ -5,27 +5,26 @@ using MassTransit;
 using System;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Consumers
+namespace UniversityHelper.UserService.Broker.Consumers;
+
+public class AccessValidatorConsumer : IConsumer<ICheckUserIsAdminRequest>
 {
-  public class AccessValidatorConsumer : IConsumer<ICheckUserIsAdminRequest>
+  private readonly IUserRepository _repository;
+
+  public AccessValidatorConsumer(IUserRepository repository)
   {
-    private readonly IUserRepository _repository;
+    _repository = repository;
+  }
 
-    public AccessValidatorConsumer(IUserRepository repository)
-    {
-      _repository = repository;
-    }
+  public async Task Consume(ConsumeContext<ICheckUserIsAdminRequest> context)
+  {
+    var response = OperationResultWrapper.CreateResponse(IsAdminAsync, context.Message.UserId);
 
-    public async Task Consume(ConsumeContext<ICheckUserIsAdminRequest> context)
-    {
-      var response = OperationResultWrapper.CreateResponse(IsAdminAsync, context.Message.UserId);
+    await context.RespondAsync<IOperationResult<bool>>(response);
+  }
 
-      await context.RespondAsync<IOperationResult<bool>>(response);
-    }
-
-    public async Task<object> IsAdminAsync(Guid userId)
-    {
-      return (await _repository.GetAsync(userId)).IsAdmin;
-    }
+  public async Task<object> IsAdminAsync(Guid userId)
+  {
+    return (await _repository.GetAsync(userId)).IsAdmin;
   }
 }

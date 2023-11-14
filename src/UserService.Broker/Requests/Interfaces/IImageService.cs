@@ -6,13 +6,12 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests.Interfaces
-{
-  [AutoInject]
-  public interface IImageService
-  {
-    Task<List<ImageInfo>> GetImagesAsync(List<Guid> imageIds, List<string> errors, CancellationToken cancellationToken = default);
+namespace UniversityHelper.UserService.Broker.Requests.Interfaces;
 
-    Task<Guid?> CreateImageAsync(CreateAvatarRequest request, List<string> errors);
-  }
+[AutoInject]
+public interface IImageService
+{
+  Task<List<ImageInfo>> GetImagesAsync(List<Guid> imageIds, List<string> errors, CancellationToken cancellationToken = default);
+
+  Task<Guid?> CreateImageAsync(CreateAvatarRequest request, List<string> errors);
 }

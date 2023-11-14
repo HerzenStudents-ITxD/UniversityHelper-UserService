@@ -9,35 +9,34 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests;
+
+public class TextTemplateService : ITextTemplateService
 {
-  public class TextTemplateService : ITextTemplateService
+  private readonly IRequestClient<IGetTextTemplateRequest> _rcGetTextTemplate;
+  private readonly ILogger<TextTemplateService> _logger;
+
+  public TextTemplateService(
+    IRequestClient<IGetTextTemplateRequest> rcGetTextTemplate,
+    ILogger<TextTemplateService> logger)
   {
-    private readonly IRequestClient<IGetTextTemplateRequest> _rcGetTextTemplate;
-    private readonly ILogger<TextTemplateService> _logger;
+    _rcGetTextTemplate = rcGetTextTemplate;
+    _logger = logger;
+  }
 
-    public TextTemplateService(
-      IRequestClient<IGetTextTemplateRequest> rcGetTextTemplate,
-      ILogger<TextTemplateService> logger)
-    {
-      _rcGetTextTemplate = rcGetTextTemplate;
-      _logger = logger;
-    }
-
-    public async Task<IGetTextTemplateResponse> GetAsync(
-      TemplateType templateType,
-      string locale,
-      List<string> errors,
-      Guid? endpointId = null)
-    {
-      return await RequestHandler.ProcessRequest<IGetTextTemplateRequest, IGetTextTemplateResponse>(
-        _rcGetTextTemplate,
-        IGetTextTemplateRequest.CreateObj(
-          endpointId: (Guid)endpointId,
-          templateType: templateType,
-          locale: locale),
-        errors,
-        _logger);
-    }
+  public async Task<IGetTextTemplateResponse> GetAsync(
+    TemplateType templateType,
+    string locale,
+    List<string> errors,
+    Guid? endpointId = null)
+  {
+    return await RequestHandler.ProcessRequest<IGetTextTemplateRequest, IGetTextTemplateResponse>(
+      _rcGetTextTemplate,
+      IGetTextTemplateRequest.CreateObj(
+        endpointId: (Guid)endpointId,
+        templateType: templateType,
+        locale: locale),
+      errors,
+      _logger);
   }
 }

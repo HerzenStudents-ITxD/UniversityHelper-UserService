@@ -11,68 +11,67 @@ using UniversityHelper.Models.Broker.Requests.Rights;
 using UniversityHelper.Models.Broker.Requests.TextTemplate;
 using UniversityHelper.Models.Broker.Requests.User;
 
-namespace UniversityHelper.UserService.Models.Dto.Configurations
+namespace UniversityHelper.UserService.Models.Dto.Configurations;
+
+public class RabbitMqConfig : ExtendedBaseRabbitMqConfig
 {
-  public class RabbitMqConfig : ExtendedBaseRabbitMqConfig
-  {
-    //public string GetUserCredentialsEndpoint { get; set; }
-    //public string GetUsersDataEndpoint { get; set; }
-    //public string CreateAdminEndpoint { get; set; }
-    //public string FindParseEntitiesEndpoint { get; set; }
-    //public string CheckUsersExistenceEndpoint { get; set; }
-    //public string FilterUsersDataEndpoint { get; set; }
+  //public string GetUserCredentialsEndpoint { get; set; }
+  //public string GetUsersDataEndpoint { get; set; }
+  //public string CreateAdminEndpoint { get; set; }
+  //public string FindParseEntitiesEndpoint { get; set; }
+  //public string CheckUsersExistenceEndpoint { get; set; }
+  //public string FilterUsersDataEndpoint { get; set; }
 
-    //TextTemplate
+  //TextTemplate
 
-    [AutoInjectRequest(typeof(IGetTextTemplateRequest))]
-    public string GetTextTemplateEndpoint { get; set; }
+  [AutoInjectRequest(typeof(IGetTextTemplateRequest))]
+  public string GetTextTemplateEndpoint { get; set; }
 
-    //Email
+  //Email
 
-    [AutoInjectRequest(typeof(ISendEmailRequest))]
-    public string SendEmailEndpoint { get; set; }
+  [AutoInjectRequest(typeof(ISendEmailRequest))]
+  public string SendEmailEndpoint { get; set; }
 
-    //Auth
+  //Auth
 
-    [AutoInjectRequest(typeof(IGetTokenRequest))]
-    public string GetTokenEndpoint { get; set; }
+  [AutoInjectRequest(typeof(IGetTokenRequest))]
+  public string GetTokenEndpoint { get; set; }
 
-    //Search
+  //Search
 
-    [AutoInjectRequest(typeof(ISearchUsersRequest))]
-    public string SearchUsersEndpoint { get; set; }
+  [AutoInjectRequest(typeof(ISearchUsersRequest))]
+  public string SearchUsersEndpoint { get; set; }
 
-    //Rights
+  //Rights
 
-    [AutoInjectRequest(typeof(IGetUserRolesRequest))]
-    public string GetUserRolesEndpoint { get; set; }
+  [AutoInjectRequest(typeof(IGetUserRolesRequest))]
+  public string GetUserRolesEndpoint { get; set; }
 
-    //Position
+  //Position
 
-    [AutoInjectRequest(typeof(IGetPositionsRequest))]
-    public string GetPositionsEndpoint { get; set; }
+  [AutoInjectRequest(typeof(IGetPositionsRequest))]
+  public string GetPositionsEndpoint { get; set; }
 
-    //Department
+  //Department
 
-    [AutoInjectRequest(typeof(IGetDepartmentsRequest))]
-    public string GetDepartmentsEndpoint { get; set; }
+  [AutoInjectRequest(typeof(IGetDepartmentsRequest))]
+  public string GetDepartmentsEndpoint { get; set; }
 
-    //Company
+  //Company
 
-    [AutoInjectRequest(typeof(IGetCompaniesRequest))]
-    public string GetCompaniesEndpoint { get; set; }
+  [AutoInjectRequest(typeof(IGetCompaniesRequest))]
+  public string GetCompaniesEndpoint { get; set; }
 
-    //Office
+  //Office
 
-    [AutoInjectRequest(typeof(IGetOfficesRequest))]
-    public string GetOfficesEndpoint { get; set; }
+  [AutoInjectRequest(typeof(IGetOfficesRequest))]
+  public string GetOfficesEndpoint { get; set; }
 
-    //Image
+  //Image
 
-    [AutoInjectRequest(typeof(ICreateImagesRequest))]
-    public string CreateImagesEndpoint { get; set; }
+  [AutoInjectRequest(typeof(ICreateImagesRequest))]
+  public string CreateImagesEndpoint { get; set; }
 
-    [AutoInjectRequest(typeof(IGetImagesRequest))]
-    public string GetImagesEndpoint { get; set; }
-  }
+  [AutoInjectRequest(typeof(IGetImagesRequest))]
+  public string GetImagesEndpoint { get; set; }
 }

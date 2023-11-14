@@ -7,44 +7,43 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Controllers
+namespace UniversityHelper.UserService.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class AvatarController : ControllerBase
 {
-  [ApiController]
-  [Route("[controller]")]
-  public class AvatarController : ControllerBase
+  [HttpPost("create")]
+  public async Task<OperationResultResponse<Guid?>> CreateAsync(
+    [FromServices] ICreateAvatarCommand command,
+    [FromBody] CreateAvatarRequest request)
   {
-    [HttpPost("create")]
-    public async Task<OperationResultResponse<Guid?>> CreateAsync(
-      [FromServices] ICreateAvatarCommand command,
-      [FromBody] CreateAvatarRequest request)
-    {
-      return await command.ExecuteAsync(request);
-    }
+    return await command.ExecuteAsync(request);
+  }
 
-    [HttpGet("get")]
-    public async Task<OperationResultResponse<UserImagesResponse>> GetAsync(
-      [FromServices] IGetAvatarsCommand command,
-      [FromQuery] Guid userId,
-      CancellationToken token)
-    {
-      return await command.ExecuteAsync(userId, token);
-    }
+  [HttpGet("get")]
+  public async Task<OperationResultResponse<UserImagesResponse>> GetAsync(
+    [FromServices] IGetAvatarsCommand command,
+    [FromQuery] Guid userId,
+    CancellationToken token)
+  {
+    return await command.ExecuteAsync(userId, token);
+  }
 
-    [HttpDelete("remove")]
-    public async Task<OperationResultResponse<bool>> RemoveAsync(
-      [FromServices] IRemoveAvatarsCommand command,
-      [FromBody] RemoveAvatarsRequest request)
-    {
-      return await command.ExecuteAsync(request);
-    }
+  [HttpDelete("remove")]
+  public async Task<OperationResultResponse<bool>> RemoveAsync(
+    [FromServices] IRemoveAvatarsCommand command,
+    [FromBody] RemoveAvatarsRequest request)
+  {
+    return await command.ExecuteAsync(request);
+  }
 
-    [HttpGet("editcurrent")]
-    public async Task<OperationResultResponse<bool>> EditCurrentAsync(
-      [FromServices] IEditAvatarCommand command,
-      [FromQuery] Guid userId,
-      [FromQuery] Guid avatarId)
-    {
-      return await command.ExecuteAsync(userId, avatarId);
-    }
+  [HttpGet("editcurrent")]
+  public async Task<OperationResultResponse<bool>> EditCurrentAsync(
+    [FromServices] IEditAvatarCommand command,
+    [FromQuery] Guid userId,
+    [FromQuery] Guid avatarId)
+  {
+    return await command.ExecuteAsync(userId, avatarId);
   }
 }

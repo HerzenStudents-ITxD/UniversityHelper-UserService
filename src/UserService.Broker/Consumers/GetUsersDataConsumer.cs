@@ -18,66 +18,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Consumers
+namespace UniversityHelper.UserService.Broker.Consumers;
+
+public class GetUsersDataConsumer : IConsumer<IGetUsersDataRequest>
 {
-  public class GetUsersDataConsumer : IConsumer<IGetUsersDataRequest>
+  private readonly IUserRepository _userRepository;
+  private readonly IOptions<RedisConfig> _redisConfig;
+  private readonly IGlobalCacheRepository _globalCache;
+
+  private async Task<List<UserData>> GetUserInfoAsync(IGetUsersDataRequest request)
   {
-    private readonly IUserRepository _userRepository;
-    private readonly IOptions<RedisConfig> _redisConfig;
-    private readonly IGlobalCacheRepository _globalCache;
+    (List<DbUser> dbUsers, int totalCount) =
+      await _userRepository.FindAsync(
+        filter: new FindUsersFilter() {
+          TakeCount = int.MaxValue,
+          IncludeCurrentAvatar = true,
+          //IncludeCommunications = request.IncludeBaseEmail
+        }, //TODO fix takeCount
+        userIds: request.UsersIds);
 
-    private async Task<List<UserData>> GetUserInfoAsync(IGetUsersDataRequest request)
+    return dbUsers.Select(
+      u => new UserData(
+        id: u.Id,
+        imageId: u.Avatars?.FirstOrDefault()?.AvatarId,
+        firstName: u.FirstName,
+        middleName: u.MiddleName,
+        lastName: u.LastName,
+        isActive: u.IsActive,
+        email: request.IncludeBaseEmail
+          ? u.Communications.FirstOrDefault(c => c.Type == (int)CommunicationType.BaseEmail)?.Value
+          : null
+          ))
+      .ToList();
+  }
+
+  public GetUsersDataConsumer(
+    IUserRepository userRepository,
+    IOptions<RedisConfig> redisConfig,
+    IGlobalCacheRepository globalCache)
+  {
+    _userRepository = userRepository;
+    _redisConfig = redisConfig;
+    _globalCache = globalCache;
+  }
+
+  public async Task Consume(ConsumeContext<IGetUsersDataRequest> context)
+  {
+    List<UserData> users = await GetUserInfoAsync(context.Message);
+
+    await context.RespondAsync<IOperationResult<IGetUsersDataResponse>>(
+      OperationResultWrapper.CreateResponse((_) => IGetUsersDataResponse.CreateObj(users), context));
+
+    if (users is not null)
     {
-      (List<DbUser> dbUsers, int totalCount) =
-        await _userRepository.FindAsync(
-          filter: new FindUsersFilter() {
-            TakeCount = int.MaxValue,
-            IncludeCurrentAvatar = true,
-            //IncludeCommunications = request.IncludeBaseEmail
-          }, //TODO fix takeCount
-          userIds: request.UsersIds);
-
-      return dbUsers.Select(
-        u => new UserData(
-          id: u.Id,
-          imageId: u.Avatars?.FirstOrDefault()?.AvatarId,
-          firstName: u.FirstName,
-          middleName: u.MiddleName,
-          lastName: u.LastName,
-          isActive: u.IsActive,
-          email: request.IncludeBaseEmail
-            ? u.Communications.FirstOrDefault(c => c.Type == (int)CommunicationType.BaseEmail)?.Value
-            : null
-            ))
-        .ToList();
-    }
-
-    public GetUsersDataConsumer(
-      IUserRepository userRepository,
-      IOptions<RedisConfig> redisConfig,
-      IGlobalCacheRepository globalCache)
-    {
-      _userRepository = userRepository;
-      _redisConfig = redisConfig;
-      _globalCache = globalCache;
-    }
-
-    public async Task Consume(ConsumeContext<IGetUsersDataRequest> context)
-    {
-      List<UserData> users = await GetUserInfoAsync(context.Message);
-
-      await context.RespondAsync<IOperationResult<IGetUsersDataResponse>>(
-        OperationResultWrapper.CreateResponse((_) => IGetUsersDataResponse.CreateObj(users), context));
-
-      if (users is not null)
-      {
-        await _globalCache.CreateAsync(
-          Cache.Users,
-          users.Select(u => u.Id).GetRedisCacheKey(nameof(IGetUsersDataRequest), context.Message.GetBasicProperties()),
-          users,
-          users.Select(u => u.Id).ToList(),
-          TimeSpan.FromMinutes(_redisConfig.Value.CacheLiveInMinutes));
-      }
+      await _globalCache.CreateAsync(
+        Cache.Users,
+        users.Select(u => u.Id).GetRedisCacheKey(nameof(IGetUsersDataRequest), context.Message.GetBasicProperties()),
+        users,
+        users.Select(u => u.Id).ToList(),
+        TimeSpan.FromMinutes(_redisConfig.Value.CacheLiveInMinutes));
     }
   }
 }

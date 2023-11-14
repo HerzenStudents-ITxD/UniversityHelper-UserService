@@ -13,54 +13,53 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests;
+
+public class DepartmentService : IDepartmentService
 {
-  public class DepartmentService : IDepartmentService
+  private readonly IRequestClient<IGetDepartmentsRequest> _rcGetDepartments;
+  private readonly ILogger<DepartmentService> _logger;
+  private readonly IGlobalCacheRepository _globalCache;
+
+  public DepartmentService(
+    IRequestClient<IGetDepartmentsRequest> rcGetDepartments,
+    ILogger<DepartmentService> logger,
+    IGlobalCacheRepository globalCache)
   {
-    private readonly IRequestClient<IGetDepartmentsRequest> _rcGetDepartments;
-    private readonly ILogger<DepartmentService> _logger;
-    private readonly IGlobalCacheRepository _globalCache;
+    _rcGetDepartments = rcGetDepartments;
+    _logger = logger;
+    _globalCache = globalCache;
+  }
 
-    public DepartmentService(
-      IRequestClient<IGetDepartmentsRequest> rcGetDepartments,
-      ILogger<DepartmentService> logger,
-      IGlobalCacheRepository globalCache)
+  public async Task<List<DepartmentData>> GetDepartmentsAsync(
+    Guid userId,
+    List<string> errors,
+    bool includeChildDepartmentsIds = false,
+    CancellationToken cancellationToken = default)
+  {
+    object request = IGetDepartmentsRequest.CreateObj(usersIds: new() { userId }//, 
+      //includeChildDepartmentsIds: includeChildDepartmentsIds
+      );
+
+    List<DepartmentData> departments = await _globalCache
+      .GetAsync<List<DepartmentData>>(Cache.Communities, userId.GetRedisCacheKey(nameof(IGetDepartmentsRequest), request.GetBasicProperties()));
+
+    if (departments is not null)
     {
-      _rcGetDepartments = rcGetDepartments;
-      _logger = logger;
-      _globalCache = globalCache;
+      _logger.LogInformation(
+        "Departments for user id {UserId} were taken from cache.",
+        userId);
+    }
+    else
+    {
+      departments = (await RequestHandler.ProcessRequest<IGetDepartmentsRequest, IGetDepartmentsResponse>(
+          _rcGetDepartments,
+          request,
+          errors,
+          _logger))
+        ?.Departments;
     }
 
-    public async Task<List<DepartmentData>> GetDepartmentsAsync(
-      Guid userId,
-      List<string> errors,
-      bool includeChildDepartmentsIds = false,
-      CancellationToken cancellationToken = default)
-    {
-      object request = IGetDepartmentsRequest.CreateObj(usersIds: new() { userId }//, 
-        //includeChildDepartmentsIds: includeChildDepartmentsIds
-        );
-
-      List<DepartmentData> departments = await _globalCache
-        .GetAsync<List<DepartmentData>>(Cache.Communities, userId.GetRedisCacheKey(nameof(IGetDepartmentsRequest), request.GetBasicProperties()));
-
-      if (departments is not null)
-      {
-        _logger.LogInformation(
-          "Departments for user id {UserId} were taken from cache.",
-          userId);
-      }
-      else
-      {
-        departments = (await RequestHandler.ProcessRequest<IGetDepartmentsRequest, IGetDepartmentsResponse>(
-            _rcGetDepartments,
-            request,
-            errors,
-            _logger))
-          ?.Departments;
-      }
-
-      return departments;
-    }
+    return departments;
   }
 }

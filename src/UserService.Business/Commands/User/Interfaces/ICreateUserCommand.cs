@@ -4,11 +4,10 @@ using UniversityHelper.UserService.Models.Dto;
 using System;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Interfaces
+namespace UniversityHelper.UserService.Business.Interfaces;
+
+[AutoInject]
+public interface ICreateUserCommand
 {
-  [AutoInject]
-  public interface ICreateUserCommand
-  {
-    Task<OperationResultResponse<Guid>> ExecuteAsync(CreateUserRequest request);
-  }
+  Task<OperationResultResponse<Guid>> ExecuteAsync(CreateUserRequest request);
 }

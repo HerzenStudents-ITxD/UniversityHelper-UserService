@@ -1,7 +1,6 @@
-﻿namespace UniversityHelper.UserService.Models.Dto.Models
+﻿namespace UniversityHelper.UserService.Models.Dto.Models;
+
+public class ProjectUserInfo
 {
-  public class ProjectUserInfo
-  {
-    public bool IsActive { get; set; }
-  }
+  public bool IsActive { get; set; }
 }

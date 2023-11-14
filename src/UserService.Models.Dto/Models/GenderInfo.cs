@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace UniversityHelper.UserService.Models.Dto.Models
+namespace UniversityHelper.UserService.Models.Dto.Models;
+
+public record GenderInfo
 {
-  public record GenderInfo
-  {
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-  }
+  public Guid Id { get; set; }
+  public string Name { get; set; }
 }

@@ -7,38 +7,37 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Communication
+namespace UniversityHelper.UserService.Business.Commands.Communication;
+
+public class ConfirmCommunicationCommand : IConfirmCommunicationCommand
 {
-  public class ConfirmCommunicationCommand : IConfirmCommunicationCommand
+  private readonly IUserCommunicationRepository _repository;
+  private readonly IMemoryCache _cache;
+  private readonly IResponseCreator _responseCreator;
+
+  public ConfirmCommunicationCommand(
+    IUserCommunicationRepository repository,
+    IMemoryCache cache,
+    IResponseCreator responseCreator)
   {
-    private readonly IUserCommunicationRepository _repository;
-    private readonly IMemoryCache _cache;
-    private readonly IResponseCreator _responseCreator;
+    _repository = repository;
+    _cache = cache;
+    _responseCreator = responseCreator;
+  }
 
-    public ConfirmCommunicationCommand(
-      IUserCommunicationRepository repository,
-      IMemoryCache cache,
-      IResponseCreator responseCreator)
+  public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid communicationId, string secret)
+  {
+    if (!_cache.TryGetValue(communicationId, out string value) || value != secret)
     {
-      _repository = repository;
-      _cache = cache;
-      _responseCreator = responseCreator;
+      return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.BadRequest);
     }
 
-    public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid communicationId, string secret)
-    {
-      if (!_cache.TryGetValue(communicationId, out string value) || value != secret)
-      {
-        return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.BadRequest);
-      }
+    OperationResultResponse<bool> response = new();
 
-      OperationResultResponse<bool> response = new();
+    response.Body = await _repository.Confirm(communicationId);
 
-      response.Body = await _repository.Confirm(communicationId);
+    _cache.Remove(communicationId);
 
-      _cache.Remove(communicationId);
-
-      return response;
-    }
+    return response;
   }
 }

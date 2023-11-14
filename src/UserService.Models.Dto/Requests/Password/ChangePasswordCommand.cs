@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace UniversityHelper.UserService.Models.Dto.Requests.Password
+namespace UniversityHelper.UserService.Models.Dto.Requests.Password;
+
+public record ChangePasswordRequest
 {
-  public record ChangePasswordRequest
-  {
-    [Required]
-    public string Password { get; set; }
-    [Required]
-    public string NewPassword { get; set; }
-  }
+  [Required]
+  public string Password { get; set; }
+  [Required]
+  public string NewPassword { get; set; }
 }

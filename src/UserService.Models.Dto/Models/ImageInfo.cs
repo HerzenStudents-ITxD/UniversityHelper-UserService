@@ -1,13 +1,12 @@
 ﻿using System;
 
-namespace UniversityHelper.UserService.Models.Dto.Models
+namespace UniversityHelper.UserService.Models.Dto.Models;
+
+public record ImageInfo
 {
-  public record ImageInfo
-  {
-    public Guid? Id { get; set; }
-    public Guid? ParentId { get; set; }
-    public string Content { get; set; }
-    public string Extension { get; set; }
-    public string Name { get; set; }
-  }
+  public Guid? Id { get; set; }
+  public Guid? ParentId { get; set; }
+  public string Content { get; set; }
+  public string Extension { get; set; }
+  public string Name { get; set; }
 }

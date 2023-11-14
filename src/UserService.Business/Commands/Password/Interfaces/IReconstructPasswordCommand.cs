@@ -3,11 +3,10 @@ using UniversityHelper.Core.Responses;
 using UniversityHelper.UserService.Models.Dto;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Password.Interfaces
+namespace UniversityHelper.UserService.Business.Commands.Password.Interfaces;
+
+[AutoInject]
+public interface IReconstructPasswordCommand
 {
-  [AutoInject]
-  public interface IReconstructPasswordCommand
-  {
-    Task<OperationResultResponse<bool>> ExecuteAsync(ReconstructPasswordRequest request);
-  }
+  Task<OperationResultResponse<bool>> ExecuteAsync(ReconstructPasswordRequest request);
 }

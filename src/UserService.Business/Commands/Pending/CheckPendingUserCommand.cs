@@ -4,21 +4,20 @@ using UniversityHelper.UserService.Data.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Credentials
+namespace UniversityHelper.UserService.Business.Commands.Credentials;
+
+public class CheckPendingUserCommand : ICheckPendingUserCommand
 {
-  public class CheckPendingUserCommand : ICheckPendingUserCommand
+  private readonly IPendingUserRepository _repository;
+
+  public CheckPendingUserCommand(IPendingUserRepository repository)
   {
-    private readonly IPendingUserRepository _repository;
+    _repository = repository;
+  }
 
-    public CheckPendingUserCommand(IPendingUserRepository repository)
-    {
-      _repository = repository;
-    }
-
-    public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid userId)
-    {
-      return new OperationResultResponse<bool>(
-        body: await _repository.DoesExistAsync(userId));
-    }
+  public async Task<OperationResultResponse<bool>> ExecuteAsync(Guid userId)
+  {
+    return new OperationResultResponse<bool>(
+      body: await _repository.DoesExistAsync(userId));
   }
 }

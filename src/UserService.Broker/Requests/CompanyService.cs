@@ -13,51 +13,50 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests;
+
+public class CompanyService : ICompanyService
 {
-  public class CompanyService : ICompanyService
+  private readonly IRequestClient<IGetCompaniesRequest> _rcGetCompanies;
+  private readonly ILogger<CompanyService> _logger;
+  private readonly IGlobalCacheRepository _globalCache;
+
+  public CompanyService(
+    IRequestClient<IGetCompaniesRequest> rcGetCompanies,
+    ILogger<CompanyService> logger,
+    IGlobalCacheRepository globalCache)
   {
-    private readonly IRequestClient<IGetCompaniesRequest> _rcGetCompanies;
-    private readonly ILogger<CompanyService> _logger;
-    private readonly IGlobalCacheRepository _globalCache;
+    _rcGetCompanies = rcGetCompanies;
+    _logger = logger;
+    _globalCache = globalCache;
+  }
 
-    public CompanyService(
-      IRequestClient<IGetCompaniesRequest> rcGetCompanies,
-      ILogger<CompanyService> logger,
-      IGlobalCacheRepository globalCache)
+  public async Task<List<CompanyData>> GetCompaniesAsync(
+    Guid userId,
+    List<string> errors,
+    CancellationToken cancellationToken = default)
+  {
+    object request = IGetCompaniesRequest.CreateObj(usersIds: new() { userId });
+
+    List<CompanyData> companies = await _globalCache
+      .GetAsync<List<CompanyData>>(Cache.Communities, userId.GetRedisCacheKey(nameof(IGetCompaniesRequest), request.GetBasicProperties()));
+
+    if (companies is not null)
     {
-      _rcGetCompanies = rcGetCompanies;
-      _logger = logger;
-      _globalCache = globalCache;
+      _logger.LogInformation(
+        "Companies for user id '{UserId}' were taken from cache.",
+        userId);
+    }
+    else
+    {
+      companies = (await RequestHandler.ProcessRequest<IGetCompaniesRequest, IGetCompaniesResponse>(
+          _rcGetCompanies,
+          request,
+          errors,
+          _logger))
+        ?.Companies;
     }
 
-    public async Task<List<CompanyData>> GetCompaniesAsync(
-      Guid userId,
-      List<string> errors,
-      CancellationToken cancellationToken = default)
-    {
-      object request = IGetCompaniesRequest.CreateObj(usersIds: new() { userId });
-
-      List<CompanyData> companies = await _globalCache
-        .GetAsync<List<CompanyData>>(Cache.Communities, userId.GetRedisCacheKey(nameof(IGetCompaniesRequest), request.GetBasicProperties()));
-
-      if (companies is not null)
-      {
-        _logger.LogInformation(
-          "Companies for user id '{UserId}' were taken from cache.",
-          userId);
-      }
-      else
-      {
-        companies = (await RequestHandler.ProcessRequest<IGetCompaniesRequest, IGetCompaniesResponse>(
-            _rcGetCompanies,
-            request,
-            errors,
-            _logger))
-          ?.Companies;
-      }
-
-      return companies;
-    }
+    return companies;
   }
 }

@@ -1,13 +1,12 @@
 ﻿using UniversityHelper.UserService.Models.Dto.Enums;
 using System;
 
-namespace UniversityHelper.UserService.Models.Dto.Models
+namespace UniversityHelper.UserService.Models.Dto.Models;
+
+public record CommunicationInfo
 {
-  public record CommunicationInfo
-  {
-    public Guid Id { get; set; }
-    public CommunicationType Type { get; set; }
-    public string Value { get; set; }
-    public bool IsConfirmed { get; set; }
-  }
+  public Guid Id { get; set; }
+  public CommunicationType Type { get; set; }
+  public string Value { get; set; }
+  public bool IsConfirmed { get; set; }
 }

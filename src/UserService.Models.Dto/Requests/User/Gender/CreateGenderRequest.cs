@@ -1,7 +1,6 @@
-﻿namespace UniversityHelper.UserService.Models.Dto.Requests.User
+﻿namespace UniversityHelper.UserService.Models.Dto.Requests.User;
+
+public class CreateGenderRequest
 {
-  public class CreateGenderRequest
-  {
-    public string Name { get; set; }
-  }
+  public string Name { get; set; }
 }

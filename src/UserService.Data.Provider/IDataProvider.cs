@@ -4,17 +4,16 @@ using UniversityHelper.Core.Enums;
 using UniversityHelper.UserService.Models.Db;
 using Microsoft.EntityFrameworkCore;
 
-namespace UniversityHelper.CompanyService.Data.Provider
+namespace UniversityHelper.CompanyService.Data.Provider;
+
+[AutoInject(InjectType.Scoped)]
+public interface IDataProvider : IBaseDataProvider
 {
-  [AutoInject(InjectType.Scoped)]
-  public interface IDataProvider : IBaseDataProvider
-  {
-    DbSet<DbUser> Users { get; set; }
-    DbSet<DbUserAddition> UsersAdditions { get; set; }
-    DbSet<DbUserCredentials> UsersCredentials { get; set; }
-    DbSet<DbUserCommunication> UsersCommunications { get; set; }
-    DbSet<DbPendingUser> PendingUsers { get; set; }
-    DbSet<DbUserAvatar> UsersAvatars { get; set; }
-    DbSet<DbGender> Genders { get; set; }
-  }
+  DbSet<DbUser> Users { get; set; }
+  DbSet<DbUserAddition> UsersAdditions { get; set; }
+  DbSet<DbUserCredentials> UsersCredentials { get; set; }
+  DbSet<DbUserCommunication> UsersCommunications { get; set; }
+  DbSet<DbPendingUser> PendingUsers { get; set; }
+  DbSet<DbUserAvatar> UsersAvatars { get; set; }
+  DbSet<DbGender> Genders { get; set; }
 }

@@ -5,11 +5,10 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Avatar.Interfaces
+namespace UniversityHelper.UserService.Business.Commands.Avatar.Interfaces;
+
+[AutoInject]
+public interface IGetAvatarsCommand
 {
-  [AutoInject]
-  public interface IGetAvatarsCommand
-  {
-    Task<OperationResultResponse<UserImagesResponse>> ExecuteAsync(Guid userId, CancellationToken cancellationToken = default);
-  }
+  Task<OperationResultResponse<UserImagesResponse>> ExecuteAsync(Guid userId, CancellationToken cancellationToken = default);
 }

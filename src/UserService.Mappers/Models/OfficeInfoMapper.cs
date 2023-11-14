@@ -2,23 +2,22 @@
 using UniversityHelper.UserService.Mappers.Models.Interfaces;
 using UniversityHelper.UserService.Models.Dto.Models;
 
-namespace UniversityHelper.UserService.Mappers.Models
+namespace UniversityHelper.UserService.Mappers.Models;
+
+public class OfficeInfoMapper : IOfficeInfoMapper
 {
-  public class OfficeInfoMapper : IOfficeInfoMapper
+  public OfficeInfo Map(OfficeData office)
   {
-    public OfficeInfo Map(OfficeData office)
-    {
-      return office is null
-        ? default
-        : new OfficeInfo
-        {
-          Id = office.Id,
-          Name = office.Name,
-          Address = office.Address,
-          City = office.City,
-          Longitude = office.Longitude,
-          Latitude = office.Latitude
-        };
-    }
+    return office is null
+      ? default
+      : new OfficeInfo
+      {
+        Id = office.Id,
+        Name = office.Name,
+        Address = office.Address,
+        City = office.City,
+        Longitude = office.Longitude,
+        Latitude = office.Latitude
+      };
   }
 }

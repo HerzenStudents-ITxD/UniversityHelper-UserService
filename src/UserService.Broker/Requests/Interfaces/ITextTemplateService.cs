@@ -5,15 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests.Interfaces
+namespace UniversityHelper.UserService.Broker.Requests.Interfaces;
+
+[AutoInject]
+public interface ITextTemplateService
 {
-  [AutoInject]
-  public interface ITextTemplateService
-  {
-    Task<IGetTextTemplateResponse> GetAsync(
-      TemplateType templateType,
-      string locale,
-      List<string> errors,
-      Guid? endpointId = null);
-  }
+  Task<IGetTextTemplateResponse> GetAsync(
+    TemplateType templateType,
+    string locale,
+    List<string> errors,
+    Guid? endpointId = null);
 }

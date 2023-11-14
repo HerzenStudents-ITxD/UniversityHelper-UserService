@@ -14,39 +14,38 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Gender
+namespace UniversityHelper.UserService.Business.Commands.Gender;
+
+public class FindGenderCommand : IFindGenderCommand
 {
-  public class FindGenderCommand : IFindGenderCommand
+  private readonly IGenderRepository _genderRepository;
+  private readonly IGenderInfoMapper _mapper;
+  private readonly IResponseCreator _responseCreator;
+  public FindGenderCommand(
+    IGenderRepository genderRepository,
+    IGenderInfoMapper mapper,
+    IResponseCreator responseCreator)
   {
-    private readonly IGenderRepository _genderRepository;
-    private readonly IGenderInfoMapper _mapper;
-    private readonly IResponseCreator _responseCreator;
-    public FindGenderCommand(
-      IGenderRepository genderRepository,
-      IGenderInfoMapper mapper,
-      IResponseCreator responseCreator)
-    {
-      _responseCreator = responseCreator;
-      _genderRepository = genderRepository;
-      _mapper = mapper;
-    }
-    public async Task<FindResultResponse<GenderInfo>> ExecuteAsync(FindGendersFilter filter)
-    {
-      //TODO
-      //if (!_baseFindValidator.ValidateCustom(filter, out List<string> errors))
-      //{
-      //  return _responseCreator.CreateFailureFindResponse<GenderInfo>(HttpStatusCode.BadRequest, errors);
-      //}
+    _responseCreator = responseCreator;
+    _genderRepository = genderRepository;
+    _mapper = mapper;
+  }
+  public async Task<FindResultResponse<GenderInfo>> ExecuteAsync(FindGendersFilter filter)
+  {
+    //TODO
+    //if (!_baseFindValidator.ValidateCustom(filter, out List<string> errors))
+    //{
+    //  return _responseCreator.CreateFailureFindResponse<GenderInfo>(HttpStatusCode.BadRequest, errors);
+    //}
 
-      FindResultResponse<GenderInfo> response = new();
+    FindResultResponse<GenderInfo> response = new();
 
-      (List<DbGender> dbGenders, int totalCount) = await _genderRepository.FindGendersAsync(filter);
+    (List<DbGender> dbGenders, int totalCount) = await _genderRepository.FindGendersAsync(filter);
 
-      response.TotalCount = totalCount;
+    response.TotalCount = totalCount;
 
-      response.Body = _mapper.Map(dbGenders);
+    response.Body = _mapper.Map(dbGenders);
 
-      return response;
-    }
+    return response;
   }
 }

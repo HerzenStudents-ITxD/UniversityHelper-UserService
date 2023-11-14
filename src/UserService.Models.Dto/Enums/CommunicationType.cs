@@ -1,15 +1,14 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace UniversityHelper.UserService.Models.Dto.Enums
+namespace UniversityHelper.UserService.Models.Dto.Enums;
+
+[JsonConverter(typeof(StringEnumConverter))]
+public enum CommunicationType
 {
-  [JsonConverter(typeof(StringEnumConverter))]
-  public enum CommunicationType
-  {
-    Email,
-    Telegram,
-    Phone,
-    VK,
-    BaseEmail
-  }
+  Email,
+  Telegram,
+  Phone,
+  VK,
+  BaseEmail
 }

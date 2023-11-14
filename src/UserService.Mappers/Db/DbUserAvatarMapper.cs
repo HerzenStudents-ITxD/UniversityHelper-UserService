@@ -2,22 +2,21 @@
 using UniversityHelper.UserService.Models.Db;
 using System;
 
-namespace UniversityHelper.UserService.Mappers.Db
+namespace UniversityHelper.UserService.Mappers.Db;
+
+public class DbUserAvatarMapper : IDbUserAvatarMapper
 {
-  public class DbUserAvatarMapper : IDbUserAvatarMapper
+  public DbUserAvatar Map(
+    Guid avatarId,
+    Guid userId,
+    bool isCurrentAvatar = false)
   {
-    public DbUserAvatar Map(
-      Guid avatarId,
-      Guid userId,
-      bool isCurrentAvatar = false)
+    return new DbUserAvatar
     {
-      return new DbUserAvatar
-      {
-        Id = Guid.NewGuid(),
-        UserId = userId,
-        AvatarId = avatarId,
-        IsCurrentAvatar = isCurrentAvatar
-      };
-    }
+      Id = Guid.NewGuid(),
+      UserId = userId,
+      AvatarId = avatarId,
+      IsCurrentAvatar = isCurrentAvatar
+    };
   }
 }

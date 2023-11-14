@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace UniversityHelper.UserService.Models.Dto.Models
-{
-    public record PositionInfo
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
-}
+namespace UniversityHelper.UserService.Models.Dto.Models;
+
+  public record PositionInfo
+  {
+      public Guid Id { get; set; }
+      public string Name { get; set; }
+  }

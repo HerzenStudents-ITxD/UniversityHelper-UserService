@@ -4,11 +4,10 @@ using UniversityHelper.UserService.Models.Dto.Requests.Credentials;
 using UniversityHelper.UserService.Models.Dto.Responses.Credentials;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Credentials.Interfaces
+namespace UniversityHelper.UserService.Business.Commands.Credentials.Interfaces;
+
+[AutoInject]
+public interface ICreateCredentialsCommand
 {
-  [AutoInject]
-  public interface ICreateCredentialsCommand
-  {
-    Task<OperationResultResponse<CredentialsResponse>> ExecuteAsync(CreateCredentialsRequest request);
-  }
+  Task<OperationResultResponse<CredentialsResponse>> ExecuteAsync(CreateCredentialsRequest request);
 }

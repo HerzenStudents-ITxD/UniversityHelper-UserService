@@ -11,34 +11,33 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests;
+
+public class RightService : IRightService
 {
-  public class RightService : IRightService
+  private readonly IRequestClient<IGetUserRolesRequest> _rcGetUserRoles;
+  private readonly ILogger<RightService> _logger;
+
+  public RightService(
+    IRequestClient<IGetUserRolesRequest> rcGetUserRoles,
+    ILogger<RightService> logger)
   {
-    private readonly IRequestClient<IGetUserRolesRequest> _rcGetUserRoles;
-    private readonly ILogger<RightService> _logger;
+    _rcGetUserRoles = rcGetUserRoles;
+    _logger = logger;
+  }
 
-    public RightService(
-      IRequestClient<IGetUserRolesRequest> rcGetUserRoles,
-      ILogger<RightService> logger)
-    {
-      _rcGetUserRoles = rcGetUserRoles;
-      _logger = logger;
-    }
-
-    public async Task<List<RoleData>> GetRolesAsync(
-      Guid userId,
-      string locale,
-      List<string> errors,
-      CancellationToken cancellationToken = default)
-    {
-      //TO DO add cache
-      return (await RequestHandler.ProcessRequest<IGetUserRolesRequest, IGetUserRolesResponse>(
-          _rcGetUserRoles,
-          IGetUserRolesRequest.CreateObj(userIds: new() { userId }, locale: locale),
-          errors,
-          _logger))
-        ?.Roles;
-    }
+  public async Task<List<RoleData>> GetRolesAsync(
+    Guid userId,
+    string locale,
+    List<string> errors,
+    CancellationToken cancellationToken = default)
+  {
+    //TO DO add cache
+    return (await RequestHandler.ProcessRequest<IGetUserRolesRequest, IGetUserRolesResponse>(
+        _rcGetUserRoles,
+        IGetUserRolesRequest.CreateObj(userIds: new() { userId }, locale: locale),
+        errors,
+        _logger))
+      ?.Roles;
   }
 }

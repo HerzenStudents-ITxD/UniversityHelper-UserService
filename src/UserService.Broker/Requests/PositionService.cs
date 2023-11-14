@@ -13,51 +13,50 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Requests
+namespace UniversityHelper.UserService.Broker.Requests;
+
+public class PositionService : IPositionService
 {
-  public class PositionService : IPositionService
+  private readonly IRequestClient<IGetPositionsRequest> _rcGetPositions;
+  private readonly ILogger<PositionService> _logger;
+  private readonly IGlobalCacheRepository _globalCache;
+
+  public PositionService(
+    IRequestClient<IGetPositionsRequest> rcGetPositions,
+    ILogger<PositionService> logger,
+    IGlobalCacheRepository globalCache)
   {
-    private readonly IRequestClient<IGetPositionsRequest> _rcGetPositions;
-    private readonly ILogger<PositionService> _logger;
-    private readonly IGlobalCacheRepository _globalCache;
+    _rcGetPositions = rcGetPositions;
+    _logger = logger;
+    _globalCache = globalCache;
+  }
 
-    public PositionService(
-      IRequestClient<IGetPositionsRequest> rcGetPositions,
-      ILogger<PositionService> logger,
-      IGlobalCacheRepository globalCache)
+  public async Task<List<PositionData>> GetPositionsAsync(
+    Guid userId,
+    List<string> errors,
+    CancellationToken cancellationToken = default)
+  {
+    object request = IGetPositionsRequest.CreateObj(usersIds: new() { userId });
+
+    List<PositionData> positions = await _globalCache
+      .GetAsync<List<PositionData>>(Cache.Events, userId.GetRedisCacheKey(nameof(IGetPositionsRequest), request.GetBasicProperties()));
+
+    if (positions is not null)
     {
-      _rcGetPositions = rcGetPositions;
-      _logger = logger;
-      _globalCache = globalCache;
+      _logger.LogInformation(
+        "Positions for user id '{UserId}' were taken from cache.",
+        userId);
+    }
+    else
+    {
+      positions = (await RequestHandler.ProcessRequest<IGetPositionsRequest, IGetPositionsResponse>(
+          _rcGetPositions,
+          request,
+          errors,
+          _logger))
+        ?.Positions;
     }
 
-    public async Task<List<PositionData>> GetPositionsAsync(
-      Guid userId,
-      List<string> errors,
-      CancellationToken cancellationToken = default)
-    {
-      object request = IGetPositionsRequest.CreateObj(usersIds: new() { userId });
-
-      List<PositionData> positions = await _globalCache
-        .GetAsync<List<PositionData>>(Cache.Events, userId.GetRedisCacheKey(nameof(IGetPositionsRequest), request.GetBasicProperties()));
-
-      if (positions is not null)
-      {
-        _logger.LogInformation(
-          "Positions for user id '{UserId}' were taken from cache.",
-          userId);
-      }
-      else
-      {
-        positions = (await RequestHandler.ProcessRequest<IGetPositionsRequest, IGetPositionsResponse>(
-            _rcGetPositions,
-            request,
-            errors,
-            _logger))
-          ?.Positions;
-      }
-
-      return positions;
-    }
+    return positions;
   }
 }

@@ -3,11 +3,10 @@ using UniversityHelper.Core.Responses;
 using System;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Pending.Interfaces
+namespace UniversityHelper.UserService.Business.Commands.Pending.Interfaces;
+
+[AutoInject]
+public interface IRemovePendingUserCommand
 {
-  [AutoInject]
-  public interface IRemovePendingUserCommand
-  {
-    Task<OperationResultResponse<bool>> ExecuteAsync(Guid userId);
-  }
+  Task<OperationResultResponse<bool>> ExecuteAsync(Guid userId);
 }

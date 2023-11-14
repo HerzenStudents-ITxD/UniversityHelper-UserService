@@ -11,34 +11,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Broker.Consumers
+namespace UniversityHelper.UserService.Broker.Consumers;
+
+public class SearchUsersConsumer : IConsumer<ISearchUsersRequest>
 {
-  public class SearchUsersConsumer : IConsumer<ISearchUsersRequest>
+  private IUserRepository _userRepository;
+
+  private async Task<object> SearchUsersAsync(string searchText)
   {
-    private IUserRepository _userRepository;
+    List<DbUser> users = await _userRepository.SearchAsync(searchText).ToListAsync();
 
-    private async Task<object> SearchUsersAsync(string searchText)
-    {
-      List<DbUser> users = await _userRepository.SearchAsync(searchText).ToListAsync();
+    return new();
+    //return ISearchResponse.CreateObj(
+    //  users.Select(
+    //    u => new UserSearchData(u.Id, u.FirstName, u.LastName, u.MiddleName)).ToList());
+  }
 
-      return new();
-      //return ISearchResponse.CreateObj(
-      //  users.Select(
-      //    u => new UserSearchData(u.Id, u.FirstName, u.LastName, u.MiddleName)).ToList());
-    }
+  public SearchUsersConsumer(
+    IUserRepository userRepository)
+  {
+    _userRepository = userRepository;
+  }
 
-    public SearchUsersConsumer(
-      IUserRepository userRepository)
-    {
-      _userRepository = userRepository;
-    }
+  public async Task Consume(ConsumeContext<ISearchUsersRequest> context)
+  {
+    //TODO
+    //var response = OperationResultWrapper.CreateResponse(SearchUsersAsync, context.Message.Value);
 
-    public async Task Consume(ConsumeContext<ISearchUsersRequest> context)
-    {
-      //TODO
-      //var response = OperationResultWrapper.CreateResponse(SearchUsersAsync, context.Message.Value);
-
-      //await context.RespondAsync<IOperationResult<ISearchResponse>>(response);
-    }
+    //await context.RespondAsync<IOperationResult<ISearchResponse>>(response);
   }
 }

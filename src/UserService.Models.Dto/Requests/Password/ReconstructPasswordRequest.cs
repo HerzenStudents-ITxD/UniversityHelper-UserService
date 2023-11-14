@@ -1,17 +1,16 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace UniversityHelper.UserService.Models.Dto
+namespace UniversityHelper.UserService.Models.Dto;
+
+public record ReconstructPasswordRequest
+//password and secred must be receiven from body! receiving from query is not secure
 {
-  public record ReconstructPasswordRequest
-  //password and secred must be receiven from body! receiving from query is not secure
-  {
-    public Guid UserId { get; set; }
+  public Guid UserId { get; set; }
 
-    [Required]
-    public string Secret { get; set; }
+  [Required]
+  public string Secret { get; set; }
 
-    [Required]
-    public string NewPassword { get; set; }
-  }
+  [Required]
+  public string NewPassword { get; set; }
 }

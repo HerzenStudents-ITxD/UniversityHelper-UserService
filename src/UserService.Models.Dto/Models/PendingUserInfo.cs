@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace UniversityHelper.UserService.Models.Dto.Models
+namespace UniversityHelper.UserService.Models.Dto.Models;
+
+public record PendingUserInfo
 {
-  public record PendingUserInfo
-  {
-    public Guid InvitationCommunicationId { get; set; }
-  }
+  public Guid InvitationCommunicationId { get; set; }
 }

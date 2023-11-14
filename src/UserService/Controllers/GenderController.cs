@@ -9,26 +9,25 @@ using System;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace UniversityHelper.UserService.Controllers
-{
-  [ApiController]
-  [Route("[controller]")]
-  public class GenderController : ControllerBase
-  {
-    [HttpPost("create")]
-    public async Task<OperationResultResponse<Guid?>> CreateAsync(
-      [FromServices] ICreateGenderCommand command,
-      [FromBody] CreateGenderRequest request)
-    {
-      return await command.ExecuteAsync(request);
-    }
+namespace UniversityHelper.UserService.Controllers;
 
-    [HttpGet("find")]
-    public async Task<FindResultResponse<GenderInfo>> FindAsync(
-      [FromServices] IFindGenderCommand command,
-      [FromQuery] FindGendersFilter request)
-    {
-      return await command.ExecuteAsync(request);
-    }
+[ApiController]
+[Route("[controller]")]
+public class GenderController : ControllerBase
+{
+  [HttpPost("create")]
+  public async Task<OperationResultResponse<Guid?>> CreateAsync(
+    [FromServices] ICreateGenderCommand command,
+    [FromBody] CreateGenderRequest request)
+  {
+    return await command.ExecuteAsync(request);
+  }
+
+  [HttpGet("find")]
+  public async Task<FindResultResponse<GenderInfo>> FindAsync(
+    [FromServices] IFindGenderCommand command,
+    [FromQuery] FindGendersFilter request)
+  {
+    return await command.ExecuteAsync(request);
   }
 }

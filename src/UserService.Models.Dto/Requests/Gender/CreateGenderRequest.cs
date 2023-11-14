@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace UniversityHelper.UserService.Models.Dto.Requests.Gender
+namespace UniversityHelper.UserService.Models.Dto.Requests.Gender;
+
+public class CreateGenderRequest
 {
-  public class CreateGenderRequest
-  {
-    [Required]
-    public string Name { get; set; }
-  }
+  [Required]
+  public string Name { get; set; }
 }

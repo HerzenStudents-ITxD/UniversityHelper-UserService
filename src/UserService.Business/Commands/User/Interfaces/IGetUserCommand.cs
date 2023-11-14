@@ -5,18 +5,17 @@ using UniversityHelper.UserService.Models.Dto.Responses.User;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Interfaces
+namespace UniversityHelper.UserService.Business.Interfaces;
+
+/// <summary>
+/// Represents interface for a command in command pattern.
+/// Provides method for getting user information.
+/// </summary>
+[AutoInject]
+public interface IGetUserCommand
 {
   /// <summary>
-  /// Represents interface for a command in command pattern.
-  /// Provides method for getting user information.
+  /// Returns the user information.
   /// </summary>
-  [AutoInject]
-  public interface IGetUserCommand
-  {
-    /// <summary>
-    /// Returns the user information.
-    /// </summary>
-    Task<OperationResultResponse<UserResponse>> ExecuteAsync(GetUserFilter filter, CancellationToken cancellationToken = default);
-  }
+  Task<OperationResultResponse<UserResponse>> ExecuteAsync(GetUserFilter filter, CancellationToken cancellationToken = default);
 }

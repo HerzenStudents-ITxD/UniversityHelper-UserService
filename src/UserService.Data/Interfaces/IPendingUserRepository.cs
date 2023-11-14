@@ -3,19 +3,18 @@ using UniversityHelper.UserService.Models.Db;
 using System;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Data.Interfaces
+namespace UniversityHelper.UserService.Data.Interfaces;
+
+[AutoInject]
+public interface IPendingUserRepository
 {
-  [AutoInject]
-  public interface IPendingUserRepository
-  {
-    Task CreateAsync(DbPendingUser dbPendingUser);
+  Task CreateAsync(DbPendingUser dbPendingUser);
 
-    Task<DbPendingUser> GetAsync(Guid userId, bool includeUser = false);
+  Task<DbPendingUser> GetAsync(Guid userId, bool includeUser = false);
 
-    Task UpdateAsync(DbPendingUser dbPendingUser);
+  Task UpdateAsync(DbPendingUser dbPendingUser);
 
-    Task<DbPendingUser> RemoveAsync(Guid userId);
+  Task<DbPendingUser> RemoveAsync(Guid userId);
 
-    Task<bool> DoesExistAsync(Guid userId);
-  }
+  Task<bool> DoesExistAsync(Guid userId);
 }

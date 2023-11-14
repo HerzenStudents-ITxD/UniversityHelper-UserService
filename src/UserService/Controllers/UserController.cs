@@ -15,60 +15,59 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Controllers
+namespace UniversityHelper.UserService.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class UserController : ControllerBase
 {
-  [ApiController]
-  [Route("[controller]")]
-  public class UserController : ControllerBase
+  [HttpPost("create")]
+  public async Task<OperationResultResponse<Guid>> CreateAsync(
+    [FromServices] ICreateUserCommand command,
+    [FromBody] CreateUserRequest request)
   {
-    [HttpPost("create")]
-    public async Task<OperationResultResponse<Guid>> CreateAsync(
-      [FromServices] ICreateUserCommand command,
-      [FromBody] CreateUserRequest request)
-    {
-      return await command.ExecuteAsync(request);
-    }
+    return await command.ExecuteAsync(request);
+  }
 
-    [HttpPatch("edit")]
-    public async Task<OperationResultResponse<bool>> EditAsync(
-      [FromServices] IEditUserCommand command,
-      [FromQuery] Guid userId,
-      [FromBody] JsonPatchDocument<EditUserRequest> request)
-    {
-      return await command.ExecuteAsync(userId, request);
-    }
+  [HttpPatch("edit")]
+  public async Task<OperationResultResponse<bool>> EditAsync(
+    [FromServices] IEditUserCommand command,
+    [FromQuery] Guid userId,
+    [FromBody] JsonPatchDocument<EditUserRequest> request)
+  {
+    return await command.ExecuteAsync(userId, request);
+  }
 
-    [HttpGet("get")]
-    public async Task<OperationResultResponse<UserResponse>> GetAsync(
-      [FromServices] IGetUserCommand command,
-      [FromQuery] GetUserFilter filter,
-      CancellationToken cansellationToken)
-    {
-      return await command.ExecuteAsync(filter, cansellationToken);
-    }
+  [HttpGet("get")]
+  public async Task<OperationResultResponse<UserResponse>> GetAsync(
+    [FromServices] IGetUserCommand command,
+    [FromQuery] GetUserFilter filter,
+    CancellationToken cansellationToken)
+  {
+    return await command.ExecuteAsync(filter, cansellationToken);
+  }
 
-    [HttpGet("getinfo")]
-    public async Task<OperationResultResponse<UserData>> GetInfoAsync(
-      [FromServices] IGetUserInfoCommand command)
-    {
-      return await command.ExecuteAsync();
-    }
+  [HttpGet("getinfo")]
+  public async Task<OperationResultResponse<UserData>> GetInfoAsync(
+    [FromServices] IGetUserInfoCommand command)
+  {
+    return await command.ExecuteAsync();
+  }
 
-    [HttpGet("find")]
-    public async Task<FindResultResponse<UserInfo>> FindAsync(
-      [FromServices] IFindUserCommand command,
-      [FromQuery] FindUsersFilter filter,
-      CancellationToken cansellationToken)
-    {
-      return await command.ExecuteAsync(filter, cansellationToken);
-    }
+  [HttpGet("find")]
+  public async Task<FindResultResponse<UserInfo>> FindAsync(
+    [FromServices] IFindUserCommand command,
+    [FromQuery] FindUsersFilter filter,
+    CancellationToken cansellationToken)
+  {
+    return await command.ExecuteAsync(filter, cansellationToken);
+  }
 
-    [HttpPut("editactive")]
-    public async Task<OperationResultResponse<bool>> EditStatusAsync(
-      [FromServices] IEditUserActiveCommand command,
-      [FromBody] EditUserActiveRequest request)
-    {
-      return await command.ExecuteAsync(request);
-    }
+  [HttpPut("editactive")]
+  public async Task<OperationResultResponse<bool>> EditStatusAsync(
+    [FromServices] IEditUserActiveCommand command,
+    [FromBody] EditUserActiveRequest request)
+  {
+    return await command.ExecuteAsync(request);
   }
 }

@@ -10,36 +10,35 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Avatar
+namespace UniversityHelper.UserService.Business.Commands.Avatar;
+
+public class GetAvatarsCommand : IGetAvatarsCommand
 {
-  public class GetAvatarsCommand : IGetAvatarsCommand
+  private readonly IUserAvatarRepository _avatarRepository;
+  private readonly IImageService _imageService;
+  private readonly IUserImagesResponseMapper _mapper;
+
+  public GetAvatarsCommand(
+    IUserAvatarRepository avatarRepository,
+    IImageService imageService,
+    IUserImagesResponseMapper mapper)
   {
-    private readonly IUserAvatarRepository _avatarRepository;
-    private readonly IImageService _imageService;
-    private readonly IUserImagesResponseMapper _mapper;
+    _avatarRepository = avatarRepository;
+    _imageService = imageService;
+    _mapper = mapper;
+  }
 
-    public GetAvatarsCommand(
-      IUserAvatarRepository avatarRepository,
-      IImageService imageService,
-      IUserImagesResponseMapper mapper)
+  public async Task<OperationResultResponse<UserImagesResponse>> ExecuteAsync(Guid userId, CancellationToken cancellationToken = default)
+  {
+    List<Guid> dbImagesIds = await _avatarRepository.GetAvatarsByUserId(userId, cancellationToken);
+
+    OperationResultResponse<UserImagesResponse> response = new();
+
+    if (dbImagesIds is null || !dbImagesIds.Any())
     {
-      _avatarRepository = avatarRepository;
-      _imageService = imageService;
-      _mapper = mapper;
+      response.Body = _mapper.Map(userId, await _imageService.GetImagesAsync(dbImagesIds, response.Errors, cancellationToken));
     }
 
-    public async Task<OperationResultResponse<UserImagesResponse>> ExecuteAsync(Guid userId, CancellationToken cancellationToken = default)
-    {
-      List<Guid> dbImagesIds = await _avatarRepository.GetAvatarsByUserId(userId, cancellationToken);
-
-      OperationResultResponse<UserImagesResponse> response = new();
-
-      if (dbImagesIds is null || !dbImagesIds.Any())
-      {
-        response.Body = _mapper.Map(userId, await _imageService.GetImagesAsync(dbImagesIds, response.Errors, cancellationToken));
-      }
-
-      return response;
-    }
+    return response;
   }
 }

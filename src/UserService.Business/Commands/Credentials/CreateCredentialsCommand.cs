@@ -16,82 +16,81 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Business.Commands.Credentials
+namespace UniversityHelper.UserService.Business.Commands.Credentials;
+
+public class CreateCredentialsCommand : ICreateCredentialsCommand
 {
-  public class CreateCredentialsCommand : ICreateCredentialsCommand
+  private readonly IDbUserCredentialsMapper _mapper;
+  private readonly IUserRepository _userRepository;
+  private readonly IPendingUserRepository _pendingUserRepository;
+  private readonly IUserCredentialsRepository _userCredentialsRepository;
+  private readonly IUserCommunicationRepository _communicationRepository;
+  private readonly IAuthService _authService;
+  private readonly ICreateCredentialsRequestValidator _validator;
+  private readonly IResponseCreator _responseCreator;
+  private readonly IGlobalCacheRepository _globalCache;
+
+  public CreateCredentialsCommand(
+    IDbUserCredentialsMapper mapper,
+    IUserRepository userRepository,
+    IPendingUserRepository pendingUserRepository,
+    IUserCredentialsRepository userCredentialsRepository,
+    IUserCommunicationRepository communicationRepository,
+    IAuthService authService,
+    ICreateCredentialsRequestValidator validator,
+    IResponseCreator responseCreator,
+    IGlobalCacheRepository globalCache)
   {
-    private readonly IDbUserCredentialsMapper _mapper;
-    private readonly IUserRepository _userRepository;
-    private readonly IPendingUserRepository _pendingUserRepository;
-    private readonly IUserCredentialsRepository _userCredentialsRepository;
-    private readonly IUserCommunicationRepository _communicationRepository;
-    private readonly IAuthService _authService;
-    private readonly ICreateCredentialsRequestValidator _validator;
-    private readonly IResponseCreator _responseCreator;
-    private readonly IGlobalCacheRepository _globalCache;
+    _mapper = mapper;
+    _userRepository = userRepository;
+    _pendingUserRepository = pendingUserRepository;
+    _userCredentialsRepository = userCredentialsRepository;
+    _communicationRepository = communicationRepository;
+    _authService = authService;
+    _validator = validator;
+    _responseCreator = responseCreator;
+    _globalCache = globalCache;
+  }
 
-    public CreateCredentialsCommand(
-      IDbUserCredentialsMapper mapper,
-      IUserRepository userRepository,
-      IPendingUserRepository pendingUserRepository,
-      IUserCredentialsRepository userCredentialsRepository,
-      IUserCommunicationRepository communicationRepository,
-      IAuthService authService,
-      ICreateCredentialsRequestValidator validator,
-      IResponseCreator responseCreator,
-      IGlobalCacheRepository globalCache)
+  public async Task<OperationResultResponse<CredentialsResponse>> ExecuteAsync(CreateCredentialsRequest request)
+  {
+    ValidationResult validationResult = await _validator.ValidateAsync(request);
+
+    if (!validationResult.IsValid)
     {
-      _mapper = mapper;
-      _userRepository = userRepository;
-      _pendingUserRepository = pendingUserRepository;
-      _userCredentialsRepository = userCredentialsRepository;
-      _communicationRepository = communicationRepository;
-      _authService = authService;
-      _validator = validator;
-      _responseCreator = responseCreator;
-      _globalCache = globalCache;
+      return _responseCreator.CreateFailureResponse<CredentialsResponse>(
+        HttpStatusCode.BadRequest,
+        validationResult.Errors.Select(vf => vf.ErrorMessage).ToList());
     }
 
-    public async Task<OperationResultResponse<CredentialsResponse>> ExecuteAsync(CreateCredentialsRequest request)
+    List<string> errors = new();
+
+    IGetTokenResponse tokenResponse = await _authService.GetTokenAsync(request.UserId, errors);
+
+    if (tokenResponse is null)
     {
-      ValidationResult validationResult = await _validator.ValidateAsync(request);
-
-      if (!validationResult.IsValid)
-      {
-        return _responseCreator.CreateFailureResponse<CredentialsResponse>(
-          HttpStatusCode.BadRequest,
-          validationResult.Errors.Select(vf => vf.ErrorMessage).ToList());
-      }
-
-      List<string> errors = new();
-
-      IGetTokenResponse tokenResponse = await _authService.GetTokenAsync(request.UserId, errors);
-
-      if (tokenResponse is null)
-      {
-        return _responseCreator.CreateFailureResponse<CredentialsResponse>(
-          HttpStatusCode.ServiceUnavailable,
-          errors);
-      }
-
-      await _userCredentialsRepository.CreateAsync(_mapper.Map(request));
-      DbPendingUser dbPendingUser = await _pendingUserRepository.RemoveAsync(request.UserId);
-      await _userRepository.SwitchActiveStatusAsync(request.UserId, true);
-      await _communicationRepository.SetBaseTypeAsync(dbPendingUser.CommunicationId, request.UserId);
-
-      await _globalCache.Clear();
-
-      return new()
-      {
-        Body = new CredentialsResponse
-        {
-          UserId = request.UserId,
-          AccessToken = tokenResponse.AccessToken,
-          RefreshToken = tokenResponse.RefreshToken,
-          AccessTokenExpiresIn = tokenResponse.AccessTokenExpiresIn,
-          RefreshTokenExpiresIn = tokenResponse.RefreshTokenExpiresIn
-        }
-      };
+      return _responseCreator.CreateFailureResponse<CredentialsResponse>(
+        HttpStatusCode.ServiceUnavailable,
+        errors);
     }
+
+    await _userCredentialsRepository.CreateAsync(_mapper.Map(request));
+    DbPendingUser dbPendingUser = await _pendingUserRepository.RemoveAsync(request.UserId);
+    await _userRepository.SwitchActiveStatusAsync(request.UserId, true);
+    await _communicationRepository.SetBaseTypeAsync(dbPendingUser.CommunicationId, request.UserId);
+
+    await _globalCache.Clear();
+
+    return new()
+    {
+      Body = new CredentialsResponse
+      {
+        UserId = request.UserId,
+        AccessToken = tokenResponse.AccessToken,
+        RefreshToken = tokenResponse.RefreshToken,
+        AccessTokenExpiresIn = tokenResponse.AccessTokenExpiresIn,
+        RefreshTokenExpiresIn = tokenResponse.RefreshTokenExpiresIn
+      }
+    };
   }
 }

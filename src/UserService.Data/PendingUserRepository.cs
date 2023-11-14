@@ -6,59 +6,58 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Data
+namespace UniversityHelper.UserService.Data;
+
+public class PendingUserRepository : IPendingUserRepository
 {
-  public class PendingUserRepository : IPendingUserRepository
+  private readonly IDataProvider _provider;
+
+  public PendingUserRepository(
+    IDataProvider provider)
   {
-    private readonly IDataProvider _provider;
+    _provider = provider;
+  }
 
-    public PendingUserRepository(
-      IDataProvider provider)
+  public Task CreateAsync(DbPendingUser dbPendingUser)
+  {
+    _provider.PendingUsers.Add(dbPendingUser);
+    return _provider.SaveAsync();
+  }
+
+  public Task<DbPendingUser> GetAsync(Guid userId, bool includeUser)
+  {
+    IQueryable<DbPendingUser> query = _provider.PendingUsers.AsQueryable();
+
+    if (includeUser)
     {
-      _provider = provider;
+      query = query.Include(pu => pu.User).ThenInclude(u => u.Communications);
     }
 
-    public Task CreateAsync(DbPendingUser dbPendingUser)
+    return query.FirstOrDefaultAsync(pu => pu.UserId == userId);
+  }
+
+  public Task UpdateAsync(DbPendingUser dbPendingUser)
+  {
+    _provider.PendingUsers.Update(dbPendingUser);
+    return _provider.SaveAsync();
+  }
+
+  public async Task<DbPendingUser> RemoveAsync(Guid userId)
+  {
+    DbPendingUser dbPendingUser = await _provider.PendingUsers
+      .FirstOrDefaultAsync(pu => pu.UserId == userId);
+
+    if (dbPendingUser is not null)
     {
-      _provider.PendingUsers.Add(dbPendingUser);
-      return _provider.SaveAsync();
+      _provider.PendingUsers.Remove(dbPendingUser);
+      await _provider.SaveAsync();
     }
 
-    public Task<DbPendingUser> GetAsync(Guid userId, bool includeUser)
-    {
-      IQueryable<DbPendingUser> query = _provider.PendingUsers.AsQueryable();
+    return dbPendingUser;
+  }
 
-      if (includeUser)
-      {
-        query = query.Include(pu => pu.User).ThenInclude(u => u.Communications);
-      }
-
-      return query.FirstOrDefaultAsync(pu => pu.UserId == userId);
-    }
-
-    public Task UpdateAsync(DbPendingUser dbPendingUser)
-    {
-      _provider.PendingUsers.Update(dbPendingUser);
-      return _provider.SaveAsync();
-    }
-
-    public async Task<DbPendingUser> RemoveAsync(Guid userId)
-    {
-      DbPendingUser dbPendingUser = await _provider.PendingUsers
-        .FirstOrDefaultAsync(pu => pu.UserId == userId);
-
-      if (dbPendingUser is not null)
-      {
-        _provider.PendingUsers.Remove(dbPendingUser);
-        await _provider.SaveAsync();
-      }
-
-      return dbPendingUser;
-    }
-
-    public Task<bool> DoesExistAsync(Guid userId)
-    {
-      return _provider.PendingUsers.AnyAsync(pu => pu.UserId == userId);
-    }
+  public Task<bool> DoesExistAsync(Guid userId)
+  {
+    return _provider.PendingUsers.AnyAsync(pu => pu.UserId == userId);
   }
 }

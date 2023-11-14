@@ -4,19 +4,18 @@ using UniversityHelper.UserService.Models.Dto.Requests.Credentials.Filters;
 using System;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Data.Interfaces
+namespace UniversityHelper.UserService.Data.Interfaces;
+
+[AutoInject]
+public interface IUserCredentialsRepository
 {
-  [AutoInject]
-  public interface IUserCredentialsRepository
-  {
-    Task<DbUserCredentials> GetAsync(GetCredentialsFilter filter);
+  Task<DbUserCredentials> GetAsync(GetCredentialsFilter filter);
 
-    Task<Guid?> CreateAsync(DbUserCredentials dbUserCredentials);
+  Task<Guid?> CreateAsync(DbUserCredentials dbUserCredentials);
 
-    Task<bool> EditAsync(DbUserCredentials userCredentials);
+  Task<bool> EditAsync(DbUserCredentials userCredentials);
 
-    Task<bool> DoesLoginExistAsync(string login);
+  Task<bool> DoesLoginExistAsync(string login);
 
-    Task<bool> DoesExistAsync(Guid userId);
-  }
+  Task<bool> DoesExistAsync(Guid userId);
 }

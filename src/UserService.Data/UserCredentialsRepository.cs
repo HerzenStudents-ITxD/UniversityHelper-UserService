@@ -10,98 +10,97 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UniversityHelper.UserService.Data
+namespace UniversityHelper.UserService.Data;
+
+public class UserCredentialsRepository : IUserCredentialsRepository
 {
-  public class UserCredentialsRepository : IUserCredentialsRepository
+  private readonly HttpContext _httpContext;
+  private readonly ILogger<UserCredentialsRepository> _logger;
+  private readonly IDataProvider _provider;
+
+  public UserCredentialsRepository(
+    ILogger<UserCredentialsRepository> logger,
+    IHttpContextAccessor httpContextAccessor,
+    IDataProvider provider)
   {
-    private readonly HttpContext _httpContext;
-    private readonly ILogger<UserCredentialsRepository> _logger;
-    private readonly IDataProvider _provider;
+    _httpContext = httpContextAccessor.HttpContext;
+    _logger = logger;
+    _provider = provider;
+  }
 
-    public UserCredentialsRepository(
-      ILogger<UserCredentialsRepository> logger,
-      IHttpContextAccessor httpContextAccessor,
-      IDataProvider provider)
+  public async Task<DbUserCredentials> GetAsync(GetCredentialsFilter filter)
+  {
+    DbUserCredentials dbUserCredentials = null;
+    if (filter.UserId.HasValue)
     {
-      _httpContext = httpContextAccessor.HttpContext;
-      _logger = logger;
-      _provider = provider;
+      dbUserCredentials = filter.IncludeDeactivated
+        ? await _provider.UsersCredentials
+          .FirstOrDefaultAsync(uc => uc.UserId == filter.UserId.Value)
+        : await _provider.UsersCredentials
+          .FirstOrDefaultAsync(uc => uc.UserId == filter.UserId.Value && uc.IsActive);
     }
-
-    public async Task<DbUserCredentials> GetAsync(GetCredentialsFilter filter)
+    else if (!string.IsNullOrEmpty(filter.Login))
     {
-      DbUserCredentials dbUserCredentials = null;
-      if (filter.UserId.HasValue)
-      {
-        dbUserCredentials = filter.IncludeDeactivated
-          ? await _provider.UsersCredentials
-            .FirstOrDefaultAsync(uc => uc.UserId == filter.UserId.Value)
-          : await _provider.UsersCredentials
-            .FirstOrDefaultAsync(uc => uc.UserId == filter.UserId.Value && uc.IsActive);
-      }
-      else if (!string.IsNullOrEmpty(filter.Login))
-      {
-        dbUserCredentials = await _provider.UsersCredentials.FirstOrDefaultAsync(
+      dbUserCredentials = await _provider.UsersCredentials.FirstOrDefaultAsync(
+        uc =>
+          uc.Login == filter.Login &&
+          uc.IsActive);
+    }
+    else if (!string.IsNullOrEmpty(filter.Email) || !string.IsNullOrEmpty(filter.Phone))
+    {
+      dbUserCredentials = await _provider.UsersCredentials
+        .Include(uc => uc.User)
+        .ThenInclude(u => u.Communications)
+        .FirstOrDefaultAsync(
           uc =>
-            uc.Login == filter.Login &&
-            uc.IsActive);
-      }
-      else if (!string.IsNullOrEmpty(filter.Email) || !string.IsNullOrEmpty(filter.Phone))
-      {
-        dbUserCredentials = await _provider.UsersCredentials
-          .Include(uc => uc.User)
-          .ThenInclude(u => u.Communications)
-          .FirstOrDefaultAsync(
-            uc =>
-              uc.IsActive &&
-              uc.User.Communications.Any(
-                c =>
-                  (c.Type == (int)CommunicationType.BaseEmail && c.Value == filter.Email) ||
-                  (c.Type == (int)CommunicationType.Email && c.Value == filter.Email) ||
-                  (c.Type == (int)CommunicationType.Phone && c.Value == filter.Phone)));
-      }
-
-      return dbUserCredentials;
+            uc.IsActive &&
+            uc.User.Communications.Any(
+              c =>
+                (c.Type == (int)CommunicationType.BaseEmail && c.Value == filter.Email) ||
+                (c.Type == (int)CommunicationType.Email && c.Value == filter.Email) ||
+                (c.Type == (int)CommunicationType.Phone && c.Value == filter.Phone)));
     }
 
-    public async Task<bool> EditAsync(DbUserCredentials dbUserCredentials)
+    return dbUserCredentials;
+  }
+
+  public async Task<bool> EditAsync(DbUserCredentials dbUserCredentials)
+  {
+    if (dbUserCredentials is null)
     {
-      if (dbUserCredentials is null)
-      {
-        return false;
-      }
-
-      _logger.LogInformation(
-        $"Updating user credentials for user '{dbUserCredentials.UserId}'. Request came from IP '{_httpContext.Connection.RemoteIpAddress}'.");
-
-      _provider.UsersCredentials.Update(dbUserCredentials);
-      dbUserCredentials.ModifiedAtUtc = DateTime.UtcNow;
-      await _provider.SaveAsync();
-
-      return true;
+      return false;
     }
 
-    public async Task<Guid?> CreateAsync(DbUserCredentials dbUserCredentials)
+    _logger.LogInformation(
+      $"Updating user credentials for user '{dbUserCredentials.UserId}'. Request came from IP '{_httpContext.Connection.RemoteIpAddress}'.");
+
+    _provider.UsersCredentials.Update(dbUserCredentials);
+    dbUserCredentials.ModifiedAtUtc = DateTime.UtcNow;
+    await _provider.SaveAsync();
+
+    return true;
+  }
+
+  public async Task<Guid?> CreateAsync(DbUserCredentials dbUserCredentials)
+  {
+    if (dbUserCredentials is null)
     {
-      if (dbUserCredentials is null)
-      {
-        return null;
-      }
-
-      _provider.UsersCredentials.Add(dbUserCredentials);
-      await _provider.SaveAsync();
-
-      return dbUserCredentials.Id;
+      return null;
     }
 
-    public Task<bool> DoesLoginExistAsync(string login)
-    {
-      return _provider.UsersCredentials.AnyAsync(uc => uc.Login == login);
-    }
+    _provider.UsersCredentials.Add(dbUserCredentials);
+    await _provider.SaveAsync();
 
-    public Task<bool> DoesExistAsync(Guid userId)
-    {
-      return _provider.UsersCredentials.AnyAsync(uc => uc.UserId == userId);
-    }
+    return dbUserCredentials.Id;
+  }
+
+  public Task<bool> DoesLoginExistAsync(string login)
+  {
+    return _provider.UsersCredentials.AnyAsync(uc => uc.Login == login);
+  }
+
+  public Task<bool> DoesExistAsync(Guid userId)
+  {
+    return _provider.UsersCredentials.AnyAsync(uc => uc.UserId == userId);
   }
 }

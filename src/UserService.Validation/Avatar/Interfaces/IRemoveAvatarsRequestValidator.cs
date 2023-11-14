@@ -2,10 +2,9 @@
 using UniversityHelper.Core.Attributes;
 using UniversityHelper.UserService.Models.Dto.Requests.Avatar;
 
-namespace UniversityHelper.UserService.Validation.Image.Interfaces
+namespace UniversityHelper.UserService.Validation.Image.Interfaces;
+
+[AutoInject]
+public interface IRemoveAvatarsRequestValidator : IValidator<RemoveAvatarsRequest>
 {
-  [AutoInject]
-  public interface IRemoveAvatarsRequestValidator : IValidator<RemoveAvatarsRequest>
-  {
-  }
 }

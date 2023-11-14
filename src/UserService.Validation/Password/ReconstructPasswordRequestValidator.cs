@@ -4,23 +4,22 @@ using UniversityHelper.UserService.Validation.Password.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 
-namespace UniversityHelper.UserService.Validation.Password
+namespace UniversityHelper.UserService.Validation.Password;
+
+public class ReconstructPasswordRequestValidator : AbstractValidator<ReconstructPasswordRequest>, IReconstructPassordRequestValidator
 {
-  public class ReconstructPasswordRequestValidator : AbstractValidator<ReconstructPasswordRequest>, IReconstructPassordRequestValidator
+  public ReconstructPasswordRequestValidator(
+    IMemoryCache cache,
+    IPasswordValidator passwordValidator)
   {
-    public ReconstructPasswordRequestValidator(
-      IMemoryCache cache,
-      IPasswordValidator passwordValidator)
-    {
-      RuleFor(r => r.UserId)
-        .NotEmpty().WithMessage("User id must not be empty.");
+    RuleFor(r => r.UserId)
+      .NotEmpty().WithMessage("User id must not be empty.");
 
-      RuleFor(r => r.NewPassword)
-        .SetValidator(passwordValidator);
+    RuleFor(r => r.NewPassword)
+      .SetValidator(passwordValidator);
 
-      RuleFor(r => r)
-        .Must(r => cache.TryGetValue(r.Secret, out Guid savedUserId) && savedUserId == r.UserId)
-        .WithMessage("Invalid user data.");
-    }
+    RuleFor(r => r)
+      .Must(r => cache.TryGetValue(r.Secret, out Guid savedUserId) && savedUserId == r.UserId)
+      .WithMessage("Invalid user data.");
   }
 }
