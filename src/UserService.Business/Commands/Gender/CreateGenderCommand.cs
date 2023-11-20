@@ -24,31 +24,30 @@ public class CreateGenderCommand : ICreateGenderCommand
   private readonly IGenderRepository _genderRepository;
   private readonly ICreateGenderRequestValidator _validator;
   private readonly IResponseCreator _responseCreator;
-  //private readonly IAccessValidator _accessValidator;
+  private readonly IAccessValidator _accessValidator;
 
   public CreateGenderCommand(
     IHttpContextAccessor httpContextAccessor,
     IDbGenderMapper mapper,
     IGenderRepository genderRepository,
     ICreateGenderRequestValidator validator,
-    IResponseCreator responseCreator
-    //IAccessValidator accessValidator
-    )
+    IResponseCreator responseCreator,
+    IAccessValidator accessValidator)
   {
     _httpContextAccessor = httpContextAccessor;
     _mapper = mapper;
     _genderRepository = genderRepository;
     _validator = validator;
     _responseCreator = responseCreator;
-    //_accessValidator = accessValidator;
+    _accessValidator = accessValidator;
   }
 
   public async Task<OperationResultResponse<Guid?>> ExecuteAsync(CreateGenderRequest request)
   {
-    //if (!await _accessValidator.IsAdminAsync(_httpContextAccessor.HttpContext.GetUserId()))
-    //{
-    //  return _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.Forbidden);
-    //}
+    if (!await _accessValidator.IsAdminAsync(_httpContextAccessor.HttpContext.GetUserId()))
+    {
+      return _responseCreator.CreateFailureResponse<Guid?>(HttpStatusCode.Forbidden);
+    }
 
     ValidationResult validationResult = await _validator.ValidateAsync(request);
 
