@@ -3,13 +3,13 @@
     "UserService": {
       "commandName": "Project",
       "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:9802",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "RabbitMqUsername": "guest",
         "RabbitMqPassword": "guest"
       },
-      "externalUrlConfiguration": true,
-      "applicationUrl": "http://localhost:9802"
+      "externalUrlConfiguration": true
     }
   }
 }
