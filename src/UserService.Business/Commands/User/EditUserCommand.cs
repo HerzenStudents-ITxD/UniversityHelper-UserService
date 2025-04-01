@@ -55,15 +55,8 @@ public class EditUserCommand : IEditUserCommand
     Operation<EditUserRequest> isAdminOperation = patch.Operations.FirstOrDefault(
       o => o.path.EndsWith(nameof(EditUserRequest.IsAdmin), StringComparison.OrdinalIgnoreCase));
 
-    Operation<EditUserRequest> isGenderOperation = patch.Operations.FirstOrDefault(
-      o => o.path.EndsWith(nameof(EditUserRequest.GenderId), StringComparison.OrdinalIgnoreCase));
 
-    //if ((userId != requestSenderId && !isAddEditRemoveUsers && !isAdmin) ||
-    //  (isAdminOperation is not null && !isAdmin) ||
-    //  (isGenderOperation is not null && userId != requestSenderId))
-    //{
-    //  return _responseCreator.CreateFailureResponse<bool>(HttpStatusCode.Forbidden);
-    //}
+
 
     OperationResultResponse<bool> response = new();
 

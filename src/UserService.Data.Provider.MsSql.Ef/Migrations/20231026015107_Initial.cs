@@ -11,19 +11,7 @@ namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef.Migrations;
       /// <inheritdoc />
       protected override void Up(MigrationBuilder migrationBuilder)
       {
-          migrationBuilder.CreateTable(
-              name: "Genders",
-              columns: table => new
-              {
-                  Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                  Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                  CreatedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                  CreatedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: false)
-              },
-              constraints: table =>
-              {
-                  table.PrimaryKey("PK_Genders", x => x.Id);
-              });
+
 
           migrationBuilder.CreateTable(
               name: "Users",
@@ -119,25 +107,15 @@ namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef.Migrations;
               {
                   Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                   UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                  GenderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                   About = table.Column<string>(type: "nvarchar(max)", nullable: false),
                   DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
-                  BusinessHoursFromUtc = table.Column<DateTime>(type: "datetime2", nullable: true),
-                  BusinessHoursToUtc = table.Column<DateTime>(type: "datetime2", nullable: true),
-                  Latitude = table.Column<double>(type: "float", nullable: true),
-                  Longitude = table.Column<double>(type: "float", nullable: true),
                   ModifiedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                   ModifiedAtUtc = table.Column<DateTime>(type: "datetime2", nullable: false)
               },
               constraints: table =>
               {
                   table.PrimaryKey("PK_UsersAdditions", x => x.Id);
-                  table.ForeignKey(
-                      name: "FK_UsersAdditions_Genders_GenderId",
-                      column: x => x.GenderId,
-                      principalTable: "Genders",
-                      principalColumn: "Id",
-                      onDelete: ReferentialAction.Cascade);
+                  
                   table.ForeignKey(
                       name: "FK_UsersAdditions_Users_UserId",
                       column: x => x.UserId,
@@ -216,10 +194,7 @@ namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef.Migrations;
                       onDelete: ReferentialAction.Cascade);
               });
 
-          migrationBuilder.CreateIndex(
-              name: "IX_UsersAdditions_GenderId",
-              table: "UsersAdditions",
-              column: "GenderId");
+
 
           migrationBuilder.CreateIndex(
               name: "IX_UsersAdditions_UserId",
@@ -262,8 +237,6 @@ namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef.Migrations;
           migrationBuilder.DropTable(
               name: "UsersCredentials");
 
-          migrationBuilder.DropTable(
-              name: "Genders");
 
           migrationBuilder.DropTable(
               name: "Users")

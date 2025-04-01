@@ -15,9 +15,7 @@ public class OfficeInfoMapper : IOfficeInfoMapper
         Id = office.Id,
         Name = office.Name,
         Address = office.Address,
-        City = office.City,
-        Longitude = office.Longitude,
-        Latitude = office.Latitude
+        City = office.City
       };
   }
 }

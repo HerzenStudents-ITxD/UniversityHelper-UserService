@@ -16,10 +16,6 @@ public record CreateUserRequest
   public bool IsAdmin { get; set; } = false;
   public string About { get; set; }
   public DateTime? DateOfBirth { get; set; }
-  public DateTime? BusinessHoursFromUtc { get; set; }
-  public DateTime? BusinessHoursToUtc { get; set; }
-  public double? Latitude { get; set; }
-  public double? Longitude { get; set; }
   public Guid? DepartmentId { get; set; }
   public Guid? OfficeId { get; set; }
   public Guid? PositionId { get; set; }

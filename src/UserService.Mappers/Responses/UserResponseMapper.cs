@@ -34,17 +34,8 @@ public class UserResponseMapper : IUserResponseMapper
         User = _userInfoMapper.Map(dbUser, avatar),
         UserAddition = dbUser.Addition is null ? null : new()
         {
-          Gender = dbUser.Addition.Gender is null ? null : new()
-          {
-            Id = dbUser.Addition.Gender.Id,
-            Name = dbUser.Addition.Gender.Name
-          },
           About = dbUser.Addition.About,
-          DateOfBirth = dbUser.Addition.DateOfBirth,
-          Latitude = dbUser.Addition.Latitude,
-          Longitude = dbUser.Addition.Latitude,
-          BusinessHoursFromUtc = dbUser.Addition.BusinessHoursFromUtc,
-          BusinessHoursToUtc = dbUser.Addition.BusinessHoursToUtc
+          DateOfBirth = dbUser.Addition.DateOfBirth
         },
         CompanyUser = companyUser,
         DepartmentUser = departmentUser,

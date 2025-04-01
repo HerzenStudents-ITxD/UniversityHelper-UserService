@@ -43,7 +43,7 @@ public class UserRepository : IUserRepository
 
     query = query
       .Include(u => u.Pending)
-      .Include(u => u.Addition).ThenInclude(ua => ua.Gender);
+      .Include(u => u.Addition);
 
     return query;
   }

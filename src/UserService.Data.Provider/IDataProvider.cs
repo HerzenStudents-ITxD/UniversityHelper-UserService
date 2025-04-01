@@ -15,5 +15,4 @@ public interface IDataProvider : IBaseDataProvider
   DbSet<DbUserCommunication> UsersCommunications { get; set; }
   DbSet<DbPendingUser> PendingUsers { get; set; }
   DbSet<DbUserAvatar> UsersAvatars { get; set; }
-  DbSet<DbGender> Genders { get; set; }
 }

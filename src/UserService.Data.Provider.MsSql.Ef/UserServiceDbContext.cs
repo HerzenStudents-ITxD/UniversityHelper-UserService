@@ -15,7 +15,7 @@ public class UserServiceDbContext : DbContext, IDataProvider
   public DbSet<DbUserCommunication> UsersCommunications { get; set; }
   public DbSet<DbPendingUser> PendingUsers { get; set; }
   public DbSet<DbUserAvatar> UsersAvatars { get; set; }
-  public DbSet<DbGender> Genders { get; set; }
+
 
   public UserServiceDbContext(DbContextOptions<UserServiceDbContext> options)
     : base(options)

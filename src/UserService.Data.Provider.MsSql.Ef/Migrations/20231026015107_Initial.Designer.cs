@@ -25,26 +25,7 @@ namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("UniversityHelper.UserService.Models.Db.DbGender", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAtUtc")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Genders", (string)null);
-                });
+           
 
             modelBuilder.Entity("UniversityHelper.UserService.Models.Db.DbPendingUser", b =>
                 {
@@ -126,24 +107,9 @@ namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("BusinessHoursFromUtc")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("BusinessHoursToUtc")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("GenderId")
-                        .IsRequired()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<double?>("Latitude")
-                        .HasColumnType("float");
-
-                    b.Property<double?>("Longitude")
-                        .HasColumnType("float");
 
                     b.Property<DateTime>("ModifiedAtUtc")
                         .HasColumnType("datetime2");
@@ -155,8 +121,6 @@ namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GenderId");
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -278,20 +242,13 @@ namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef.Migrations
 
             modelBuilder.Entity("UniversityHelper.UserService.Models.Db.DbUserAddition", b =>
                 {
-                    b.HasOne("UniversityHelper.UserService.Models.Db.DbGender", "Gender")
-                        .WithMany("UsersAdditions")
-                        .HasForeignKey("GenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
+                    
                     b.HasOne("UniversityHelper.UserService.Models.Db.DbUser", "User")
                         .WithOne("Addition")
                         .HasForeignKey("UniversityHelper.UserService.Models.Db.DbUserAddition", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Gender");
-
+                                      
                     b.Navigation("User");
                 });
 
@@ -328,10 +285,7 @@ namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("UniversityHelper.UserService.Models.Db.DbGender", b =>
-                {
-                    b.Navigation("UsersAdditions");
-                });
+
 
             modelBuilder.Entity("UniversityHelper.UserService.Models.Db.DbUser", b =>
                 {

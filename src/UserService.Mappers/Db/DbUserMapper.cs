@@ -49,13 +49,8 @@ public class DbUserMapper : IDbUserMapper
       {
         Id = Guid.NewGuid(),
         UserId = userId,
-        GenderId = null,
         About = request.About,
         DateOfBirth = request.DateOfBirth,
-        Latitude = request.Latitude,
-        Longitude = request.Longitude,
-        BusinessHoursFromUtc = request.BusinessHoursFromUtc,
-        BusinessHoursToUtc = request.BusinessHoursToUtc,
         ModifiedBy = createdBy,
         ModifiedAtUtc = createdAtUtc
       }
@@ -97,13 +92,8 @@ public class DbUserMapper : IDbUserMapper
       {
         Id = Guid.NewGuid(),
         UserId = userId,
-        GenderId = null,
         About = null,
         DateOfBirth = null,
-        BusinessHoursFromUtc = null,
-        BusinessHoursToUtc = null,
-        Latitude = null,
-        Longitude = null,
         ModifiedBy = userId,
         ModifiedAtUtc = createdAtUtc
       }
