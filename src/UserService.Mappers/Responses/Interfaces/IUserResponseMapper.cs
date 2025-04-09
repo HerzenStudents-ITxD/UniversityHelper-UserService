@@ -2,7 +2,6 @@
 using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Models;
 using UniversityHelper.UserService.Models.Dto.Responses.User;
-using System.Collections.Generic;
 
 namespace UniversityHelper.UserService.Mappers.Responses.Interfaces;
 
@@ -11,7 +10,7 @@ public interface IUserResponseMapper
 {
   UserResponse Map(
     DbUser dbUser,
-    CompanyUserInfo companyUser,
+    UniversityUserInfo universityUser,
     ImageInfo avatar,
     DepartmentUserInfo departmentUser,
     List<ImageInfo> images,

@@ -1,5 +1,4 @@
 ﻿using UniversityHelper.UserService.Models.Dto.Enums;
-using System;
 
 namespace UniversityHelper.UserService.Models.Dto.Models;
 

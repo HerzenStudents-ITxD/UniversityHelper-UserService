@@ -1,4 +1,4 @@
-﻿using UniversityHelper.CompanyService.Data.Provider;
+﻿using UniversityHelper.UniversityService.Data.Provider;
 using UniversityHelper.UserService.Data.Interfaces;
 using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Enums;
@@ -6,9 +6,6 @@ using UniversityHelper.UserService.Models.Dto.Requests.Credentials.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Data;
 

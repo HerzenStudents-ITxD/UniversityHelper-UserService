@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UniversityHelper.UserService.Models.Dto.Models;
+﻿namespace UniversityHelper.UserService.Models.Dto.Models;
 
 public record OfficeInfo
 {

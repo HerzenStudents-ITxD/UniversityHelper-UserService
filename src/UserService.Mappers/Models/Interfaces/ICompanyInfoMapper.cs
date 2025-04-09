@@ -1,11 +1,11 @@
 ﻿using UniversityHelper.Core.Attributes;
-using UniversityHelper.Models.Broker.Models.Company;
+using UniversityHelper.Models.Broker.Models.University;
 using UniversityHelper.UserService.Models.Dto.Models;
 
 namespace UniversityHelper.UserService.Mappers.Models.Interfaces;
 
 [AutoInject]
-public interface ICompanyInfoMapper
+public interface IUniversityInfoMapper
 {
-  CompanyInfo Map(CompanyData companyData);
+  UniversityInfo Map(UniversityData universityData);
 }

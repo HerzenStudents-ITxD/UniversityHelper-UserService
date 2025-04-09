@@ -1,12 +1,10 @@
 ﻿using UniversityHelper.Core.Extensions;
 using UniversityHelper.Core.Responses;
-using UniversityHelper.Models.Broker.Models;
 using UniversityHelper.Models.Broker.Models.User;
 using UniversityHelper.UserService.Business.Commands.User.Interfaces;
 using UniversityHelper.UserService.Data.Interfaces;
 using UniversityHelper.UserService.Models.Db;
 using Microsoft.AspNetCore.Http;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.User;
 

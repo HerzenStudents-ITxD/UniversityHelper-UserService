@@ -1,28 +1,28 @@
-﻿using UniversityHelper.Models.Broker.Models.Company;
-using UniversityHelper.UserService.Mappers.Models.Interfaces;
-using UniversityHelper.UserService.Models.Dto.Models;
+﻿//using UniversityHelper.Models.Broker.Models.University;
+//using UniversityHelper.UserService.Mappers.Models.Interfaces;
+//using UniversityHelper.UserService.Models.Dto.Models;
 
-namespace UniversityHelper.UserService.Mappers.Models;
+//namespace UniversityHelper.UserService.Mappers.Models;
 
-public class CompanyUserInfoMapper : ICompanyUserInfoMapper
-{
-  public CompanyUserInfo Map(CompanyData companyData, CompanyUserData companyUserData)
-  {
-    return companyData is null || companyUserData is null
-      ? default
-      : new CompanyUserInfo
-      {
-        Company = new CompanyInfo
-        {
-          Id = companyData.Id,
-          Name = companyData.Name
-        },
-        //ContractSubject = companyUserData.ContractSubject,
-        //ContractTermType = companyUserData.ContractTermType,
-        Rate = companyUserData.Rate,
-        //StartWorkingAt = companyUserData.StartWorkingAt,
-        //EndWorkingAt = companyUserData.EndWorkingAt,
-        //Probation = companyUserData.Probation
-      };
-  }
-}
+//public class UniversityUserInfoMapper : IUniversityUserInfoMapper
+//{
+//  public UniversityUserInfo Map(UniversityData universityData, UniversityUserData universityUserData)
+//  {
+//    return universityData is null || universityUserData is null
+//      ? default
+//      : new UniversityUserInfo
+//      {
+//        University = new UniversityInfo
+//        {
+//          Id = universityData.Id,
+//          Name = universityData.Name
+//        },
+//        //ContractSubject = universityUserData.ContractSubject,
+//        //ContractTermType = universityUserData.ContractTermType,
+//        Rate = universityUserData.Rate,
+//        //StartWorkingAt = universityUserData.StartWorkingAt,
+//        //EndWorkingAt = universityUserData.EndWorkingAt,
+//        //Probation = universityUserData.Probation
+//      };
+//  }
+//}

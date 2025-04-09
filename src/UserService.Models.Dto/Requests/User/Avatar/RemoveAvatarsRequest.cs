@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace UniversityHelper.UserService.Models.Dto.Requests.User.Avatar;
+﻿namespace UniversityHelper.UserService.Models.Dto.Requests.User.Avatar;
 
 public record RemoveAvatarsRequest
 {

@@ -1,12 +1,10 @@
 ﻿using FluentValidation;
-using UniversityHelper.Models.Broker.Enums;
 using UniversityHelper.UserService.Models.Dto;
 using UniversityHelper.UserService.Models.Dto.Enums;
 using UniversityHelper.UserService.Validation.Communication.Interfaces;
 using UniversityHelper.UserService.Validation.Image.Interfaces;
 using UniversityHelper.UserService.Validation.Password.Interfaces;
 using UniversityHelper.UserService.Validation.User.Interfaces;
-using System;
 using System.Text.RegularExpressions;
 
 namespace UniversityHelper.UserService.Validation.User;
@@ -71,13 +69,13 @@ public class CreateUserRequestValidator : AbstractValidator<CreateUserRequest>, 
       .WithMessage("Communication type must be email.")
       .SetValidator(communicationValidator);
 
-    When(user => user.UserCompany is not null && user.UserCompany.Rate is not null, () =>
+    When(user => user.UserUniversity is not null && user.UserUniversity.Rate is not null, () =>
     {
-      RuleFor(user => user.UserCompany.Rate)
+      RuleFor(user => user.UserUniversity.Rate)
         .GreaterThan(0)
         .LessThanOrEqualTo(1);
 
-      //RuleFor(user => user.UserCompany.ContractTermType)
+      //RuleFor(user => user.UserUniversity.ContractTermType)
       //  .Must(x => Enum.IsDefined(typeof(ContractTerm), x))
       //  .WithMessage("Wrong contract term type.");
     });

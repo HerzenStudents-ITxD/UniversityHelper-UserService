@@ -1,15 +1,8 @@
-﻿using UniversityHelper.Core.BrokerSupport.Broker;
-using UniversityHelper.Models.Broker.Models;
-using UniversityHelper.Models.Broker.Models.User;
-using UniversityHelper.Models.Broker.Requests.User;
-using UniversityHelper.Models.Broker.Responses.Search;
+﻿using UniversityHelper.Models.Broker.Requests.User;
 using UniversityHelper.UserService.Data.Interfaces;
 using UniversityHelper.UserService.Models.Db;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Broker.Consumers;
 

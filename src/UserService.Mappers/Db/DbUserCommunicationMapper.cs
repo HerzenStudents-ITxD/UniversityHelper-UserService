@@ -3,7 +3,6 @@ using UniversityHelper.UserService.Mappers.Db.Interfaces;
 using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Requests.Communication;
 using Microsoft.AspNetCore.Http;
-using System;
 
 namespace UniversityHelper.UserService.Mappers.Db;
 

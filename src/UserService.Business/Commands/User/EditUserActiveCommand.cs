@@ -1,7 +1,4 @@
-﻿using FluentValidation.Results;
-using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using UniversityHelper.Core.Constants;
-using UniversityHelper.Core.Extensions;
+﻿using UniversityHelper.Core.Extensions;
 using UniversityHelper.Core.Helpers.Interfaces;
 using UniversityHelper.Core.Helpers.TextHandlers.Interfaces;
 using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
@@ -15,12 +12,8 @@ using UniversityHelper.UserService.Data.Interfaces;
 using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Requests.User;
 using UniversityHelper.UserService.Models.Dto.Requests.User.Filters;
-using UniversityHelper.UserService.Validation.User.Interfaces;
 using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.User;
 

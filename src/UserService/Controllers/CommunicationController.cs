@@ -2,8 +2,6 @@
 using UniversityHelper.UserService.Business.Commands.Communication.Interfaces;
 using UniversityHelper.UserService.Models.Dto.Requests.Communication;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Controllers;
 

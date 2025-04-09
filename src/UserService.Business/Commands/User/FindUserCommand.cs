@@ -1,7 +1,5 @@
-﻿using UniversityHelper.Core.FluentValidationExtensions;
-using UniversityHelper.Core.Helpers.Interfaces;
+﻿using UniversityHelper.Core.Helpers.Interfaces;
 using UniversityHelper.Core.Responses;
-using UniversityHelper.Core.Validators.Interfaces;
 using UniversityHelper.UserService.Broker.Requests.Interfaces;
 using UniversityHelper.UserService.Business.Interfaces;
 using UniversityHelper.UserService.Data.Interfaces;
@@ -9,11 +7,6 @@ using UniversityHelper.UserService.Mappers.Models.Interfaces;
 using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Models;
 using UniversityHelper.UserService.Models.Dto.Requests.Filtres;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.User;
 

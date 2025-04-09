@@ -5,8 +5,6 @@ using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto;
 using UniversityHelper.UserService.Models.Dto.Enums;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
 
 namespace UniversityHelper.UserService.Mappers.Db;
 

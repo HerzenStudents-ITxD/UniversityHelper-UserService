@@ -1,10 +1,6 @@
 ﻿using UniversityHelper.Core.Attributes;
 using UniversityHelper.UserService.Models.Dto.Models;
 using UniversityHelper.UserService.Models.Dto.Requests.Avatar;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Broker.Requests.Interfaces;
 

@@ -1,6 +1,4 @@
 ﻿using UniversityHelper.UserService.Business.Commands.Password.Interfaces;
-using System;
-using System.Linq;
 
 namespace UniversityHelper.UserService.Business.Commands.Password;
 

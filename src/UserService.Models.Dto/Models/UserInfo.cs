@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace UniversityHelper.UserService.Models.Dto.Models;
+﻿namespace UniversityHelper.UserService.Models.Dto.Models;
 
 public record UserInfo
 {

@@ -7,7 +7,6 @@ using UniversityHelper.UserService.Validation.Communication.Resources;
 using System.Globalization;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
-using System.Threading;
 
 namespace UniversityHelper.UserService.Validation.Communication;
 

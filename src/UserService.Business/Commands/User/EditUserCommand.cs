@@ -1,6 +1,4 @@
-﻿using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using UniversityHelper.Core.Constants;
-using UniversityHelper.Core.Extensions;
+﻿using UniversityHelper.Core.Extensions;
 using UniversityHelper.Core.Helpers.Interfaces;
 using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
 using UniversityHelper.Core.Responses;
@@ -12,10 +10,7 @@ using UniversityHelper.UserService.Models.Dto.Requests.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Operations;
-using System;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.User;
 

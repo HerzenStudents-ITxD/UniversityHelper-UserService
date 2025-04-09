@@ -1,8 +1,6 @@
 ﻿using UniversityHelper.Core.Responses;
 using UniversityHelper.UserService.Business.Commands.Pending.Interfaces;
 using UniversityHelper.UserService.Data.Interfaces;
-using System;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.Credentials;
 

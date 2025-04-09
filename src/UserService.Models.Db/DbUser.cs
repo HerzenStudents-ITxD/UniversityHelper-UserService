@@ -1,8 +1,6 @@
 ﻿using UniversityHelper.Core.BrokerSupport.Attributes.ParseEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
 
 namespace UniversityHelper.UserService.Models.Db;
 

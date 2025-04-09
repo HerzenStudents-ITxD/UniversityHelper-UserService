@@ -1,6 +1,4 @@
 ﻿using FluentValidation.Results;
-using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using UniversityHelper.Core.Constants;
 using UniversityHelper.Core.Extensions;
 using UniversityHelper.Core.Helpers.Interfaces;
 using UniversityHelper.Core.Helpers.TextHandlers.Interfaces;
@@ -18,11 +16,7 @@ using UniversityHelper.UserService.Validation.Communication.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.Communication;
 

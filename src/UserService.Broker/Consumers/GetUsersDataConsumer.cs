@@ -3,7 +3,6 @@ using UniversityHelper.Core.RedisSupport.Configurations;
 using UniversityHelper.Core.RedisSupport.Constants;
 using UniversityHelper.Core.RedisSupport.Extensions;
 using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
-using UniversityHelper.Models.Broker.Models;
 using UniversityHelper.Models.Broker.Models.User;
 using UniversityHelper.Models.Broker.Requests.User;
 using UniversityHelper.Models.Broker.Responses.User;
@@ -13,10 +12,6 @@ using UniversityHelper.UserService.Models.Dto.Enums;
 using UniversityHelper.UserService.Models.Dto.Requests.Filtres;
 using MassTransit;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Broker.Consumers;
 

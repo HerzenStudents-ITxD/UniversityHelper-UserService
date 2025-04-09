@@ -1,9 +1,8 @@
-﻿using UniversityHelper.CompanyService.Data.Provider;
+﻿using UniversityHelper.UniversityService.Data.Provider;
 using UniversityHelper.Core.EFSupport.Provider;
 using UniversityHelper.UserService.Models.Db;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Data.Provider.MsSql.Ef;
 

@@ -1,10 +1,7 @@
-﻿using UniversityHelper.CompanyService.Data.Provider;
+﻿using UniversityHelper.UniversityService.Data.Provider;
 using UniversityHelper.UserService.Data.Interfaces;
 using UniversityHelper.UserService.Models.Db;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Data;
 

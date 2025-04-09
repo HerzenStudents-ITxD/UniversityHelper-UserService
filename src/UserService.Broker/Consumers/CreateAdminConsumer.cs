@@ -4,7 +4,6 @@ using UniversityHelper.UserService.Data.Interfaces;
 using UniversityHelper.UserService.Mappers.Db.Interfaces;
 using UniversityHelper.UserService.Models.Db;
 using MassTransit;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Broker.Consumers;
 

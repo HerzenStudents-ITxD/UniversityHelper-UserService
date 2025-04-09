@@ -1,6 +1,4 @@
-﻿using UniversityHelper.Models.Broker.Enums;
-
-namespace UniversityHelper.UserService.Models.Dto.Models;
+﻿namespace UniversityHelper.UserService.Models.Dto.Models;
 
 public record DepartmentUserInfo
 {

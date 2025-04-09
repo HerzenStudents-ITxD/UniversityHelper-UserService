@@ -6,7 +6,6 @@ using UniversityHelper.UserService.Models.Dto.Requests.Communication;
 using UniversityHelper.UserService.Validation.Communication.Interfaces;
 using UniversityHelper.UserService.Validation.Communication.Resources;
 using System.Globalization;
-using System.Threading;
 
 namespace UniversityHelper.UserService.Validation.Communication;
 

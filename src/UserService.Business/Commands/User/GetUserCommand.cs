@@ -1,8 +1,5 @@
 ﻿using UniversityHelper.Core.Helpers.Interfaces;
 using UniversityHelper.Core.Responses;
-using UniversityHelper.Models.Broker.Models;
-using UniversityHelper.Models.Broker.Models.Company;
-using UniversityHelper.Models.Broker.Models.Department;
 using UniversityHelper.Models.Broker.Models.Office;
 using UniversityHelper.Models.Broker.Models.Position;
 using UniversityHelper.Models.Broker.Models.Right;
@@ -15,11 +12,8 @@ using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Models;
 using UniversityHelper.UserService.Models.Dto.Requests.User.Filters;
 using UniversityHelper.UserService.Models.Dto.Responses.User;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
+using UniversityHelper.Models.Broker.Models.University;
 
 namespace UniversityHelper.UserService.Business.Commands.User;
 
@@ -28,12 +22,12 @@ public class GetUserCommand : IGetUserCommand
   private readonly IUserRepository _repository;
   private readonly IUserResponseMapper _mapper;
   private readonly IOfficeInfoMapper _officeMapper;
-  private readonly IDepartmentInfoMapper _departmentMapper;
-  private readonly ICompanyUserInfoMapper _companyUserMapper;
+  //private readonly IDepartmentInfoMapper _departmentMapper;
+  //private readonly IUniversityUserInfoMapper _universityUserMapper;
   private readonly IPositionInfoMapper _positionMapper;
   private readonly IRoleInfoMapper _roleMapper;
-  private readonly ICompanyService _companyService;
-  private readonly IDepartmentService _departmentService;
+  private readonly IUniversityService _universityService;
+  //private readonly IDepartmentService _departmentService;
   private readonly IImageService _imageService;
   private readonly IOfficeService _officeService;
   private readonly IPositionService _positionService;
@@ -44,12 +38,12 @@ public class GetUserCommand : IGetUserCommand
     IUserRepository repository,
     IUserResponseMapper mapper,
     IRoleInfoMapper roleMapper,
-    IDepartmentInfoMapper departmentMapper,
-    ICompanyUserInfoMapper companyUserMapper,
+    //IDepartmentInfoMapper departmentMapper,
+    //IUniversityUserInfoMapper universityUserMapper,
     IPositionInfoMapper positionMapper,
     IOfficeInfoMapper officeMapper,
-    ICompanyService companyService,
-    IDepartmentService departmentService,
+    IUniversityService universityService,
+    //IDepartmentService departmentService,
     IImageService imageService,
     IOfficeService officeService,
     IPositionService positionService,
@@ -59,12 +53,12 @@ public class GetUserCommand : IGetUserCommand
     _repository = repository;
     _mapper = mapper;
     _roleMapper = roleMapper;
-    _departmentMapper = departmentMapper;
-    _companyUserMapper = companyUserMapper;
+    //_departmentMapper = departmentMapper;
+    //_universityUserMapper = universityUserMapper;
     _positionMapper = positionMapper;
     _officeMapper = officeMapper;
-    _companyService = companyService;
-    _departmentService = departmentService;
+    _universityService = universityService;
+    //_departmentService = departmentService;
     _imageService = imageService;
     _officeService = officeService;
     _positionService = positionService;
@@ -93,14 +87,14 @@ public class GetUserCommand : IGetUserCommand
         HttpStatusCode.NotFound);
     }
 
-    Task<List<CompanyData>> companiesTask = filter.IncludeCompany
-      ? _companyService.GetCompaniesAsync(dbUser.Id, response.Errors, cancellationToken)
-      : Task.FromResult(null as List<CompanyData>);
+    Task<List<UniversityData>> companiesTask = filter.IncludeUniversity
+      ? _universityService.GetUniversitiesAsync(dbUser.Id, response.Errors, cancellationToken)
+      : Task.FromResult(null as List<UniversityData>);
 
-    Task<List<DepartmentData>> departmentsTask = filter.IncludeDepartment
-      ? _departmentService.GetDepartmentsAsync(
-          userId: dbUser.Id, errors: response.Errors, includeChildDepartmentsIds: true, cancellationToken: cancellationToken)
-      : Task.FromResult(null as List<DepartmentData>);
+    //Task<List<DepartmentData>> departmentsTask = filter.IncludeDepartment
+    //  ? _departmentService.GetDepartmentsAsync(
+    //      userId: dbUser.Id, errors: response.Errors, includeChildDepartmentsIds: true, cancellationToken: cancellationToken)
+    //  : Task.FromResult(null as List<DepartmentData>);
 
     Task<List<ImageInfo>> imagesTask = filter.IncludeAvatars || filter.IncludeCurrentAvatar
       ? _imageService.GetImagesAsync(dbUser.Avatars?.Select(ua => ua.AvatarId).ToList(), response.Errors, cancellationToken)
@@ -118,22 +112,22 @@ public class GetUserCommand : IGetUserCommand
       ? _rightService.GetRolesAsync(dbUser.Id, filter.Locale, response.Errors, cancellationToken)
       : Task.FromResult(null as List<RoleData>);
 
-    List<CompanyData> companies = await companiesTask;
-    List<DepartmentData> departments = await departmentsTask;
+    List<UniversityData> companies = await companiesTask;
+    //List<DepartmentData> departments = await departmentsTask;
     List<ImageInfo> images = await imagesTask;
     List<OfficeData> offices = await officesTask;
     List<PositionData> positions = await positionsTask;
     List<RoleData> roles = await rolesTask;
 
-    response.Body = _mapper.Map(
-      dbUser,
-      _companyUserMapper.Map(companies?.FirstOrDefault(), companies?.FirstOrDefault()?.Users.FirstOrDefault(cu => cu.UserId == dbUser.Id)),
-      images?.FirstOrDefault(i => i.Id == dbUser.Avatars.FirstOrDefault(ua => ua.IsCurrentAvatar).AvatarId),
-      _departmentMapper.Map(dbUser.Id, departments?.FirstOrDefault()),
-      images,
-      _officeMapper.Map(offices?.FirstOrDefault()),
-      _positionMapper.Map(positions?.FirstOrDefault()),
-      _roleMapper.Map(roles?.FirstOrDefault()));
+    //response.Body = _mapper.Map(
+    //  dbUser,
+    //  //_universityUserMapper.Map(companies?.FirstOrDefault(), companies?.FirstOrDefault()?.Users.FirstOrDefault(cu => cu.UserId == dbUser.Id)),
+    //  images?.FirstOrDefault(i => i.Id == dbUser.Avatars.FirstOrDefault(ua => ua.IsCurrentAvatar).AvatarId),
+    //  //_departmentMapper.Map(dbUser.Id, departments?.FirstOrDefault()),
+    //  images,
+    //  _officeMapper.Map(offices?.FirstOrDefault()),
+    //  _positionMapper.Map(positions?.FirstOrDefault()),
+    //  _roleMapper.Map(roles?.FirstOrDefault()));
 
     return response;
   }

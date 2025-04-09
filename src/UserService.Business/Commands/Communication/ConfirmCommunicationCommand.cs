@@ -3,9 +3,7 @@ using UniversityHelper.Core.Responses;
 using UniversityHelper.UserService.Business.Commands.Communication.Interfaces;
 using UniversityHelper.UserService.Data.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
-using System;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.Communication;
 

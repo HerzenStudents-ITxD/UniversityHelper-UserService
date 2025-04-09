@@ -1,4 +1,4 @@
-﻿using UniversityHelper.CompanyService.Data.Provider;
+﻿using UniversityHelper.UniversityService.Data.Provider;
 using UniversityHelper.Core.Constants;
 using UniversityHelper.Core.Extensions;
 using UniversityHelper.UserService.Data.Interfaces;
@@ -8,11 +8,6 @@ using UniversityHelper.UserService.Models.Dto.Requests.User.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Data;
 

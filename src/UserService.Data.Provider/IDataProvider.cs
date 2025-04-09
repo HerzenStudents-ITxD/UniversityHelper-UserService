@@ -4,7 +4,7 @@ using UniversityHelper.Core.Enums;
 using UniversityHelper.UserService.Models.Db;
 using Microsoft.EntityFrameworkCore;
 
-namespace UniversityHelper.CompanyService.Data.Provider;
+namespace UniversityHelper.UniversityService.Data.Provider;
 
 [AutoInject(InjectType.Scoped)]
 public interface IDataProvider : IBaseDataProvider

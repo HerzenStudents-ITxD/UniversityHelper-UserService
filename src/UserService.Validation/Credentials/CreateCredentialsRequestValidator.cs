@@ -5,7 +5,6 @@ using UniversityHelper.UserService.Validation.Credentials.Interfaces;
 using UniversityHelper.UserService.Validation.Credentials.Resources;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using System.Threading;
 
 namespace UniversityHelper.UserService.Validation.Credentials;
 

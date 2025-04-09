@@ -2,8 +2,6 @@
 using UniversityHelper.Core.Responses;
 using UniversityHelper.UserService.Models.Dto.Requests.User.Filters;
 using UniversityHelper.UserService.Models.Dto.Responses.User;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Interfaces;
 

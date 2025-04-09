@@ -1,7 +1,6 @@
 ﻿using UniversityHelper.UserService.Models.Dto.Requests.Avatar;
 using UniversityHelper.UserService.Models.Dto.Requests.Communication;
-using UniversityHelper.UserService.Models.Dto.Requests.UserCompany;
-using System;
+using UniversityHelper.UserService.Models.Dto.Requests.UserUniversity;
 using System.ComponentModel.DataAnnotations;
 
 namespace UniversityHelper.UserService.Models.Dto;
@@ -21,7 +20,7 @@ public record CreateUserRequest
   public Guid? PositionId { get; set; }
   public Guid? RoleId { get; set; }
   public string Password { get; set; }
-  public CreateUserCompanyRequest UserCompany { get; set; }
+  public CreateUserUniversityRequest UserUniversity { get; set; }
   public CreateAvatarRequest AvatarImage { get; set; }
   [Required]
   public CreateCommunicationRequest Communication { get; set; }

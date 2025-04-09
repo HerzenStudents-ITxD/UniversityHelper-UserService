@@ -1,5 +1,4 @@
 ﻿using UniversityHelper.Core.Attributes;
-using UniversityHelper.Models.Broker.Models;
 using UniversityHelper.Models.Broker.Models.Image;
 using UniversityHelper.UserService.Models.Dto.Models;
 

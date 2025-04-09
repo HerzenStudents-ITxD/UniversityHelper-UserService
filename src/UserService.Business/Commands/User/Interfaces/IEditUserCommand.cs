@@ -2,8 +2,6 @@
 using UniversityHelper.Core.Responses;
 using UniversityHelper.UserService.Models.Dto.Requests.User;
 using Microsoft.AspNetCore.JsonPatch;
-using System;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Interfaces;
 

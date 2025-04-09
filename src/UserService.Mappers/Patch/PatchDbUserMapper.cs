@@ -4,7 +4,6 @@ using UniversityHelper.UserService.Models.Dto.Enums;
 using UniversityHelper.UserService.Models.Dto.Requests.User;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.JsonPatch.Operations;
-using System;
 
 namespace UniversityHelper.UserService.Mappers.Patch;
 

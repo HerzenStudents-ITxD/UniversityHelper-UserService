@@ -1,12 +1,10 @@
-﻿using UniversityHelper.Core.Attributes;
-using UniversityHelper.Models.Broker.Models.Department;
-using UniversityHelper.UserService.Models.Dto.Models;
-using System;
+﻿//using UniversityHelper.Core.Attributes;
+//using UniversityHelper.UserService.Models.Dto.Models;
 
-namespace UniversityHelper.UserService.Mappers.Models.Interfaces;
+//namespace UniversityHelper.UserService.Mappers.Models.Interfaces;
 
-[AutoInject]
-public interface IDepartmentInfoMapper
-{
-  DepartmentUserInfo Map(Guid userId, DepartmentData department);
-}
+//[AutoInject]
+//public interface IDepartmentInfoMapper
+//{
+//  DepartmentUserInfo Map(Guid userId, DepartmentData department);
+//}

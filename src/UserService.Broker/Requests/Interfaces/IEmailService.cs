@@ -1,6 +1,4 @@
 ﻿using UniversityHelper.Core.Attributes;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Broker.Requests.Interfaces;
 

@@ -2,9 +2,6 @@
 using UniversityHelper.Models.Broker.Common;
 using UniversityHelper.UserService.Data.Interfaces;
 using MassTransit;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Broker.Consumers;
 

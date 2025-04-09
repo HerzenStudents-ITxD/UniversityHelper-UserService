@@ -2,59 +2,55 @@
 using UniversityHelper.Core.RedisSupport.Constants;
 using UniversityHelper.Core.RedisSupport.Extensions;
 using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
-using UniversityHelper.Models.Broker.Models.Company;
-using UniversityHelper.Models.Broker.Requests.Company;
-using UniversityHelper.Models.Broker.Responses.Company;
 using UniversityHelper.UserService.Broker.Requests.Interfaces;
 using MassTransit;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+using UniversityHelper.Models.Broker.Requests.University;
+using UniversityHelper.Models.Broker.Models.University;
+using UniversityHelper.Models.Broker.Responses.University;
 
 namespace UniversityHelper.UserService.Broker.Requests;
 
-public class CompanyService : ICompanyService
+public class UniversityService : IUniversityService
 {
-  private readonly IRequestClient<IGetCompaniesRequest> _rcGetCompanies;
-  private readonly ILogger<CompanyService> _logger;
+  private readonly IRequestClient<IGetUniversitiesRequest> _rcGetUniversities;
+  private readonly ILogger<UniversityService> _logger;
   private readonly IGlobalCacheRepository _globalCache;
 
-  public CompanyService(
-    IRequestClient<IGetCompaniesRequest> rcGetCompanies,
-    ILogger<CompanyService> logger,
+  public UniversityService(
+    IRequestClient<IGetUniversitiesRequest> rcGetUniversities,
+    ILogger<UniversityService> logger,
     IGlobalCacheRepository globalCache)
   {
-    _rcGetCompanies = rcGetCompanies;
+    _rcGetUniversities = rcGetUniversities;
     _logger = logger;
     _globalCache = globalCache;
   }
 
-  public async Task<List<CompanyData>> GetCompaniesAsync(
+  public async Task<List<UniversityData>> GetUniversitiesAsync(
     Guid userId,
     List<string> errors,
     CancellationToken cancellationToken = default)
   {
-    object request = IGetCompaniesRequest.CreateObj(usersIds: new() { userId });
+    object request = IGetUniversitiesRequest.CreateObj(usersIds: new() { userId });
 
-    List<CompanyData> companies = await _globalCache
-      .GetAsync<List<CompanyData>>(Cache.Communities, userId.GetRedisCacheKey(nameof(IGetCompaniesRequest), request.GetBasicProperties()));
+    List<UniversityData> companies = await _globalCache
+      .GetAsync<List<UniversityData>>(Cache.Communities, userId.GetRedisCacheKey(nameof(IGetUniversitiesRequest), request.GetBasicProperties()));
 
     if (companies is not null)
     {
       _logger.LogInformation(
-        "Companies for user id '{UserId}' were taken from cache.",
+        "Universities for user id '{UserId}' were taken from cache.",
         userId);
     }
     else
     {
-      companies = (await RequestHandler.ProcessRequest<IGetCompaniesRequest, IGetCompaniesResponse>(
-          _rcGetCompanies,
+      companies = (await RequestHandler.ProcessRequest<IGetUniversitiesRequest, IGetUniversitiesResponse>(
+          _rcGetUniversities,
           request,
           errors,
           _logger))
-        ?.Companies;
+        ?.Universities;
     }
 
     return companies;

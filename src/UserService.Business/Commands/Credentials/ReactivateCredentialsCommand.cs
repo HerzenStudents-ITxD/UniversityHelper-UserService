@@ -11,7 +11,6 @@ using UniversityHelper.UserService.Models.Dto.Requests.Credentials;
 using UniversityHelper.UserService.Models.Dto.Requests.Credentials.Filters;
 using UniversityHelper.UserService.Models.Dto.Responses.Credentials;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.Credentials;
 

@@ -2,7 +2,6 @@
 using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Enums;
 using UniversityHelper.UserService.Models.Dto.Models;
-using System.Linq;
 
 namespace UniversityHelper.UserService.Mappers.Models;
 

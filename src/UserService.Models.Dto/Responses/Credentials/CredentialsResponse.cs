@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UniversityHelper.UserService.Models.Dto.Responses.Credentials;
+﻿namespace UniversityHelper.UserService.Models.Dto.Responses.Credentials;
 
   public record CredentialsResponse
   {

@@ -1,22 +1,22 @@
-﻿using UniversityHelper.Models.Broker.Models.Company;
+﻿using UniversityHelper.Models.Broker.Models.University;
 using UniversityHelper.UserService.Mappers.Models.Interfaces;
 using UniversityHelper.UserService.Models.Dto.Models;
 
 namespace UniversityHelper.UserService.Mappers.Models;
 
-public class CompanyInfoMapper : ICompanyInfoMapper
+public class UniversityInfoMapper : IUniversityInfoMapper
 {
-  public CompanyInfo Map(CompanyData companyData)
+  public UniversityInfo Map(UniversityData universityData)
   {
-    if (companyData is null)
+    if (universityData is null)
     {
       return null;
     }
 
-    return new CompanyInfo
+    return new UniversityInfo
     {
-      Id = companyData.Id,
-      Name = companyData.Name
+      Id = universityData.Id,
+      //Name = universityData.Name
     };
   }
 }

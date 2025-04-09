@@ -2,7 +2,6 @@
 using UniversityHelper.UserService.Models.Dto;
 using UniversityHelper.UserService.Validation.Password.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
-using System;
 
 namespace UniversityHelper.UserService.Validation.Password;
 

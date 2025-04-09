@@ -1,10 +1,6 @@
 ﻿using UniversityHelper.Core.Responses;
 using UniversityHelper.UserService.Business.Commands.Pending.Interfaces;
-using UniversityHelper.UserService.Models.Dto.Models;
-using UniversityHelper.UserService.Models.Dto.Requests.PendingUser.Filters;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Controllers;
 

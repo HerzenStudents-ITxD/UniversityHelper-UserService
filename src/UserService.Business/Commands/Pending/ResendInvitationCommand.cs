@@ -1,6 +1,4 @@
-﻿using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using UniversityHelper.Core.Constants;
-using UniversityHelper.Core.Helpers.Interfaces;
+﻿using UniversityHelper.Core.Helpers.Interfaces;
 using UniversityHelper.Core.Helpers.TextHandlers.Interfaces;
 using UniversityHelper.Core.Responses;
 using UniversityHelper.Models.Broker.Enums;
@@ -10,11 +8,7 @@ using UniversityHelper.UserService.Business.Commands.Password.Interfaces;
 using UniversityHelper.UserService.Business.Commands.Pending.Interfaces;
 using UniversityHelper.UserService.Data.Interfaces;
 using UniversityHelper.UserService.Models.Db;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.Pending;
 

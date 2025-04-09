@@ -1,7 +1,6 @@
 ﻿using UniversityHelper.Core.Attributes;
 using UniversityHelper.Core.Responses;
 using UniversityHelper.UserService.Models.Dto;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.Password.Interfaces;
 

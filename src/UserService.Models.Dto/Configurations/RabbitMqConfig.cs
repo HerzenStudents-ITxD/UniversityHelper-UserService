@@ -1,8 +1,6 @@
 ﻿using UniversityHelper.Core.BrokerSupport.Attributes;
 using UniversityHelper.Core.BrokerSupport.Configurations;
 using UniversityHelper.Models.Broker.Requests.Auth;
-using UniversityHelper.Models.Broker.Requests.Company;
-using UniversityHelper.Models.Broker.Requests.Department;
 using UniversityHelper.Models.Broker.Requests.Email;
 using UniversityHelper.Models.Broker.Requests.Image;
 using UniversityHelper.Models.Broker.Requests.Office;
@@ -52,15 +50,15 @@ public class RabbitMqConfig : ExtendedBaseRabbitMqConfig
   [AutoInjectRequest(typeof(IGetPositionsRequest))]
   public string GetPositionsEndpoint { get; set; }
 
-  //Department
+  ////Department
 
-  [AutoInjectRequest(typeof(IGetDepartmentsRequest))]
-  public string GetDepartmentsEndpoint { get; set; }
+  //[AutoInjectRequest(typeof(IGetDepartmentsRequest))]
+  //public string GetDepartmentsEndpoint { get; set; }
 
-  //Company
+  ////University
 
-  [AutoInjectRequest(typeof(IGetCompaniesRequest))]
-  public string GetCompaniesEndpoint { get; set; }
+  //[AutoInjectRequest(typeof(IGetUniversitiesRequest))]
+  //public string GetUniversitiesEndpoint { get; set; }
 
   //Office
 

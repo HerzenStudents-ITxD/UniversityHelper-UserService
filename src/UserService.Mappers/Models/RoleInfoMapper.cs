@@ -1,5 +1,4 @@
-﻿using UniversityHelper.Models.Broker.Models;
-using UniversityHelper.Models.Broker.Models.Right;
+﻿using UniversityHelper.Models.Broker.Models.Right;
 using UniversityHelper.UserService.Mappers.Models.Interfaces;
 using UniversityHelper.UserService.Models.Dto.Models;
 

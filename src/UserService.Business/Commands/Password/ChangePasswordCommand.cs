@@ -11,11 +11,8 @@ using UniversityHelper.UserService.Models.Dto.Requests.Credentials.Filters;
 using UniversityHelper.UserService.Models.Dto.Requests.Password;
 using UniversityHelper.UserService.Validation.Password.Interfaces;
 using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.Password;
 

@@ -4,11 +4,6 @@ using UniversityHelper.UserService.Business.Commands.Avatar.Interfaces;
 using UniversityHelper.UserService.Data.Interfaces;
 using UniversityHelper.UserService.Mappers.Responses.Interfaces;
 using UniversityHelper.UserService.Models.Dto.Responses.Image;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.Avatar;
 

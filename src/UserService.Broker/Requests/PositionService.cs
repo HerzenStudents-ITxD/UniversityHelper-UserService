@@ -8,10 +8,6 @@ using UniversityHelper.Models.Broker.Responses.Position;
 using UniversityHelper.UserService.Broker.Requests.Interfaces;
 using MassTransit;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Broker.Requests;
 

@@ -1,5 +1,4 @@
 ﻿using UniversityHelper.Core.Responses;
-using UniversityHelper.Models.Broker.Models;
 using UniversityHelper.Models.Broker.Models.User;
 using UniversityHelper.UserService.Business.Commands.User.Interfaces;
 using UniversityHelper.UserService.Business.Interfaces;
@@ -11,9 +10,6 @@ using UniversityHelper.UserService.Models.Dto.Requests.User.Filters;
 using UniversityHelper.UserService.Models.Dto.Responses.User;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Controllers;
 

@@ -1,6 +1,5 @@
 ﻿using UniversityHelper.Core.Attributes;
 using UniversityHelper.UserService.Models.Db;
-using System;
 
 namespace UniversityHelper.UserService.Mappers.Db.Interfaces;
 

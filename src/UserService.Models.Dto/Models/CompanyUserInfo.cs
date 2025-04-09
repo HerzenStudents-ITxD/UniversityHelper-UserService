@@ -1,12 +1,8 @@
-﻿using UniversityHelper.Models.Broker.Enums;
-using UniversityHelper.Models.Broker.Models.Company;
-using System;
+﻿namespace UniversityHelper.UserService.Models.Dto.Models;
 
-namespace UniversityHelper.UserService.Models.Dto.Models;
-
-public record CompanyUserInfo
+public record UniversityUserInfo
 {
-  public CompanyInfo Company { get; set; }
+  public UniversityInfo University { get; set; }
   //public ContractSubjectData ContractSubject { get; set; }
   //public ContractTerm ContractTermType { get; set; }
   public double? Rate { get; set; }

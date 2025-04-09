@@ -11,10 +11,7 @@ using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Requests.Credentials;
 using UniversityHelper.UserService.Models.Dto.Responses.Credentials;
 using UniversityHelper.UserService.Validation.Credentials.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.Credentials;
 

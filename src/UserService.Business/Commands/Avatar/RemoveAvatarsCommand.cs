@@ -1,7 +1,4 @@
 ﻿using FluentValidation.Results;
-using UniversityHelper.Core.BrokerSupport.AccessValidatorEngine.Interfaces;
-using UniversityHelper.Core.Constants;
-using UniversityHelper.Core.Extensions;
 using UniversityHelper.Core.Helpers.Interfaces;
 using UniversityHelper.Core.RedisSupport.Helpers.Interfaces;
 using UniversityHelper.Core.Responses;
@@ -10,9 +7,7 @@ using UniversityHelper.UserService.Data.Interfaces;
 using UniversityHelper.UserService.Models.Dto.Requests.Avatar;
 using UniversityHelper.UserService.Validation.Image.Interfaces;
 using Microsoft.AspNetCore.Http;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.Avatar;
 

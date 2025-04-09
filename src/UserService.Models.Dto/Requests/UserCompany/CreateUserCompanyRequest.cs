@@ -1,11 +1,8 @@
-﻿using UniversityHelper.Models.Broker.Enums;
-using System;
+﻿namespace UniversityHelper.UserService.Models.Dto.Requests.UserUniversity;
 
-namespace UniversityHelper.UserService.Models.Dto.Requests.UserCompany;
-
-public record CreateUserCompanyRequest
+public record CreateUserUniversityRequest
 {
-  public Guid CompanyId { get; set; }
+  public Guid UniversityId { get; set; }
   public Guid? ContractSubjectId { get; set; }
   //public ContractTerm ContractTermType { get; set; }
   public double? Rate { get; set; }

@@ -7,7 +7,6 @@ using UniversityHelper.UserService.Data.Interfaces;
 using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Requests.Credentials.Filters;
 using MassTransit;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Broker.Consumers;
 

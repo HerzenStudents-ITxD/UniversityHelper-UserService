@@ -1,12 +1,10 @@
-﻿using UniversityHelper.CompanyService.Data.Provider;
+﻿using UniversityHelper.UniversityService.Data.Provider;
 using UniversityHelper.Core.Extensions;
 using UniversityHelper.UserService.Data.Interfaces;
 using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Data;
 

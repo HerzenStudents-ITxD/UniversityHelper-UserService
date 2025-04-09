@@ -1,14 +1,10 @@
 ﻿using UniversityHelper.Core.Attributes;
-using UniversityHelper.Models.Broker.Models.Company;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+using UniversityHelper.Models.Broker.Models.University;
 
 namespace UniversityHelper.UserService.Broker.Requests.Interfaces;
 
 [AutoInject]
-public interface ICompanyService
+public interface IUniversityService
 {
-  Task<List<CompanyData>> GetCompaniesAsync(Guid userId, List<string> errors, CancellationToken cancellationToken = default);
+  Task<List<UniversityData>> GetUniversitiesAsync(Guid userId, List<string> errors, CancellationToken cancellationToken = default);
 }

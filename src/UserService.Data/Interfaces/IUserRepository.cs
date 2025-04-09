@@ -3,11 +3,6 @@ using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Requests.Filtres;
 using UniversityHelper.UserService.Models.Dto.Requests.User.Filters;
 using Microsoft.AspNetCore.JsonPatch;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Data.Interfaces;
 

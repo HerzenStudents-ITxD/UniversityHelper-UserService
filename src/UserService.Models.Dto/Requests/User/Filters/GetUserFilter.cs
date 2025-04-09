@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading;
 
 namespace UniversityHelper.UserService.Models.Dto.Requests.User.Filters;
 
@@ -24,8 +22,8 @@ public class GetUserFilter
   [FromQuery(Name = "includecommunications")]
   public bool IncludeCommunications { get; set; } = false;
 
-  [FromQuery(Name = "includecompany")]
-  public bool IncludeCompany { get; set; } = false;
+  [FromQuery(Name = "includeuniversity")]
+  public bool IncludeUniversity { get; set; } = false;
 
   [FromQuery(Name = "includedepartment")]
   public bool IncludeDepartment { get; set; } = false;

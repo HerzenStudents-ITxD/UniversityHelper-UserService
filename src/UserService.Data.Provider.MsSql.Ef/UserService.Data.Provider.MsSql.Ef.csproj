@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
   <Import Project="$(ProjectDir)..\..\Common.Configurations.targets" />
-
   <ItemGroup>
     <ProjectReference Include="..\UserService.Data.Provider\UserService.Data.Provider.csproj" />
     <ProjectReference Include="..\UserService.Models.Db\UserService.Models.Db.csproj" />
     <ProjectReference Include="..\UserService.Models.Dto\UserService.Models.Dto.csproj" />
   </ItemGroup>
-  
 </Project>

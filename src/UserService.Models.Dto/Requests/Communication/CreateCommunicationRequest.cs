@@ -1,5 +1,4 @@
 ﻿using UniversityHelper.UserService.Models.Dto.Enums;
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace UniversityHelper.UserService.Models.Dto.Requests.Communication;

@@ -3,9 +3,6 @@ using UniversityHelper.UserService.Business.Commands.Avatar.Interfaces;
 using UniversityHelper.UserService.Models.Dto.Requests.Avatar;
 using UniversityHelper.UserService.Models.Dto.Responses.Image;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Controllers;
 

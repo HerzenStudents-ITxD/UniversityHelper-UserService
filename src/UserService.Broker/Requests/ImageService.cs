@@ -1,8 +1,4 @@
-﻿using UniversityHelper.Core.BrokerSupport.Helpers;
-using UniversityHelper.Core.Extensions;
-using UniversityHelper.Models.Broker.Enums;
-using UniversityHelper.Models.Broker.Requests.Image;
-using UniversityHelper.Models.Broker.Responses.Image;
+﻿using UniversityHelper.Models.Broker.Requests.Image;
 using UniversityHelper.UserService.Broker.Requests.Interfaces;
 using UniversityHelper.UserService.Mappers.Models.Interfaces;
 using UniversityHelper.UserService.Models.Dto.Models;
@@ -10,11 +6,6 @@ using UniversityHelper.UserService.Models.Dto.Requests.Avatar;
 using MassTransit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Broker.Requests;
 

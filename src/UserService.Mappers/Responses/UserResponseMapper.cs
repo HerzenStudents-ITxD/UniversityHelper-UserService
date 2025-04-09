@@ -3,7 +3,6 @@ using UniversityHelper.UserService.Mappers.Responses.Interfaces;
 using UniversityHelper.UserService.Models.Db;
 using UniversityHelper.UserService.Models.Dto.Models;
 using UniversityHelper.UserService.Models.Dto.Responses.User;
-using System.Collections.Generic;
 
 namespace UniversityHelper.UserService.Mappers.Responses;
 
@@ -19,7 +18,7 @@ public class UserResponseMapper : IUserResponseMapper
 
   public UserResponse Map(
     DbUser dbUser,
-    CompanyUserInfo companyUser,
+    UniversityUserInfo universityUser,
     ImageInfo avatar,
     DepartmentUserInfo departmentUser,
     List<ImageInfo> images,
@@ -37,7 +36,7 @@ public class UserResponseMapper : IUserResponseMapper
           About = dbUser.Addition.About,
           DateOfBirth = dbUser.Addition.DateOfBirth
         },
-        CompanyUser = companyUser,
+        UniversityUser = universityUser,
         DepartmentUser = departmentUser,
         Office = office,
         Position = position,

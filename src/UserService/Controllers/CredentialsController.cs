@@ -2,7 +2,6 @@
 using UniversityHelper.UserService.Models.Dto.Requests.Credentials;
 using UniversityHelper.UserService.Models.Dto.Responses.Credentials;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using UniversityHelper.Core.Responses;
 
 namespace UniversityHelper.UserService.Controllers;

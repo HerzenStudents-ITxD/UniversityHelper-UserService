@@ -1,5 +1,4 @@
-﻿using UniversityHelper.Core.Enums;
-using UniversityHelper.Core.Extensions;
+﻿using UniversityHelper.Core.Extensions;
 using UniversityHelper.Core.Helpers.Interfaces;
 using UniversityHelper.Core.Helpers.TextHandlers.Interfaces;
 using UniversityHelper.Core.Responses;
@@ -14,11 +13,7 @@ using UniversityHelper.UserService.Models.Dto.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace UniversityHelper.UserService.Business.Commands.Communication;
 
