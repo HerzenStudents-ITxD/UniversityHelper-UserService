@@ -145,9 +145,13 @@ public class Startup : BaseApiInfo
                 builder =>
                 {
                     builder
-                        .AllowAnyOrigin()
+                        .WithOrigins(
+                            "http://localhost:5173",
+                            "http://localhost:4200",
+                            "http://localhost:4500")
                         .AllowAnyHeader()
-                        .AllowAnyMethod();
+                        .AllowAnyMethod()
+                        .AllowCredentials();
                 });
         });
 

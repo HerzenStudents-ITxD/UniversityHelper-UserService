@@ -14,7 +14,7 @@ internal static class UserPasswordHash
 
   internal static string GetPasswordHash(string userLogin, string salt, string userPassword)
   {
-    return Encoding.UTF8.GetString(SHA512.Create().ComputeHash(
+    return Convert.ToBase64String(SHA512.Create().ComputeHash(
       Encoding.UTF8.GetBytes($"{salt}{userLogin}{userPassword}{INTERNAL_SALT}")));
   }
 }
