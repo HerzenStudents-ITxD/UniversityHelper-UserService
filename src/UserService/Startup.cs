@@ -1,8 +1,10 @@
 ﻿using UniversityHelper.Core.RedisSupport.Extensions;
 using HealthChecks.UI.Client;
+using UniversityHelper.Core.BrokerSupport.Broker.Consumer;
 using UniversityHelper.Core.BrokerSupport.Configurations;
 using UniversityHelper.Core.BrokerSupport.Extensions;
 using UniversityHelper.Core.BrokerSupport.Middlewares.Token;
+using UniversityHelper.Core.BrokerSupport.Helpers;
 using UniversityHelper.Core.Configurations;
 using UniversityHelper.Core.EFSupport.Extensions;
 using UniversityHelper.Core.EFSupport.Helpers;
@@ -11,6 +13,7 @@ using UniversityHelper.Core.Middlewares.ApiInformation;
 using UniversityHelper.Core.RedisSupport.Configurations;
 using UniversityHelper.Core.RedisSupport.Constants;
 using UniversityHelper.Core.RedisSupport.Helpers;
+using UniversityHelper.UserService.Broker.Consumers;
 using UniversityHelper.UserService.Data.Provider.MsSql.Ef;
 using UniversityHelper.UserService.Models.Dto.Configurations;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -23,6 +26,11 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
+using MassTransit;
+using MassTransit.ExtensionsDependencyInjectionIntegration;
+using MassTransit.RabbitMqTransport;
+using FluentValidation;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace UniversityHelper.UserService;
 
@@ -69,6 +77,93 @@ public class Startup : BaseApiInfo
       .OfType<NewtonsoftJsonPatchInputFormatter>()
       .First();
   }
+
+    private void ConfigureMassTransit(IServiceCollection services)
+{
+    (string username, string password) = RabbitMqCredentialsHelper
+        .Get(_rabbitMqConfig, _serviceInfoConfig);
+
+    services.AddMassTransit(busConfigurator =>
+    {
+        busConfigurator.UsingRabbitMq((context, cfg) =>
+        {
+            cfg.Host(_rabbitMqConfig.Host, "/", host =>
+            {
+                host.Username(username);
+                host.Password(password);
+            });
+
+            ConfigureEndpoints(context, cfg, _rabbitMqConfig);
+        });
+
+        ConfigureConsumers(busConfigurator);
+
+        // Убрать эту строку, так как в v8+ generic request client добавляется автоматически
+        // busConfigurator.AddRequestClients(_rabbitMqConfig);
+    });
+
+    // Убрать эту строку, так как hosted service теперь добавляется автоматически
+    // services.AddMassTransitHostedService();
+}
+
+  private void ConfigureConsumers(IServiceCollectionBusConfigurator x)
+    {
+      x.AddConsumer<UserLoginConsumer>();
+      x.AddConsumer<GetUsersDataConsumer>();
+      x.AddConsumer<AccessValidatorConsumer>();
+      x.AddConsumer<SearchUsersConsumer>();
+      x.AddConsumer<CreateAdminConsumer>();
+      x.AddConsumer<FindParseEntitiesConsumer>();
+      x.AddConsumer<CheckUsersExistenceConsumer>();
+      // x.AddConsumer<FilterUsersDataConsumer>();
+    }
+
+    private void ConfigureEndpoints(
+        IBusRegistrationContext context,
+        IRabbitMqBusFactoryConfigurator cfg,
+        RabbitMqConfig rabbitMqConfig)
+    {
+      cfg.ReceiveEndpoint(rabbitMqConfig.CheckUserIsAdminEndpoint, ep =>
+      {
+        // TODO Rename
+        ep.ConfigureConsumer<AccessValidatorConsumer>(context);
+      });
+
+      cfg.ReceiveEndpoint(rabbitMqConfig.GetUsersDataEndpoint, ep =>
+      {
+        ep.ConfigureConsumer<GetUsersDataConsumer>(context);
+      });
+
+      cfg.ReceiveEndpoint(rabbitMqConfig.GetUserCredentialsEndpoint, ep =>
+      {
+        ep.ConfigureConsumer<UserLoginConsumer>(context);
+      });
+
+      cfg.ReceiveEndpoint(rabbitMqConfig.SearchUsersEndpoint, ep =>
+      {
+        ep.ConfigureConsumer<SearchUsersConsumer>(context);
+      });
+
+      cfg.ReceiveEndpoint(rabbitMqConfig.CreateAdminEndpoint, ep =>
+      {
+        ep.ConfigureConsumer<CreateAdminConsumer>(context);
+      });
+
+      cfg.ReceiveEndpoint(rabbitMqConfig.FindParseEntitiesEndpoint, ep =>
+      {
+        ep.ConfigureConsumer<FindParseEntitiesConsumer>(context);
+      });
+
+      cfg.ReceiveEndpoint(rabbitMqConfig.CheckUsersExistenceEndpoint, ep =>
+      {
+        ep.ConfigureConsumer<CheckUsersExistenceConsumer>(context);
+      });
+
+      // cfg.ReceiveEndpoint(rabbitMqConfig.FilterUsersDataEndpoint, ep =>
+      // {
+      //   ep.ConfigureConsumer<FilterUsersDataConsumer>(context);
+      // });
+    }
 
   public void ConfigureServices(IServiceCollection services)
   {
@@ -124,7 +219,7 @@ public class Startup : BaseApiInfo
 
     services.Configure<TokenConfiguration>(Configuration.GetSection("CheckTokenMiddleware"));
     services.Configure<BaseServiceInfoConfig>(Configuration.GetSection(BaseServiceInfoConfig.SectionName));
-    services.Configure<BaseRabbitMqConfig>(Configuration.GetSection(BaseRabbitMqConfig.SectionName));
+
     services.Configure<ForwardedHeadersOptions>(options =>
     {
       options.ForwardedHeaders =
@@ -133,17 +228,15 @@ public class Startup : BaseApiInfo
 
     services.AddBusinessObjects();
 
-    services.AddControllers();
-
-    services.ConfigureMassTransit(_rabbitMqConfig);
-
-    services.AddMemoryCache();
+    ConfigureMassTransit(services);
 
     //TODO this will be used when all validation takes place on the pipeline
     //string path = Path.Combine(
     //    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
     //    "LT.DigitalOffice.UserService.Validation.dll");
-    //services.AddScoped<IValidator<JsonPatchDocument<EditUserRequest>>, IEditUserRequestValidator>();
+    // services.AddScoped<IValidator<JsonPatchDocument<EditUserRequest>>, IEditUserRequestValidator>();
+
+    services.AddMemoryCache();
 
     redisConnStr = services.AddRedisSingleton(Configuration);
 

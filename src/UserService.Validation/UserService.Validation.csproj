@@ -6,5 +6,6 @@
   <ItemGroup>
     <ProjectReference Include="..\UserService.Data\UserService.Data.csproj" />
     <ProjectReference Include="..\UserService.Models.Dto\UserService.Models.Dto.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="9.0.4" />
   </ItemGroup>
 </Project>

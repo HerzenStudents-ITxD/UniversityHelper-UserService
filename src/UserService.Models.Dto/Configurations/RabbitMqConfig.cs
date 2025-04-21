@@ -13,59 +13,32 @@ namespace UniversityHelper.UserService.Models.Dto.Configurations;
 
 public class RabbitMqConfig : ExtendedBaseRabbitMqConfig
 {
-  //public string GetUserCredentialsEndpoint { get; set; }
-  //public string GetUsersDataEndpoint { get; set; }
-  //public string CreateAdminEndpoint { get; set; }
-  //public string FindParseEntitiesEndpoint { get; set; }
-  //public string CheckUsersExistenceEndpoint { get; set; }
-  //public string FilterUsersDataEndpoint { get; set; }
+  public string CheckUserIsAdminEndpoint { get; set; }
+  public string GetUsersDataEndpoint { get; set; }
+  public string GetUserCredentialsEndpoint { get; set; }
+  public string SearchUsersEndpoint { get; set; }
+  public string CreateAdminEndpoint { get; set; }
+  public string FindParseEntitiesEndpoint { get; set; }
+  public string CheckUsersExistenceEndpoint { get; set; }
 
-  //TextTemplate
-
+  // Request Clients
   [AutoInjectRequest(typeof(IGetTextTemplateRequest))]
   public string GetTextTemplateEndpoint { get; set; }
-
-  //Email
 
   [AutoInjectRequest(typeof(ISendEmailRequest))]
   public string SendEmailEndpoint { get; set; }
 
-  //Auth
-
   [AutoInjectRequest(typeof(IGetTokenRequest))]
   public string GetTokenEndpoint { get; set; }
-
-  //Search
-
-  [AutoInjectRequest(typeof(ISearchUsersRequest))]
-  public string SearchUsersEndpoint { get; set; }
-
-  //Rights
 
   [AutoInjectRequest(typeof(IGetUserRolesRequest))]
   public string GetUserRolesEndpoint { get; set; }
 
-  //Position
-
   [AutoInjectRequest(typeof(IGetPositionsRequest))]
   public string GetPositionsEndpoint { get; set; }
 
-  ////Department
-
-  //[AutoInjectRequest(typeof(IGetDepartmentsRequest))]
-  //public string GetDepartmentsEndpoint { get; set; }
-
-  ////University
-
-  //[AutoInjectRequest(typeof(IGetUniversitiesRequest))]
-  //public string GetUniversitiesEndpoint { get; set; }
-
-  //Office
-
   [AutoInjectRequest(typeof(IGetOfficesRequest))]
   public string GetOfficesEndpoint { get; set; }
-
-  //Image
 
   [AutoInjectRequest(typeof(ICreateImagesRequest))]
   public string CreateImagesEndpoint { get; set; }
