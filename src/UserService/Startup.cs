@@ -147,8 +147,7 @@ public class Startup : BaseApiInfo
                     builder
                         .AllowAnyOrigin()
                         .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials();
+                        .AllowAnyMethod();
                 });
         });
 
