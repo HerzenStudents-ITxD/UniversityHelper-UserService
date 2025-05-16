@@ -144,10 +144,13 @@ public class Startup : BaseApiInfo
                 CorsPolicyName,
                 builder =>
                 {
-                    builder
-                        .AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
+          builder
+            .WithOrigins(
+              "http://localhost:5173",
+              "https://itvd.online")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
                 });
         });
 
